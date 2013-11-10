@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cafe", "Cafe\Cafe.vcxproj", "{0AABCF62-3AC0-490C-BF52-6C27E945D9A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arhitect", "Arhitect", "{85858F05-A6E1-4DCC-834C-3DB951EAF99D}"
+	ProjectSection(SolutionItems) = preProject
+		Arhitect\cafe-oop.eap = Arhitect\cafe-oop.eap
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
