@@ -7,13 +7,10 @@
 
 #include "ChefObserver.h"
 
-
-ChefObserver::ChefObserver(){
+ChefObserver::~ChefObserver(){
 
 }
 
-
-
-ChefObserver::~ChefObserver(){
-
+void ChefObserver::Update( int command, Chef* obj )
+{
 }

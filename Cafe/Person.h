@@ -8,18 +8,18 @@
 #if !defined(EA_78019771_352A_43a6_8498_311F639F29FE__INCLUDED_)
 #define EA_78019771_352A_43a6_8498_311F639F29FE__INCLUDED_
 
+#include <string>
+#include "ICafeObject.h"
 #include "Specialization.h"
 
-class Person : public ICafeObject, public ICafeObject
+class Person : public ICafeObject
 {
 
 public:
+	Person();
+	Person(std::string name, std::string surname, Specialization specialization);
 	virtual ~Person();
 
-	void Person();
-	void Person(std::string name, std::string surname, Specialization specialization);
-	void Person(Person p);
-	void Person();
 	void setName(std::string name);
 	const std::string getName();
 	void setSurname(std::string surname);

@@ -11,14 +11,10 @@
 template<class T>
 class ICafeObserver
 {
-
 public:
-	ICafeObserver(Cafe* cafe) {cafe_ = cafe}
+	ICafeObserver() {}
 	virtual ~ICafeObserver() {}
 	virtual void Update(int command, T* obj) = 0;
-
-protected:
-	Cafe* cafe_;
 
 };
 #endif // !defined(EA_E09B53EE_F614_48a1_84CD_77ED6EE8EA57__INCLUDED_)

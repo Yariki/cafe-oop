@@ -24,5 +24,5 @@ BaseIngredient::~BaseIngredient(){
 
 IngredientKinds BaseIngredient::getIngredient(){
 
-	return  NULL;
+	return Ingredient1;
 }

@@ -1,12 +1,19 @@
-#include<string>
 
-class Dish : public ICafeObject, public ICafeObject
+#ifndef _DISH_H_
+#define _DISH_H_
+
+#include "ICafeObject.h"
+#include <string>
+#include <map>
+#include <string>
+#include "BaseIngredient.h"
+
+class Dish : public ICafeObject
 {
 public:
-	Ingredient *m_Ingredient;
 	Dish(void);
     Dish(std::string name, double cost = 0);
-    ~Dish(void);
+    virtual ~Dish(void);
 
     void setName(std::string name);
     std::string getName() const;
@@ -22,5 +29,7 @@ public:
 private:
 	std::string name_;
     double cost_;
-	map<BaseIngredient*,double> ingridients_;
+	std::map<BaseIngredient*,double> ingridients_;
 };
+
+#endif

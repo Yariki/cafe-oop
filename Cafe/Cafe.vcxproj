@@ -38,7 +38,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,6 +92,7 @@
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="order.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Waiter.cpp" />
     <ClCompile Include="WaiterObserver.cpp" />
   </ItemGroup>
@@ -119,6 +120,7 @@
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientKinds.h" />
     <ClInclude Include="order.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Specialization.h" />
     <ClInclude Include="Waiter.h" />
     <ClInclude Include="WaiterObserver.h" />

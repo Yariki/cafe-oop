@@ -1,21 +1,28 @@
-#include<vector>
-#include"dish.h"
+#ifndef _ORDER_H_
+#define _ORDER_H_
 
-class Order : public ICafeObject, public ICafeObject
+#include "ICafeObject.h"
+#include <vector>
+#include "dish.h"
+
+
+class Cook;
+class Waiter;
+class Client;
+
+class Order : public ICafeObject
 {
-	public:
-	Dish *m_Dish;
-		Order(void);
-		Order(std::vector<Dish>);
-		Order(const Order &o);
-		~Order(void);
+public:
+	Order(void);
+	Order(std::vector<Dish*> dishes);
+	virtual ~Order(void);
 
-        void addDish(Dish dish);
-        void addDishes(std::vector<Dish> dishes);
-        void deleteDish(Dish dish);
-        void deleteDishes(std::vector<Dish>);
-        double getTotalCost() const;
-        std::vector<Dish> getOrder() const;
+	void addDish(Dish* dish);
+	void addDishes(std::vector<Dish*> dishes);
+	void deleteDish(Dish* dish);
+	void deleteDishes(std::vector<Dish*>);
+	double getTotalCost();
+	std::vector<Dish*>* getOrder();
 	void setClient(Client* client);
 	Client* getClient();
 	void setCook(Cook* cook);
@@ -23,12 +30,14 @@ class Order : public ICafeObject, public ICafeObject
 	void setWaiter(Waiter* waiter);
 	Waiter* getWaiter();
 
-	private:
-        double total_cost_;
-        std::vector<Dish> order_;
+private:
+    double total_cost_;
+    std::vector<Dish*> order_;
 	Cook* cook_;
 	Waiter* waiter_;
 	Client* client_;
 
-        void calculateCost();
+    void calculateCost();
 };
+
+#endif

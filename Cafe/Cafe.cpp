@@ -7,24 +7,13 @@
 
 #include "Cafe.h"
 
+Cafe::Cafe(){
+
+}
 
 Cafe::~Cafe(){
 
 }
-
-
-
-
-
-void Cafe::Cafe(){
-
-}
-
-
-void Cafe::Cafe(){
-
-}
-
 
 void Cafe::addClient(Client* client){
 

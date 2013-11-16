@@ -12,29 +12,14 @@ Person::~Person(){
 
 }
 
-
-
-
-
-void Person::Person(){
+Person::Person(){
 
 }
 
 
-void Person::Person(std::string name, std::string surname, Specialization specialization){
+Person::Person(std::string name, std::string surname, Specialization specialization){
 
 }
-
-
-void Person::Person(Person p){
-
-}
-
-
-void Person::Person(){
-
-}
-
 
 void Person::setName(std::string name){
 
@@ -54,7 +39,7 @@ void Person::setSurname(std::string surname){
 
 std::string Person::setSurname(){
 
-	return  NULL;
+	return NULL;
 }
 
 
@@ -65,5 +50,5 @@ void Person::setSpecialization(Specialization sp){
 
 Specialization Person::getSpecialization(){
 
-	return  NULL;
+	return  S_Client;
 }

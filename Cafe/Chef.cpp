@@ -12,15 +12,6 @@ Chef::~Chef(){
 
 }
 
-
-
-
-
-void Chef::Chef(){
-
-}
-
-
-void Chef::Chef(){
+Chef::Chef(){
 
 }

@@ -7,23 +7,28 @@
 #if !defined(EA_34D39089_90A1_4167_8AC2_0F99A7019000__INCLUDED_)
 #define EA_34D39089_90A1_4167_8AC2_0F99A7019000__INCLUDED_
 
+#include <queue>
+#include "order.h"
+#include <vector>
 #include "CookStatus.h"
 #include "Person.h"
+#include "order.h"
+#include "dish.h"
+#include "Ingredient.h"
 
 class Cook : public Person
 {
 
 public:
+	Cook();
 	virtual ~Cook();
 
-	void Cook();
-	void Cook();
 	void setOrder(Order* order);
 	Order* getOrder();
 	Dish* getSnack();
 	virtual void cook();
 	bool intitializeCookOrder();
-	vector<Ingredient*> getAlternativeIngredientsList();
+	std::vector<Ingredient*>* getAlternativeIngredientsList();
 	void setStatus(CookStatus status);
 	CookStatus setStatus();
 
@@ -33,7 +38,7 @@ protected:
 	virtual void makeNextDishFromOrder();
 
 private:
-	queue<Order*> dishlist_;
+	std::queue<Order*> dishlist_;
 	CookStatus state_;
 
 };

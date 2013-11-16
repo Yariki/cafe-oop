@@ -9,14 +9,14 @@
 
 #include "CafeRoom.h"
 #include "Equipment.h"
+#include <vector>
 
 class CafeKitchen : public CafeRoom
 {
 
 public:
-	CafeKitchen();
+	CafeKitchen(Cafe* cafe) : CafeRoom(cafe){}
 	virtual ~CafeKitchen();
-	Equipment *m_Equipment;
 
 	Equipment* getFirstFreeEquipment();
 	void generarteException();
@@ -24,7 +24,7 @@ public:
 	Equipment* getFirstFreeAlternativeEquipment();
 
 private:
-	vector<Equipment*> equipments_;
+	std::vector<Equipment*> equipments_;
 
 	void initEquipments();
 

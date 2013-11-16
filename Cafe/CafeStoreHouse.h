@@ -10,21 +10,22 @@
 #include "IngredientKinds.h"
 #include "CafeRoom.h"
 #include "Ingredient.h"
+#include <map>
+#include <vector>
+
+class Cafe;
 
 class CafeStoreHouse : public CafeRoom
 {
-
 public:
+	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){}
 	virtual ~CafeStoreHouse();
-	Ingredient *m_Ingredient;
-
-	void CafeStoreHouse(Cafe* cafe);
-	virtual void CafeStoreHouse();
-	vector<Ingredient*> getIngredients();
+	
+	std::vector<Ingredient*>* getIngredients();
 	bool isEnoughIngredient(IngredientKinds type);
 
 private:
-	map<Ingredient*,double> ingredients_;
+	std::map<Ingredient*,double> ingredients_;
 
 	void initIngredient();
 

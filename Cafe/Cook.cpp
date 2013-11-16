@@ -12,19 +12,9 @@ Cook::~Cook(){
 
 }
 
-
-
-
-
-void Cook::Cook(){
+Cook::Cook(){
 
 }
-
-
-void Cook::Cook(){
-
-}
-
 
 void Cook::setOrder(Order* order){
 
@@ -54,7 +44,7 @@ bool Cook::intitializeCookOrder(){
 }
 
 
-vector<Ingredient*> Cook::getAlternativeIngredientsList(){
+std::vector<Ingredient*>* Cook::getAlternativeIngredientsList(){
 
 	return  NULL;
 }
@@ -67,7 +57,7 @@ void Cook::setStatus(CookStatus status){
 
 CookStatus Cook::setStatus(){
 
-	return  NULL;
+	return  CookFree;
 }
 
 
@@ -82,6 +72,6 @@ void Cook::applyEquipment(){
 }
 
 
-void Cook::makeNextDishFromOrder()(){
+void Cook::makeNextDishFromOrder(){
 
 }

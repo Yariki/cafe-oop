@@ -16,10 +16,10 @@ class Equipment : public ICafeObject
 {
 
 public:
+	Equipment(EnergyKinds energy, EquipmentKinds kind);
+	Equipment();
 	virtual ~Equipment();
 
-	void Equipment(EnergyKinds energy, EquipmentKinds kind);
-	void Equipment();
 	EquipmentKinds getKind();
 	void setStatus(EquipmentStatus status);
 	EquipmentStatus getStatus();

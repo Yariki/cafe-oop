@@ -12,23 +12,17 @@ Equipment::~Equipment(){
 
 }
 
-
-
-
-
-void Equipment::Equipment(EnergyKinds energy, EquipmentKinds kind){
+Equipment::Equipment(EnergyKinds energy, EquipmentKinds kind){
 
 }
 
-
-void Equipment::Equipment(){
+Equipment::Equipment(){
 
 }
-
 
 EquipmentKinds Equipment::getKind(){
 
-	return  NULL;
+	return  ElectricRange;
 }
 
 
@@ -39,11 +33,11 @@ void Equipment::setStatus(EquipmentStatus status){
 
 EquipmentStatus Equipment::getStatus(){
 
-	return  NULL;
+	return EquipmentFree;
 }
 
 
 EnergyKinds Equipment::getEnergyKind(){
 
-	return  NULL;
+	return Electricity;
 }

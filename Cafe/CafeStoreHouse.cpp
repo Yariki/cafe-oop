@@ -13,27 +13,13 @@ CafeStoreHouse::~CafeStoreHouse(){
 }
 
 
-
-
-
-void CafeStoreHouse::CafeStoreHouse(Cafe* cafe){
-
-}
-
-
-void CafeStoreHouse::CafeStoreHouse(){
-
-}
-
-
 void CafeStoreHouse::initIngredient(){
 
 }
 
 
-vector<Ingredient*> CafeStoreHouse::getIngredients(){
-
-	return  NULL;
+std::vector<Ingredient*>* CafeStoreHouse::getIngredients(){
+	return NULL;
 }
 
 

@@ -11,16 +11,7 @@ Waiter::~Waiter(){
 
 }
 
-
-
-
-
-void Waiter::Waiter(){
-
-}
-
-
-void Waiter::Waiter(){
+Waiter::Waiter(){
 
 }
 

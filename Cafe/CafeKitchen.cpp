@@ -8,18 +8,9 @@
 #include "CafeKitchen.h"
 
 
-CafeKitchen::CafeKitchen(){
-
-}
-
-
-
 CafeKitchen::~CafeKitchen(){
 
 }
-
-
-
 
 
 void CafeKitchen::initEquipments(){

@@ -9,14 +9,14 @@
 
 #include "ICafeObject.h"
 
+class Cafe;
+
 class CafeRoom : public ICafeObject
 {
 
 public:
+	CafeRoom(Cafe* cafe);
 	virtual ~CafeRoom();
-
-	void CafeRoom(Cafe* cafe);
-	virtual void CafeRoom();
 
 private:
 	Cafe* cafe_;

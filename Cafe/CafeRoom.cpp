@@ -12,15 +12,6 @@ CafeRoom::~CafeRoom(){
 
 }
 
-
-
-
-
-void CafeRoom::CafeRoom(Cafe* cafe){
-
-}
-
-
-void CafeRoom::CafeRoom(){
+CafeRoom::CafeRoom(Cafe* cafe){
 
 }

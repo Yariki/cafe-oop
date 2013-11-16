@@ -16,11 +16,12 @@ class WaiterObserver : public ICafeObserver<Waiter>
 {
 
 public:
-	WaiterObserver(Cafe*  cafe) : ICafeObserver<Waiter>(cafe){}
+	WaiterObserver(Cafe*  cafe) {}
 	virtual ~WaiterObserver();
 
 	virtual void Update( int command, Waiter* obj );
 
-
+private:
+	Cafe* cafe_;
 };
 #endif // !defined(EA_16328FE1_4077_4274_92ED_906D818675C2__INCLUDED_)

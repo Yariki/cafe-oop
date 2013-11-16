@@ -12,31 +12,10 @@ Client::~Client(){
 
 }
 
-
-
-
-
-void Client::Client(){
+Client::Client(double money){
 
 }
 
-
-void Client::Client(double money){
-
-}
-
-
-void Client::Client(){
-
-}
-
-
-Order* Client::makeOrder()(){
-
-	return  NULL;
-}
-
-
-void Client::eat(vector<Dish*> dishes){
+Client::Client(){
 
 }

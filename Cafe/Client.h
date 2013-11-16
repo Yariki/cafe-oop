@@ -7,20 +7,17 @@
 #if !defined(EA_6AAAD847_88C7_4058_9A28_3112673EA0B3__INCLUDED_)
 #define EA_6AAAD847_88C7_4058_9A28_3112673EA0B3__INCLUDED_
 
+#include <vector>
 #include "Person.h"
+#include "order.h"
 
 class Client : public Person
 {
 
 public:
+	Client();
+	Client(double money);
 	virtual ~Client();
-
-	void Client();
-	void Client(double money);
-	void Client();
-	Order* makeOrder();
-	void eat(vector<Dish*> dishes);
-
 private:
 	double money_;
 
