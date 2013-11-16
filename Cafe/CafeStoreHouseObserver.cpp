@@ -8,12 +8,10 @@
 #include "CafeStoreHouseObserver.h"
 
 
-CafeStoreHouseObserver::CafeStoreHouseObserver(){
+CafeStoreHouseObserver::~CafeStoreHouseObserver(){
 
 }
 
-
-
-CafeStoreHouseObserver::~CafeStoreHouseObserver(){
-
+void CafeStoreHouseObserver::Update( int command, CafeStoreHouse* obj )
+{
 }

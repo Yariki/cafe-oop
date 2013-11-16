@@ -9,13 +9,18 @@
 #define EA_16328FE1_4077_4274_92ED_906D818675C2__INCLUDED_
 
 #include "ICafeObserver.h"
+#include "Waiter.h"
+#include "Cafe.h"
 
-class WaiterObserver : public ICafeObserver
+class WaiterObserver : public ICafeObserver<Waiter>
 {
 
 public:
-	WaiterObserver();
+	WaiterObserver(Cafe*  cafe) : ICafeObserver<Waiter>(cafe){}
 	virtual ~WaiterObserver();
+
+	virtual void Update( int command, Waiter* obj );
+
 
 };
 #endif // !defined(EA_16328FE1_4077_4274_92ED_906D818675C2__INCLUDED_)

@@ -7,13 +7,7 @@
 
 #include "CafeKitchenObserver.h"
 
-
-CafeKitchenObserver::CafeKitchenObserver(){
-
-}
-
-
-
-CafeKitchenObserver::~CafeKitchenObserver(){
-
+void CafeKitchenObserver::Update( int command, CafeKitchen* obj )
+{
+		
 }

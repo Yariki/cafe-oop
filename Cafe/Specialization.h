@@ -9,9 +9,9 @@
 
 enum Specialization
 {
-	Cook,
-	Chef,
-	Client,
-	Waiter
+	S_Cook,
+	S_Chef,
+	S_Client,
+	S_Waiter
 };
 #endif // !defined(EA_952DEF3F_349C_432f_952A_AF688BFC5285__INCLUDED_)

@@ -7,13 +7,10 @@
 
 #include "CookObserver.h"
 
-
-CookObserver::CookObserver(){
+CookObserver::~CookObserver(){
 
 }
 
-
-
-CookObserver::~CookObserver(){
-
+void CookObserver::Update( int command, Cook* obj )
+{
 }

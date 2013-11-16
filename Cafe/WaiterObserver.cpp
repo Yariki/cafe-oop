@@ -7,13 +7,10 @@
 
 #include "WaiterObserver.h"
 
-
-WaiterObserver::WaiterObserver(){
+WaiterObserver::~WaiterObserver(){
 
 }
 
-
-
-WaiterObserver::~WaiterObserver(){
-
+void WaiterObserver::Update( int command, Waiter* obj )
+{
 }

@@ -13,9 +13,9 @@ class ICafeObserver
 {
 
 public:
-	ICafeObserver(Cafe* cafe);
-	virtual ~ICafeObserver();
-	virtual void Update(int command, T obj) = 0;
+	ICafeObserver(Cafe* cafe) {cafe_ = cafe}
+	virtual ~ICafeObserver() {}
+	virtual void Update(int command, T* obj) = 0;
 
 protected:
 	Cafe* cafe_;

@@ -9,13 +9,16 @@
 #define EA_0CF32C57_23A7_41c7_9951_FB37C5B84B15__INCLUDED_
 
 #include "ICafeObserver.h"
+#include "Cafe.h"
+#include "CafeKitchen.h"
 
-class CafeKitchenObserver : public ICafeObserver
+class CafeKitchenObserver : public ICafeObserver<CafeKitchen>
 {
 
 public:
-	CafeKitchenObserver();
-	virtual ~CafeKitchenObserver();
+	CafeKitchenObserver(Cafe* cafe) : ICafeObserver<CafeKitchen>(cafe){}
+	virtual ~CafeKitchenObserver() {}
+	virtual void Update( int command, CafeKitchen* obj );
 
 };
 #endif // !defined(EA_0CF32C57_23A7_41c7_9951_FB37C5B84B15__INCLUDED_)
