@@ -1,8 +1,9 @@
 #include<string>
 
-class Dish
+class Dish : public ICafeObject, public ICafeObject
 {
 public:
+	Ingredient *m_Ingredient;
 	Dish(void);
     Dish(std::string name, double cost = 0);
     ~Dish(void);
@@ -21,4 +22,5 @@ public:
 private:
 	std::string name_;
     double cost_;
+	map<BaseIngredient*,double> ingridients_;
 };

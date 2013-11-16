@@ -64,3 +64,36 @@ void Order::calculateCost()
         for(int i = 0; i < order_.size(); i++)
                 total_cost_ += order_[i].getCost();
 }
+
+
+void Order::setClient(Client* client){
+
+}
+
+
+Client* Order::getClient(){
+
+	return  NULL;
+}
+
+
+void Order::setCook(Cook* cook){
+
+}
+
+
+Cook* Order::getCook(){
+
+	return  NULL;
+}
+
+
+void Order::setWaiter(Waiter* waiter){
+
+}
+
+
+Waiter* Order::getWaiter(){
+
+	return  NULL;
+}

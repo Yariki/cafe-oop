@@ -1,9 +1,10 @@
 #include "dish.h"
 #include <vector>
 
-class Cafe_Menu
+class Cafe_Menu : public ICafeObject, public ICafeObject
 {
 public:
+	Dish *m_Dish;
 	Cafe_Menu(void);        
     ~Cafe_Menu(void);
 

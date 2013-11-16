@@ -1,0 +1,26 @@
+///////////////////////////////////////////////////////////
+//  Chef.cpp
+//  Implementation of the Class Chef
+//  Created on:      16-Nov-2013 8:48:05 PM
+
+///////////////////////////////////////////////////////////
+
+#include "Chef.h"
+
+
+Chef::~Chef(){
+
+}
+
+
+
+
+
+void Chef::Chef(){
+
+}
+
+
+void Chef::Chef(){
+
+}

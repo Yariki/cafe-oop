@@ -10,7 +10,7 @@
 
 #include "Specialization.h"
 
-class Person
+class Person : public ICafeObject, public ICafeObject
 {
 
 public:

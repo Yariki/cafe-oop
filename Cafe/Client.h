@@ -1,0 +1,28 @@
+///////////////////////////////////////////////////////////
+//  Client.h
+//  Implementation of the Class Client
+//  Created on:      16-Nov-2013 8:48:06 PM
+///////////////////////////////////////////////////////////
+
+#if !defined(EA_6AAAD847_88C7_4058_9A28_3112673EA0B3__INCLUDED_)
+#define EA_6AAAD847_88C7_4058_9A28_3112673EA0B3__INCLUDED_
+
+#include "Person.h"
+
+class Client : public Person
+{
+
+public:
+	virtual ~Client();
+
+	void Client();
+	void Client(double money);
+	void Client();
+	Order* makeOrder();
+	void eat(vector<Dish*> dishes);
+
+private:
+	double money_;
+
+};
+#endif // !defined(EA_6AAAD847_88C7_4058_9A28_3112673EA0B3__INCLUDED_)
