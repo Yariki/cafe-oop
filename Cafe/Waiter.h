@@ -11,8 +11,9 @@
 #include "order.h"
 #include "Client.h"
 #include <vector>
+#include "WaiterNotifier.h"
 
-class Waiter : public Person
+class Waiter : public Person, public WaiterNotifier
 {
 
 public:
