@@ -116,6 +116,7 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="EquipmentKinds.h" />
     <ClInclude Include="EquipmentStatus.h" />
+    <ClInclude Include="ICafe.h" />
     <ClInclude Include="ICafeObserver.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientKinds.h" />

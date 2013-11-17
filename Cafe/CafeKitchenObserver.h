@@ -9,7 +9,7 @@
 #define EA_0CF32C57_23A7_41c7_9951_FB37C5B84B15__INCLUDED_
 
 #include "ICafeObserver.h"
-#include "Cafe.h"
+#include "ICafe.h"
 
 
 class CafeKitchen;
@@ -18,10 +18,10 @@ class CafeKitchenObserver : public ICafeObserver<CafeKitchen>
 {
 
 public:
-	CafeKitchenObserver(Cafe* cafe) {}
+	CafeKitchenObserver(ICafe* cafe) {}
 	virtual ~CafeKitchenObserver() {}
 	virtual void Update( int command, CafeKitchen* obj );
 private:
-	Cafe* cafe_;
+	ICafe* cafe_;
 };
 #endif // !defined(EA_0CF32C57_23A7_41c7_9951_FB37C5B84B15__INCLUDED_)
