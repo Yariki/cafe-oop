@@ -1,0 +1,92 @@
+.text
+{
+	overflow: auto;
+	position: absolute;
+	left: 270px;
+	top: 150px;
+	padding-bottom: 5%;
+	right: 1px;
+	bottom: 0;
+	height: expression((document.body.clientHeight - 155) + "px");
+	width: expression((document.body.clientWidth - 275) + "px");
+
+}
+
+table.image
+{
+	border: 0px;
+ 	position: relative;
+ 	left: 10px;
+  	top: 150px;
+	opacity:0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+
+table.menu1
+{
+	border: 0px;
+ 	position: absolute;
+ 	left: 270px;
+  	top: 73px;
+}
+
+table.menu2
+{
+	border: 0px;
+ 	position: absolute;
+ 	left: 10px;
+  	top: 150px;
+}
+
+.home
+{
+	position: absolute;
+	right: 15px;
+	top: 10px;
+}
+
+A 
+{
+    	color: black;
+	text-decoration:none;
+}
+
+A:visited 
+{
+    	color: black;
+	text-decoration:none;
+}
+
+A:active 
+{
+   	color: black;
+	text-decoration:none;
+}
+
+A:hover 
+{
+   	color: #8199b4; 
+	text-decoration:underline;
+}
+
+.start
+{
+	position: absolute;
+	left: 545px;
+	bottom: 60px;
+}
+
+td.w
+{
+	width: 30px;
+	text-decoration: underline;
+}
+
+h1 
+{
+  	font: bold 250%/75% "Lucida Grande";
+  	position: absolute;
+  	left: 280px;
+  	top: 22px;
+  	color: #464646;
+}

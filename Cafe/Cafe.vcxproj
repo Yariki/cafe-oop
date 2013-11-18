@@ -77,19 +77,15 @@
     <ClCompile Include="BaseIngredient.cpp" />
     <ClCompile Include="Cafe.cpp" />
     <ClCompile Include="CafeKitchen.cpp" />
-    <ClCompile Include="CafeKitchenNotifier.cpp" />
     <ClCompile Include="CafeKitchenObserver.cpp" />
     <ClCompile Include="CafeRoom.cpp" />
     <ClCompile Include="CafeStoreHouse.cpp" />
-    <ClCompile Include="CafeStoreHouseNotifier.cpp" />
     <ClCompile Include="CafeStoreHouseObserver.cpp" />
     <ClCompile Include="cafe_menu.cpp" />
     <ClCompile Include="Chef.cpp" />
-    <ClCompile Include="ChefNotifier.cpp" />
     <ClCompile Include="ChefObserver.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Cook.cpp" />
-    <ClCompile Include="CookNotifier.cpp" />
     <ClCompile Include="CookObserver.cpp" />
     <ClCompile Include="dish.cpp" />
     <ClCompile Include="Equipment.cpp" />
@@ -98,26 +94,21 @@
     <ClCompile Include="order.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Waiter.cpp" />
-    <ClCompile Include="WaiterNotifier.cpp" />
     <ClCompile Include="WaiterObserver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseIngredient.h" />
     <ClInclude Include="Cafe.h" />
     <ClInclude Include="CafeKitchen.h" />
-    <ClInclude Include="CafeKitchenNotifier.h" />
     <ClInclude Include="CafeKitchenObserver.h" />
     <ClInclude Include="CafeRoom.h" />
     <ClInclude Include="CafeStoreHouse.h" />
-    <ClInclude Include="CafeStoreHouseNotifier.h" />
     <ClInclude Include="CafeStoreHouseObserver.h" />
     <ClInclude Include="cafe_menu.h" />
     <ClInclude Include="Chef.h" />
-    <ClInclude Include="ChefNotifier.h" />
     <ClInclude Include="ChefObserver.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Cook.h" />
-    <ClInclude Include="CookNotifier.h" />
     <ClInclude Include="CookObserver.h" />
     <ClInclude Include="CookStatus.h" />
     <ClInclude Include="dish.h" />
@@ -125,8 +116,6 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="EquipmentKinds.h" />
     <ClInclude Include="EquipmentStatus.h" />
-    <ClInclude Include="ICafe.h" />
-    <ClInclude Include="ICafeNotifier.h" />
     <ClInclude Include="ICafeObserver.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientKinds.h" />
@@ -134,7 +123,6 @@
     <ClInclude Include="Person.h" />
     <ClInclude Include="Specialization.h" />
     <ClInclude Include="Waiter.h" />
-    <ClInclude Include="WaiterNotifier.h" />
     <ClInclude Include="WaiterObserver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

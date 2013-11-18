@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "ICafeObject.h"
-#include "ICafe.h"
 #include "Cook.h"
 #include "Waiter.h"
 #include "Client.h"
@@ -25,7 +24,7 @@
 
 class CafeStoreHouse;
 
-class Cafe : public ICafeObject, public ICafe
+class Cafe : public ICafeObject
 {
 
 public:
@@ -36,14 +35,8 @@ public:
 	void createPersonal();
 	void simulation();
 	std::string generateError();
-
-	virtual Chef* getChef();
-	virtual std::vector<Cook*>* getCooks();
-	virtual std::vector<Client*>* getClients();
-	virtual std::vector<Waiter*>* getWaiters();
-	virtual CafeKitchen* getKitchen();
-	virtual CafeStoreHouse* getStoreHouse();
-
+	CafeKitchen* getKitchen();
+	CafeStoreHouse* getStoreHouse();
 
 private:
 	std::vector<Cook*> cooks_;
@@ -59,8 +52,6 @@ private:
 	void createWaiters();
 	void createKitchen();
 	void createStoreHouse();
-
-	
 
 
 	friend class CafeKitchenObserver;

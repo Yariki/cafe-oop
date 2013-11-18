@@ -10,13 +10,12 @@
 #include "IngredientKinds.h"
 #include "CafeRoom.h"
 #include "Ingredient.h"
-#include "CafeStoreHouseNotifier.h"
 #include <map>
 #include <vector>
 
 class Cafe;
 
-class CafeStoreHouse : public CafeRoom, public CafeStoreHouseNotifier
+class CafeStoreHouse : public CafeRoom
 {
 public:
 	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){}
