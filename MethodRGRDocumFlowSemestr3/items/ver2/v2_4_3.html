@@ -1,0 +1,333 @@
+<html>
+<head>
+    <title>Об’єктно-орієнтоване програмування</title>
+    <link rel="stylesheet" type="text/css" href="../../source/style.css">
+</head>
+<body background="../../source/background.jpg";>
+<h1 align=center>Об’єктно-орієнтоване програмування</h1>
+<table border="0" class="menu1" >
+			<tr>
+				<td><a href="../ver1/v1_1.html"><img border="0" src="../../source/v1.png"></a></td>
+                <td><a href="../ver2/v2_1.html"><img border="0" src="../../source/v2.png"></a></td>
+                <td><a href="../ver3/v3_1.html"><img border="0" src="../../source/v3.png"></a></td>
+                <td><a href="../ver4/v4_1.html"><img border="0" src="../../source/v4.png"></a></td>
+                <td><a href="../ver5/v5_1.html"><img border="0" src="../../source/v5.png"></a></td>
+                <td><a href="../ver6/v6_1.html"><img border="0" src="../../source/v6.png"></a></td>
+                <td><a href="../ver7/v7_1.html"><img border="0" src="../../source/v7.png"></a></td>
+                <td><a href="../ver8/v8_1.html"><img border="0" src="../../source/v8.png"></a></td>
+			</tr>
+</table>
+<table border="0" class="menu2">
+			<tr>
+				<td><a href="v2_1.html"><img border="0" src="../../source/m1.png"></a></td>
+			</tr>
+			<tr>
+				<td><a href="v2_2.html"><img border="0" src="../../source/m2.png"></a></td>
+			</tr>
+            <tr>
+				<td><a href="v2_3.html"><img border="0" src="../../source/m3.png"></a></td>
+			</tr>
+			<tr>
+				<td><a href="v2_4.html"><img border="0" src="../../source/m4.png"></a></td>
+			</tr>
+            <tr>
+				<td><a href="v2_5.html"><img border="0" src="../../source/m5.png"></a></td>
+			</tr>
+            <tr>
+				<td><a href="v2_6.html"><img border="0" src="../../source/m6.png"></a></td>
+			</tr>
+            <tr>
+				<td>&nbsp</td>
+			</tr>
+            <tr>
+				<td>&nbsp</td>
+			</tr>
+            <tr>
+				<td>&nbsp</td>
+			</tr>
+            <tr>
+				<td><a href="../rating.html"><img border="0" src="../../source/m6.png"></a></td>
+			</tr>
+            <tr>
+				<td><a href="../requir.html"><img border="0" src="../../source/m8.png"></a></td>
+			</tr>
+</table>
+<a href="../../main.html"><img border="0" class="home" src="../../source/home.png"></a>
+<div class="text">
+<h3><u>Технологія розробки даної версії</u></h3>
+<h4>Створення програмного коду</h4>
+В рамках даної версії буде здійснюватись доповнення коду попередньої версії новими елементами. Тому для початку роботи необхідно скопіювати проект з минулою версією та вносити зміни в цей проект-копію.
+<a href="v2_4.html"><sub><font color="#525252"><br /><br />[повернутися]</font></sub></a>
+<h4>Специфікація функцій для даної версії</h4>
+<table border="1" id="tab">
+            <tr>
+				<th>Прототип функції</th>
+                <th>Семантика</th>
+                <th>Параметри</th>
+                <th>Призначення (семантика) параметрів</th>
+			</tr>
+            <tr>
+                <td><a href="v2_4_5.html#Clock1"><pre>Clock::Clock(<font color="#0000ff">void</font>) </pre></a></td>
+                <td><center>Конструктор за замовчуванням</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Clock2"><pre>Clock::Clock(Clock& sClock) </pre></a></td>
+                <td><center>Конструктор копії</center></td>
+                <td><center><pre>Clock& sClock</pre></center></td>
+                <td><center>Посилання на об'єкт який копіюється</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Clock3"><pre>Clock::Clock(<font color="#0000ff">int</font> t) </pre></a></td>
+                <td><center>Конструктор ініціалізації</center></td>
+                <td><center><pre><font color="#0000ff">int</font> t</pre></center></td>
+                <td><center>Час, яким ініціалізувати об'єкт</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Clock4"><pre>Clock::~Clock(<font color="#0000ff">void</font>) </pre></a></td>
+                <td><center>Деструктор</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Modeling"><pre><font color="#0000ff">void</font> Clock::Modeling(<font color="#0000ff">int</font> start, <font color="#0000ff">int</font> end)</pre></a></td>
+                <td><center>Провести моделювання у заданому періоді</center></td>
+                <td><center><pre><font color="#0000ff">int</font> start,<br /> <font color="#0000ff">int</font> end</pre></center></td>
+                <td><center>Початковий і кінцевий час</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#GetTime"><pre><font color="#0000ff">int</font> Clock::GetTime(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Отримати поточний час</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#TickingTime"><pre><font color="#0000ff">void </font>Clock::TickingTime(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Відраховує такти часу</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+				<td><a href="v2_4_5.html#countTime"><pre><font color="#0000ff">int</font> Clock::countTime(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Рахує час</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+                <td><a href="v2_4_5.html#Documents1"><pre>Documents::Documents(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Конструктор за замовчуванням</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Documents2"><pre>Documents::Documents(Documents& sDocuments)</pre></a></td>
+                <td><center>Конструктор копії</center></td>
+                <td><center><pre>Documents& sDocuments</pre></center></td>
+                <td><center>Посилання на об'єкт, який копіюється</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Documents3"><pre>Documents::Documents(<font color="#0000ff">string</font> m, <font color="#0000ff">string</font> g, <font color="#0000ff">string</font> f, <font color="#0000ff">int</font> t)</pre></a></td>
+                <td><center>Конструктор ініціалізації</center></td>
+                <td><center><pre><font color="#0000ff">string</font> m,<br /><font color="#0000ff">string</font> g,<br /><font color="#0000ff">string</font> f,<br /><font color="#0000ff">int</font> t</pre></center></td>
+                <td><center>Хто оформлює документ, хто отримує, форма, час генерації документа</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Documents4"><pre>Documents::Documents(<font color="#0000ff">string</font> str)</pre></a></td>
+                <td><center>Конструктор перетворення</center></td>
+                <td><center><pre><font color="#0000ff">string</font> str</pre></center></td>
+                <td><center>Рядок, з якого беруться дані для ініціалізації</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Documents5"><pre>Documents::~Documents(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Деструктор</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+				<td><a href="v2_4_5.html#transfer"><pre><font color="#0000ff">string </font>Documents::transfer(<font color="#0000ff">string </font>fromWh, <font color="#0000ff">string </font>toWh,<font color="#0000ff"> int </font>time)</pre></a></td>
+                <td><center>Повертає назву документа, який оформлюється в заданий час</center></td>
+                <td><center><pre><font color="#0000ff">string </font>fromWh,<br /><font color="#0000ff">string </font>toWh,<br /><font color="#0000ff"> int </font>time</pre></center></td>
+                <td><center>Хто оформлює документ, хто отримує, час генерації документа</center></td>
+			</tr>
+            <tr>
+                <td><a href="v2_4_5.html#Firm1"><pre>Firm::Firm(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Конструктор за замовчуванням</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Firm2"><pre>Firm::Firm(Firm& sFirm)</pre></a></td>
+                <td><center>Конструктор копії</center></td>
+                <td><center><pre>Firm& sFirm</pre></center></td>
+                <td><center>Посилання на об'єкт, який копіюється</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Firm3"><pre>Firm::Firm(<font color="#0000ff">string</font> str)</pre></a></td>
+                <td><center>Конструктор перетворення</center></td>
+                <td><center><font color="#0000ff">string</font> str</center></td>
+                <td><center>Рядок, з якого беруться дані для ініціалізації</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Firm4"><pre>Firm::Firm(<font color="#0000ff">string</font> n, <font color="#0000ff">string</font> a, <font color="#0000ff">string</font> p)</pre></a></td>
+                <td><center>Конструктор ініціалізації</center></td>
+                <td><center><pre><font color="#0000ff">string</font> n, <font color="#0000ff">string</font> a, <font color="#0000ff">string</font> p</pre></center></td>
+                <td><center>Назва, адреса,телефон фірми</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#Firm5"><pre>Firm::~Firm(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Деструктор</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+				<td><a href="v2_4_5.html#makeDocs"><pre><font color="#0000ff">void </font>Firm::makeDocs(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Створити документ</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#getDocs"><pre><font color="#0000ff">void </font>Firm::getDocs(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Отримати документ</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#supplyTMС"><pre><font color="#0000ff">void </font>Firm::supplyTMС(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Постачає товар</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+                <td><a href="v2_4_5.html#MTDB1"><pre>MTDB::MTDB(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Конструктор за замовчуванням</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#MTDB2"><pre>MTDB::~MTDB(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Деструктор</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+				<td><a href="v2_4_5.html#add"><pre><font color="#0000ff">void </font>MTDB::add(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Додати товар в базу</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#change"><pre><font color="#0000ff">void </font>MTDB::change(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Змвнити інформацію про товар</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#del"><pre><font color="#0000ff">void </font>MTDB::del(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Видалити товар з бази</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+                <td><a href="v2_4_5.html#TMC1"><pre>TMC::TMC(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Конструктор за замовчуванням</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#TMC2"><pre>TMC::TMC(TMC& sTMC)</pre></a></td>
+                <td><center>Конструктор копії</center></td>
+                <td><center><pre>TMC& sTMC</pre></center></td>
+                <td><center>Посилання на об'єкт, який копіюється</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#TMC3"><pre>TMC::TMC(<font color="#0000ff">string</font> str)</pre></a></td>
+                <td><center>Конструктор перетворення</center></td>
+                <td><center><pre><font color="#0000ff">string</font> str</pre></center></td>
+                <td><center>Рядок, з якого беруться дані для ініціалізації</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#TMC4"><pre>TMC::TMC(<font color="#0000ff">string</font> n, <font color="#0000ff">string</font> t, <font color="#0000ff">float</font> p, <font color="#0000ff">float</font> s)</pre></a></td>
+                <td><center>Конструктор ініціалізації</center></td>
+                <td><center><pre><font color="#0000ff">string</font> n, <font color="#0000ff">string</font> t, <font color="#0000ff">float</font> p, <font color="#0000ff">float</font> s</pre></center></td>
+                <td><center>Назва, тип, ціна, термін придатності</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#TMC5"><pre>TMC::~TMC(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Деструктор</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+				<td><a href="v2_4_5.html#spoil"><pre><font color="#0000ff">bool </font>TMС::spoil(TMС name)</pre></a></td>
+                <td><center>Зіпсований товар чи ні</center></td>
+                <td><center><pre>TMС name</pre></center></td>
+                <td><center>Назва товару</center></td>
+			</tr>
+            <tr>
+                <td><a href="v2_4_5.html#VNZ1"><pre>VNZ::VNZ(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Конструктор за замовчуванням</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#VNZ2"><pre>VNZ::VNZ(VNZ& sVNZ)</pre></a></td>
+                <td><center>Конструктор копії</center></td>
+                <td><center><pre>TMC& TMC</pre></center></td>
+                <td><center>Посилання на об'єкт, який копіюється</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#VNZ3"><pre>VNZ::VNZ(<font color="#0000ff">string</font> str)</pre></a></td>
+                <td><center>Конструктор перетворення</center></td>
+                <td><center><pre><font color="#0000ff">string</font> str</pre></center></td>
+                <td><center>Рядок, з якого беруться дані для ініціалізації</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#VNZ4"><pre>VNZ::VNZ(<font color="#0000ff">string</font> n, <font color="#0000ff">string</font> a, <font color="#0000ff">string</font> b)</pre></a></td>
+                <td><center>Конструктор ініціалізації</center></td>
+                <td><center><pre><font color="#0000ff">string</font> n, <font color="#0000ff">string</font> a, <font color="#0000ff">string</font> b</pre></center></td>
+                <td><center>Назва, адреса, прізвище головного бухгалтера ВНЗ</center></td>
+            </tr>
+            <tr>
+                <td><a href="v2_4_5.html#VNZ5"><pre>VNZ::~VNZ(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Деструктор</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+            <tr>
+				<td><a href="v2_4_5.html#makeDocs"><pre><font color="#0000ff">void </font>VNZ::makeDocs(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Створити документ</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#getDocs"><pre><font color="#0000ff">void </font>VNZ::getDocs(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Отримати документ</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#getTMC"><pre><font color="#0000ff">void </font>VNZ::getTMC(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Отримати товар</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#putBalance"><pre><font color="#0000ff">void </font>VNZ::putBalance(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Поставити товар на баланс</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+			</tr>
+            <tr>
+				<td><a href="v2_4_5.html#writeOff"><pre><font color="#0000ff">void </font>VNZ::writeOff(<font color="#0000ff">void</font>)</pre></a></td>
+                <td><center>Списати товар</center></td>
+                <td><center>Без параметрів</center></td>
+                <td><center>---</center></td>
+            </tr>
+
+</table>
+
+<a href="v2_4.html"><sub><font color="#525252"><br /><br />[повернутися]<br /><br /></font></sub></a>
+</div>
+</body>
+</html>
