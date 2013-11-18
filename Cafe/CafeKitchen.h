@@ -10,8 +10,9 @@
 #include "CafeRoom.h"
 #include "Equipment.h"
 #include <vector>
+#include "CafeKitchenNotifier.h"
 
-class CafeKitchen : public CafeRoom
+class CafeKitchen : public CafeRoom, public CafeKitchenNotifier
 {
 
 public:

@@ -46,19 +46,26 @@ private:
 	std::vector<Dish*> menu_;
 	CafeKitchen* kitchen_;
 	CafeStoreHouse* storehouse_;
-
+	
 	void initialize();
 	void createChef();
 	void createWaiters();
 	void createKitchen();
 	void createStoreHouse();
-
+	void createObservers();
+	void createCooks();
 
 	friend class CafeKitchenObserver;
 	friend class ChefObserver;
 	friend class CafeStoreHouseObserver;
 	friend class WaiterObserver;
 	friend class CookObserver;
+
+	CafeKitchenObserver* kitchenObserver_;
+	ChefObserver* chefObserver_;
+	CafeStoreHouseObserver* cafeStoreHouseObserver_;
+	CookObserver* cookObserver_;
+	WaiterObserver* waiterObserver_;
 
 };
 #endif // !defined(EA_4E452A2C_C852_48b5_81F5_3BA9DA99E8F3__INCLUDED_)
