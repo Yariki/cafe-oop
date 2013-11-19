@@ -125,6 +125,7 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="EquipmentKinds.h" />
     <ClInclude Include="EquipmentStatus.h" />
+    <ClInclude Include="ICafe.h" />
     <ClInclude Include="ICafeNotifier.h" />
     <ClInclude Include="ICafeObserver.h" />
     <ClInclude Include="Ingredient.h" />
@@ -135,6 +136,11 @@
     <ClInclude Include="Waiter.h" />
     <ClInclude Include="WaiterNotifier.h" />
     <ClInclude Include="WaiterObserver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dishes.txt" />
+    <None Include="names.txt" />
+    <None Include="surnames.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

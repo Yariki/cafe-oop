@@ -13,7 +13,7 @@ Client::~Client(){
 }
 
 Client::Client(double money){
-
+	money_ = money;
 }
 
 Client::Client(){

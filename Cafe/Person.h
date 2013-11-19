@@ -23,9 +23,10 @@ public:
 	void setName(std::string name);
 	const std::string getName();
 	void setSurname(std::string surname);
-	std::string setSurname();
+	std::string getSurname();
 	void setSpecialization(Specialization sp);
 	Specialization getSpecialization();
+	std::string getFullName();
 
 private:
 	std::string name_;

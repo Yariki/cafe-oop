@@ -20,19 +20,20 @@
 #include "CafeStoreHouseObserver.h"
 #include "ChefObserver.h"
 #include "CookObserver.h"
+#include "ICafe.h"
 #include "WaiterObserver.h"
 
 class CafeStoreHouse;
 
-class Cafe : public ICafeObject
+class Cafe : public ICafeObject, public ICafe
 {
 
 public:
 	Cafe();
 	virtual ~Cafe();
 
-	void addClient(Client* client);
-	void createPersonal();
+	void addClient();
+	void generateClients();
 	void simulation();
 	std::string generateError();
 	CafeKitchen* getKitchen();
@@ -46,14 +47,32 @@ private:
 	std::vector<Dish*> menu_;
 	CafeKitchen* kitchen_;
 	CafeStoreHouse* storehouse_;
+
+	std::vector<std::string> names_;
+	std::vector<std::string> surnames_;
+	std::vector<std::string> dishes_;
 	
 	void initialize();
 	void createChef();
 	void createWaiters();
 	void createKitchen();
 	void createStoreHouse();
-	void createObservers();
 	void createCooks();
+	void readFiles();
+	void readFile(std::string filename, std::vector<std::string>* list);
+	std::string generateName();
+	std::string generateSurname();
+	
+	void createObservers();
+	void deleteObservers();
+
+	virtual Chef* getChef();
+
+	virtual std::vector<Cook*>* getCooks();
+
+	virtual std::vector<Client*>* getClients();
+
+	virtual std::vector<Waiter*>* getWaiters();
 
 	friend class CafeKitchenObserver;
 	friend class ChefObserver;

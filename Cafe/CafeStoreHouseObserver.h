@@ -10,19 +10,19 @@
 
 #include "ICafeObserver.h"
 #include "CafeStoreHouse.h"
-#include "Cafe.h"
+#include "ICafe.h"
 
 
 class CafeStoreHouseObserver : public ICafeObserver<CafeStoreHouse>
 {
 
 public:
-	CafeStoreHouseObserver(Cafe*  cafe) {}
+	CafeStoreHouseObserver(ICafe*  cafe) {}
 	virtual ~CafeStoreHouseObserver();
 
 	virtual void Update( int command, CafeStoreHouse* obj );
 private:
-	Cafe* cafe_;
+	ICafe* cafe_;
 
 };
 #endif // !defined(EA_69103898_DC3C_4c32_B87B_96F72CE138D3__INCLUDED_)

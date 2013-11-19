@@ -11,6 +11,7 @@
 #include "order.h"
 #include "Client.h"
 #include <vector>
+#include <queue>
 #include "WaiterNotifier.h"
 
 class Waiter : public Person, public WaiterNotifier
@@ -23,12 +24,12 @@ public:
 	void addNewClient(Client* client);
 	void deleteClient(Client* client);
 	void setOrder(Order* order);
-	void giveOrderToChef();
-	void giveOrderToClient();
+	Order* giveOrderToChef();
+	Order* giveOrderToClient();
 
 private:
 	std::vector<Client*> clients_;
-	std::vector<Order*> orders_;
+	std::queue<Order*> orders_;
 
 };
 #endif // !defined(EA_283F64EB_2586_471d_B57C_0D322667A2A3__INCLUDED_)

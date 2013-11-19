@@ -5,8 +5,19 @@
 
 ///////////////////////////////////////////////////////////
 
+#include <fstream>
+#include <iostream>
+
+using std::cout;
+using std::cin;
+
 #include "Cafe.h"
+
 #define PERSONAL_MAX_COUNT 10
+
+#define DISHES_FILENAME "dishes.txt"
+#define NAMES_FILENAME  "names.txt"
+#define SURNAME_FILENAME "surnames.txt"
 
 
 Cafe::Cafe(){
@@ -43,15 +54,22 @@ Cafe::~Cafe(){
 		cook = nullptr;
 	}
 	cooks_.clear();
+	names_.clear();
+	surnames_.clear();
+	dishes_.clear();
 }
 
-void Cafe::addClient(Client* client){
-
-}
-
-
-void Cafe::createPersonal(){
-
+void Cafe::addClient(){
+	std::string name;
+	std::string surname;
+	printf_s("Please, enter client name: ");
+	std::cin >> name;
+	printf_s("Please, enter client surname: ");
+	std::cin >> surname;
+	auto client = new Client(rand() % 1000);
+	client->setName(name);
+	client->setSurname(surname);
+	clients_.push_back(client);
 }
 
 
@@ -67,6 +85,7 @@ std::string Cafe::generateError(){
 
 
 void Cafe::initialize(){
+	createObservers();
 	createChef();
 	createKitchen();
 	createStoreHouse();
@@ -78,19 +97,16 @@ void Cafe::initialize(){
 void Cafe::createChef(){
 	chef_ = new Chef();
 	chef_->ChefNotifier::Attach(chefObserver_);
+	chef_->setName(generateName());
+	chef_->setSurname(generateSurname());
 }
 
-
 void Cafe::createWaiters(){
-	char name [50];
-	char surname[50];
 	for (int i= 0;i < PERSONAL_MAX_COUNT;i++)
 	{
 		auto waiter = new Waiter();
-		sprintf_s(name,"Waiter %d",i);
-		sprintf_s(surname,"SurnameW %d",i);
-		waiter->setName(name);
-		waiter->setSurname(surname);
+		waiter->setName(generateName());
+		waiter->setSurname(generateSurname());
 		waiter->Attach(waiterObserver_);
 		waiters_.push_back(waiter);
 	}
@@ -117,15 +133,85 @@ void Cafe::createStoreHouse(){
 }
 
 void Cafe::createCooks(){
-	char name [50];
-	char surname[50];
 	for(int i= 0;i < PERSONAL_MAX_COUNT;i++){
 		auto cook = new Cook();
-		sprintf_s(name,"Cook %d",i);
-		sprintf_s(surname,"CookS %d",i);
-		cook->setName(name);
-		cook->setSurname(surname);
+		cook->setName(generateName());
+		cook->setSurname(generateSurname());
 		cook->Attach(cookObserver_);
 		cooks_.push_back(cook);
 	}
 }
+
+void Cafe::createObservers()
+{
+	kitchenObserver_ = new CafeKitchenObserver(this);
+	chefObserver_ = new ChefObserver(this);
+	cafeStoreHouseObserver_ = new CafeStoreHouseObserver(this);
+	cookObserver_ = new CookObserver(this);
+	waiterObserver_ = new WaiterObserver(this);
+}
+
+Chef* Cafe::getChef()
+{
+	return chef_;
+}
+
+std::vector<Cook*>* Cafe::getCooks()
+{
+	return &cooks_;
+}
+
+std::vector<Client*>* Cafe::getClients()
+{
+	return &clients_;
+}
+
+std::vector<Waiter*>* Cafe::getWaiters()
+{
+	return &waiters_;
+}
+
+void Cafe::readFiles()
+{
+	readFile(NAMES_FILENAME,&names_);
+	readFile(SURNAME_FILENAME,&surnames_);
+	readFile(DISHES_FILENAME,&dishes_);
+}
+
+void Cafe::readFile(std::string filename, std::vector<std::string>* list)
+{
+	std::ifstream nameFile(filename);
+	if(!nameFile)
+	{
+		printf_s("Error while reading file %s",filename);
+		throw new std::exception(filename.c_str());
+	}
+	for (;!(nameFile.eof());)
+	{
+		std::string val;
+		nameFile >> val;
+		list->push_back(val);
+	}
+}
+
+void Cafe::generateClients()
+{
+	for(int i = 0; i < PERSONAL_MAX_COUNT;i++)
+	{
+		auto client = new Client(rand() % 1000);
+		client->setName(generateName());
+		client->setSurname(generateSurname());
+		clients_.push_back(client);
+	}
+}
+
+std::string Cafe::generateName()
+{
+	return names_.empty() ? std::string() : names_.at(rand() % names_.size());
+}
+
+std::string Cafe::generateSurname()
+{
+	return surnames_.empty() ? std::string() : surnames_.at(rand() % surnames_.size());
+}
+

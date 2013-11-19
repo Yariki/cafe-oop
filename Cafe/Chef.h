@@ -19,6 +19,8 @@ public:
 	Chef();
 	virtual ~Chef();
 
+public:
+
 private:
 	std::vector<Order> orders_;
 	std::vector<Cook> helpers_;
