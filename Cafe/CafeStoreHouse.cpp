@@ -6,24 +6,64 @@
 ///////////////////////////////////////////////////////////
 
 #include "CafeStoreHouse.h"
+#include <algorithm>
 
+#define  MAX_COUNT_INGRIDIENT 1000
 
 CafeStoreHouse::~CafeStoreHouse(){
-
+	for(auto it = ingredients_.begin(); it != ingredients_.end();++it)
+	{
+		delete it->first;
+	}
+	ingredients_.clear();
+	listIngridients_->clear();
+	delete listIngridients_;
 }
 
 
 void CafeStoreHouse::initIngredient(){
-
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Meat),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Salt),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Peper),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Rice),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Flour),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Chicken),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Fish),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Sauce),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Tomato),rand() % MAX_COUNT_INGRIDIENT));
+	ingredients_.insert(std::pair<Ingredient*,double>(new Ingredient(Potatoes),rand() % MAX_COUNT_INGRIDIENT));
+	listIngridients_ =   new std::vector<Ingredient*>();
+	for(auto it = ingredients_.begin(); it != ingredients_.end();++it)
+	{
+		listIngridients_->push_back(it->first);
+	}
 }
 
 
-std::vector<Ingredient*>* CafeStoreHouse::getIngredients(){
-	return NULL;
+std::vector<Ingredient*>* CafeStoreHouse::getIngredients() const {
+	return listIngridients_;
 }
 
+bool CafeStoreHouse::isEnoughIngredient(IngredientKinds type, double count) {
+	
+	bool result = false;
+	for(auto it = ingredients_.begin();it != ingredients_.end();++it)
+	{
+		Ingredient* ing = it->first;
+		if(ing->getIngredient() == type && count < it->second)
+		{
+			result = true;
+			break;
+		}
+	}
+	return result;
+}
 
-bool CafeStoreHouse::isEnoughIngredient(IngredientKinds type){
-
-	return false;
+void CafeStoreHouse::takeIngridient( IngredientKinds type, double count ){
+	for (auto it = ingredients_.begin(); it != ingredients_.end();++it)
+	{
+		if(it->first->getIngredient() != type)
+			continue;
+		ingredients_[it->first] -= count;
+	}
 }

@@ -9,6 +9,7 @@
 
 #include "IngredientKinds.h"
 #include "ICafeObject.h"
+#include <string>
 
 class BaseIngredient : public ICafeObject
 {
@@ -18,6 +19,7 @@ public:
 	virtual ~BaseIngredient();
 
 	virtual IngredientKinds getIngredient();
+	virtual std::string getIngridientName();
 
 private:
 	IngredientKinds type_;
