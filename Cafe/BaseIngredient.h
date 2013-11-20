@@ -14,7 +14,7 @@ class BaseIngredient : public ICafeObject
 {
 
 public:
-	BaseIngredient();
+	BaseIngredient(int type);
 	virtual ~BaseIngredient();
 
 	virtual IngredientKinds getIngredient();

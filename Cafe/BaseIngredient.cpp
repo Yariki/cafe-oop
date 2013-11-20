@@ -8,21 +8,15 @@
 #include "BaseIngredient.h"
 
 
-BaseIngredient::BaseIngredient(){
-
+BaseIngredient::BaseIngredient(int type){
+	type_ = (IngredientKinds)type;
 }
-
-
 
 BaseIngredient::~BaseIngredient(){
 
 }
 
 
-
-
-
 IngredientKinds BaseIngredient::getIngredient(){
-
-	return Ingredient1;
+	return type_;
 }

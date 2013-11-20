@@ -74,6 +74,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseCafeException.cpp" />
+    <ClCompile Include="BaseEquipment.cpp" />
     <ClCompile Include="BaseIngredient.cpp" />
     <ClCompile Include="Cafe.cpp" />
     <ClCompile Include="CafeKitchen.cpp" />
@@ -92,7 +94,10 @@
     <ClCompile Include="CookNotifier.cpp" />
     <ClCompile Include="CookObserver.cpp" />
     <ClCompile Include="dish.cpp" />
+    <ClCompile Include="ElectricityException.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="FirewoodException.cpp" />
+    <ClCompile Include="GasException.cpp" />
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="order.cpp" />
@@ -102,6 +107,8 @@
     <ClCompile Include="WaiterObserver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseCafeException.h" />
+    <ClInclude Include="BaseEquipment.h" />
     <ClInclude Include="BaseIngredient.h" />
     <ClInclude Include="Cafe.h" />
     <ClInclude Include="CafeKitchen.h" />
@@ -121,10 +128,13 @@
     <ClInclude Include="CookObserver.h" />
     <ClInclude Include="CookStatus.h" />
     <ClInclude Include="dish.h" />
+    <ClInclude Include="ElectricityException.h" />
     <ClInclude Include="EnergyKinds.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="EquipmentKinds.h" />
     <ClInclude Include="EquipmentStatus.h" />
+    <ClInclude Include="FirewoodException.h" />
+    <ClInclude Include="GasException.h" />
     <ClInclude Include="ICafe.h" />
     <ClInclude Include="ICafeNotifier.h" />
     <ClInclude Include="ICafeObserver.h" />

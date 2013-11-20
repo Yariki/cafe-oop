@@ -14,6 +14,7 @@
 #include "Waiter.h"
 #include "Client.h"
 #include "Chef.h"
+#include "cafe_menu.h"
 #include "dish.h"
 #include "CafeKitchen.h"
 #include "CafeKitchenObserver.h"
@@ -36,15 +37,15 @@ public:
 	void generateClients();
 	void simulation();
 	std::string generateError();
-	CafeKitchen* getKitchen();
-	CafeStoreHouse* getStoreHouse();
+	CafeKitchen* getKitchen() const;
+	CafeStoreHouse* getStoreHouse() const;
 
 private:
-	std::vector<Cook*> cooks_;
-	std::vector<Client*> clients_;
-	std::vector<Waiter*> waiters_;
+	std::vector<Cook*>* cooks_;
+	std::vector<Client*>* clients_;
+	std::vector<Waiter*>* waiters_;
 	Chef* chef_;
-	std::vector<Dish*> menu_;
+	Cafe_Menu* menu_;
 	CafeKitchen* kitchen_;
 	CafeStoreHouse* storehouse_;
 
@@ -58,6 +59,7 @@ private:
 	void createKitchen();
 	void createStoreHouse();
 	void createCooks();
+	void createMenu();
 	void readFiles();
 	void readFile(std::string filename, std::vector<std::string>* list);
 	std::string generateName();
@@ -66,13 +68,15 @@ private:
 	void createObservers();
 	void deleteObservers();
 
-	virtual Chef* getChef();
+	virtual Chef* getChef() const;
 
-	virtual std::vector<Cook*>* getCooks();
+	virtual std::vector<Cook*>* getCooks() const;
 
-	virtual std::vector<Client*>* getClients();
+	virtual std::vector<Client*>* getClients() const;
 
-	virtual std::vector<Waiter*>* getWaiters();
+	virtual std::vector<Waiter*>* getWaiters() const;
+
+	virtual Cafe_Menu* getMenu() const;
 
 	friend class CafeKitchenObserver;
 	friend class ChefObserver;

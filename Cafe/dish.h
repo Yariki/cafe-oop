@@ -27,6 +27,9 @@ public:
     }
 
 private:
+	void generateIngridients();
+
+private:
 	std::string name_;
     double cost_;
 	std::map<BaseIngredient*,double> ingridients_;

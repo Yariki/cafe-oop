@@ -40,20 +40,31 @@ Cafe::~Cafe(){
 		delete storehouse_;
 		storehouse_ = nullptr;
 	}
-	for(size_t index = 0 ; index < waiters_.size();index++){
-		auto waiter = waiters_.at(index);
+	for(size_t index = 0 ; index < waiters_->size();index++){
+		auto waiter = waiters_->at(index);
 		waiter->Detach(waiterObserver_);
 		delete waiter;
 		waiter = nullptr;
 	}
-	waiters_.clear();
-	for (size_t index = 0; index < cooks_.size();index++){
-		auto cook = cooks_.at(index);
+	waiters_->clear();
+	delete waiters_;
+	for (size_t index = 0; index < cooks_->size();index++){
+		auto cook = cooks_->at(index);
 		cook->Detach(cookObserver_);
 		delete cook;
 		cook = nullptr;
 	}
-	cooks_.clear();
+	cooks_->clear();
+	delete cooks_;
+	for(size_t i = 0; i < clients_->size();i++)
+	{
+		auto client = clients_->at(i);
+		delete client;
+		client = nullptr;
+	}
+	clients_->clear();
+	delete clients_;
+
 	names_.clear();
 	surnames_.clear();
 	dishes_.clear();
@@ -69,7 +80,7 @@ void Cafe::addClient(){
 	auto client = new Client(rand() % 1000);
 	client->setName(name);
 	client->setSurname(surname);
-	clients_.push_back(client);
+	clients_->push_back(client);
 }
 
 
@@ -85,12 +96,16 @@ std::string Cafe::generateError(){
 
 
 void Cafe::initialize(){
+	cooks_ = new std::vector<Cook*>();
+	clients_ = new std::vector<Client*>();
+	waiters_ = new std::vector<Waiter*>();
 	createObservers();
 	createChef();
 	createKitchen();
 	createStoreHouse();
 	createWaiters();
 	createCooks();
+	createMenu();
 }
 
 
@@ -108,16 +123,16 @@ void Cafe::createWaiters(){
 		waiter->setName(generateName());
 		waiter->setSurname(generateSurname());
 		waiter->Attach(waiterObserver_);
-		waiters_.push_back(waiter);
+		waiters_->push_back(waiter);
 	}
 }
 
 
-CafeKitchen* Cafe::getKitchen(){
+CafeKitchen* Cafe::getKitchen() const{
 	return  kitchen_;
 }
 
-CafeStoreHouse* Cafe::getStoreHouse(){
+CafeStoreHouse* Cafe::getStoreHouse() const{
 	return  storehouse_;
 }
 
@@ -138,7 +153,7 @@ void Cafe::createCooks(){
 		cook->setName(generateName());
 		cook->setSurname(generateSurname());
 		cook->Attach(cookObserver_);
-		cooks_.push_back(cook);
+		cooks_->push_back(cook);
 	}
 }
 
@@ -151,24 +166,29 @@ void Cafe::createObservers()
 	waiterObserver_ = new WaiterObserver(this);
 }
 
-Chef* Cafe::getChef()
+Chef* Cafe::getChef() const
 {
 	return chef_;
 }
 
-std::vector<Cook*>* Cafe::getCooks()
+std::vector<Cook*>* Cafe::getCooks() const
 {
-	return &cooks_;
+	return cooks_;
 }
 
-std::vector<Client*>* Cafe::getClients()
+std::vector<Client*>* Cafe::getClients() const
 {
-	return &clients_;
+	return clients_;
 }
 
-std::vector<Waiter*>* Cafe::getWaiters()
+std::vector<Waiter*>* Cafe::getWaiters() const
 {
-	return &waiters_;
+	return waiters_;
+}
+
+Cafe_Menu* Cafe::getMenu() const
+{
+	return menu_;
 }
 
 void Cafe::readFiles()
@@ -201,7 +221,7 @@ void Cafe::generateClients()
 		auto client = new Client(rand() % 1000);
 		client->setName(generateName());
 		client->setSurname(generateSurname());
-		clients_.push_back(client);
+		clients_->push_back(client);
 	}
 }
 
@@ -213,5 +233,18 @@ std::string Cafe::generateName()
 std::string Cafe::generateSurname()
 {
 	return surnames_.empty() ? std::string() : surnames_.at(rand() % surnames_.size());
+}
+
+void Cafe::createMenu()
+{
+	menu_ = new Cafe_Menu();
+	for (size_t i = 0; i < dishes_.size();i++)
+	{
+		auto dish = new Dish(dishes_.at(i), rand() % 125);
+		if(i % 2)
+			menu_->addMainDish(dish);	
+		else
+			menu_->addSneck(dish);
+	}
 }
 
