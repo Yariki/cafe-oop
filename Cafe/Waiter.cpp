@@ -17,25 +17,33 @@ Waiter::Waiter(){
 
 
 void Waiter::addNewClient(Client* client){
-
+	if(!client)
+		return;
+	clients_.push_back(client);
 }
 
 
 void Waiter::deleteClient(Client* client){
-
+	if(!client)
+		return;
+	std::remove(clients_.begin(),clients_.end(),client);
 }
 
 
 void Waiter::setOrder(Order* order){
-
+	if(!order)
+		return;
+	orders_.push(order);
 }
 
 
-void Waiter::giveOrderToChef(){
-
+Order* Waiter::giveOrderToChef(){
+	auto order = orders_.front();
+	orders_.pop();
+	return order;
 }
 
 
-void Waiter::giveOrderToClient(){
-
+Order* Waiter::giveOrderToClient(){
+	return nullptr;
 }

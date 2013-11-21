@@ -15,8 +15,9 @@
 #include "order.h"
 #include "dish.h"
 #include "Ingredient.h"
+#include "CookNotifier.h"
 
-class Cook : public Person
+class Cook : public Person, public CookNotifier
 {
 
 public:

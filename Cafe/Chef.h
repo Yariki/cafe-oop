@@ -10,13 +10,16 @@
 #include "Cook.h"
 #include "order.h"
 #include <vector>
+#include "ChefNotifier.h"
 
-class Chef : public Cook
+class Chef : public Cook, public ChefNotifier
 {
 
 public:
 	Chef();
 	virtual ~Chef();
+
+public:
 
 private:
 	std::vector<Order> orders_;

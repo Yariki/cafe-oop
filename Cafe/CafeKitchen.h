@@ -10,23 +10,32 @@
 #include "CafeRoom.h"
 #include "Equipment.h"
 #include <vector>
+#include "CafeKitchenNotifier.h"
 
-class CafeKitchen : public CafeRoom
+class BaseCafeException;
+
+class CafeKitchen : public CafeRoom, public CafeKitchenNotifier
 {
+
+	enum KitchenState { Normal = 0, EletricityDown,GasDown,FireDown};
 
 public:
 	CafeKitchen(Cafe* cafe) : CafeRoom(cafe){}
 	virtual ~CafeKitchen();
 
 	Equipment* getFirstFreeEquipment();
-	void generarteException();
 	void releseEquipment(Equipment* equipmnent);
 	Equipment* getFirstFreeAlternativeEquipment();
+	void tryToGenerateAccedent();
+	KitchenState getState();
 
 private:
 	std::vector<Equipment*> equipments_;
+	KitchenState state_;
 
+private:
 	void initEquipments();
+	void processException(BaseCafeException* ex,EnergyKinds energy);
 
 };
 #endif // !defined(EA_7A9FB63C_938C_4cd2_A53B_52E927EF750B__INCLUDED_)

@@ -7,7 +7,9 @@
 #include "Ingredient.h"
 
 
-Ingredient::Ingredient(){
+Ingredient::Ingredient(int type)
+	:BaseIngredient(type)
+{
 
 }
 

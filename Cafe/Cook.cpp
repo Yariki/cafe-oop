@@ -17,13 +17,15 @@ Cook::Cook(){
 }
 
 void Cook::setOrder(Order* order){
-
+	if(!order)
+		dishlist_.push(order);
 }
 
 
 Order* Cook::getOrder(){
-
-	return  NULL;
+	auto order = dishlist_.front();
+	dishlist_.pop();
+	return  order;
 }
 
 
@@ -51,13 +53,13 @@ std::vector<Ingredient*>* Cook::getAlternativeIngredientsList(){
 
 
 void Cook::setStatus(CookStatus status){
-
+	state_ = status;
 }
 
 
 CookStatus Cook::setStatus(){
 
-	return  CookFree;
+	return  state_;
 }
 
 

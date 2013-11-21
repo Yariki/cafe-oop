@@ -10,18 +10,18 @@
 
 #include "ICafeObserver.h"
 #include "Chef.h"
-#include "Cafe.h"
+#include "ICafe.h"
 
 class ChefObserver : public ICafeObserver<Chef>
 {
 
 public:
-	ChefObserver(Cafe* cafe){}
+	ChefObserver(ICafe* cafe){}
 	virtual ~ChefObserver();
 
 	virtual void Update( int command, Chef* obj );
 private:
-	Cafe* cafe_;
+	ICafe* cafe_;
 
 };
 #endif // !defined(EA_5E958594_9A82_4821_A2B7_71273EB719EB__INCLUDED_)

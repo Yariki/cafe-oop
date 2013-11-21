@@ -9,9 +9,15 @@
 
 enum IngredientKinds
 {
-	Ingredient1,
-	Ingredient3,
-	Ingrediant2,
-	Ingredient4
+	Meat,
+	Salt,
+	Peper,
+	Rice,
+	Flour,
+	Chicken,
+	Fish,
+	Sauce,
+	Tomato,
+	Potatoes
 };
 #endif // !defined(EA_627326EE_A8AB_46b1_96BB_208F41C7E940__INCLUDED_)

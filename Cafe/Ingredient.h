@@ -13,7 +13,7 @@ class Ingredient : public BaseIngredient
 {
 
 public:
-	Ingredient();
+	Ingredient(int type);
 	virtual ~Ingredient();
 
 };

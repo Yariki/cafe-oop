@@ -13,5 +13,5 @@ CafeRoom::~CafeRoom(){
 }
 
 CafeRoom::CafeRoom(Cafe* cafe){
-
+	cafe_ = cafe;
 }

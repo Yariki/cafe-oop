@@ -12,6 +12,6 @@ enum EquipmentStatus
 	EquipmentFree,
 	EquipmentBusy,
 	EquipmentBroken,
-	EqipmentInException
+	EquipmentInException
 };
 #endif // !defined(EA_4045941E_5688_4445_8E54_5A7252DAA93E__INCLUDED_)

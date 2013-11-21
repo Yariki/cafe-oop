@@ -8,21 +8,33 @@
 #include "BaseIngredient.h"
 
 
-BaseIngredient::BaseIngredient(){
-
+BaseIngredient::BaseIngredient(int type){
+	type_ = (IngredientKinds)type;
 }
-
-
 
 BaseIngredient::~BaseIngredient(){
 
 }
 
 
-
-
-
 IngredientKinds BaseIngredient::getIngredient(){
+	return type_;
+}
 
-	return Ingredient1;
+std::string BaseIngredient::getIngridientName()
+{
+	switch(type_)
+	{
+	case Meat: return std::string("Meat");
+	case Salt: return std::string("Salt");
+	case Peper: return std::string("Peper");
+	case Rice: return std::string("Rice");
+	case Flour: return std::string("Flour");
+	case Chicken: return std::string("Chicken");
+	case Fish: return std::string("Fish");
+	case Sauce: return std::string("Sauce");
+	case Tomato: return std::string("Tomato");
+	case Potatoes : return std::string("Potatoes");
+	}
+	return std::string("None");
 }

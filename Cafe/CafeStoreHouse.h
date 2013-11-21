@@ -12,20 +12,23 @@
 #include "Ingredient.h"
 #include <map>
 #include <vector>
+#include "CafeStoreHouseNotifier.h"
 
 class Cafe;
 
-class CafeStoreHouse : public CafeRoom
+class CafeStoreHouse : public CafeRoom, public CafeStoreHouseNotifier
 {
 public:
 	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){}
 	virtual ~CafeStoreHouse();
 	
-	std::vector<Ingredient*>* getIngredients();
-	bool isEnoughIngredient(IngredientKinds type);
+	std::vector<Ingredient*>* getIngredients() const;
+	bool isEnoughIngredient(IngredientKinds type, double count);
+	void takeIngridient(IngredientKinds type, double count);
 
 private:
 	std::map<Ingredient*,double> ingredients_;
+	std::vector<Ingredient*>* listIngridients_;
 
 	void initIngredient();
 
