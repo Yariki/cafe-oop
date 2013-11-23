@@ -55,3 +55,8 @@ void Dish::generateIngridients()
 		ingridients_.insert(std::pair<BaseIngredient*,double>(ingridient,rand()  % 30));
 	}
 }
+
+std::map<BaseIngredient*,double>* Dish::getIngridients()
+{
+	return &ingridients_;
+}

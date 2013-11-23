@@ -19,8 +19,8 @@ public:
     std::string getName() const;
     void setCost(double cost);
     double getCost() const;
-
-    friend bool operator==(const Dish& left, const Dish& right)
+	std::map<BaseIngredient*,double>* getIngridients() ;
+	friend bool operator==(const Dish& left, const Dish& right)
     {
 		if(left.getCost() == right.getCost() && left.getName() == right.getName()) return true; 
 		else return false;

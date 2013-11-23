@@ -123,7 +123,9 @@
     <ClInclude Include="ChefNotifier.h" />
     <ClInclude Include="ChefObserver.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="ClientState.h" />
     <ClInclude Include="Cook.h" />
+    <ClInclude Include="CookCommands.h" />
     <ClInclude Include="CookNotifier.h" />
     <ClInclude Include="CookObserver.h" />
     <ClInclude Include="CookStatus.h" />
@@ -144,6 +146,7 @@
     <ClInclude Include="Person.h" />
     <ClInclude Include="Specialization.h" />
     <ClInclude Include="Waiter.h" />
+    <ClInclude Include="WaiterCommands.h" />
     <ClInclude Include="WaiterNotifier.h" />
     <ClInclude Include="WaiterObserver.h" />
   </ItemGroup>

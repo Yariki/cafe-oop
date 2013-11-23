@@ -62,33 +62,33 @@ void Order::calculateCost()
 
 
 void Order::setClient(Client* client){
-
+	client_ = client;
 }
 
 
 Client* Order::getClient(){
 
-	return  NULL;
+	return  client_;
 }
 
 
 void Order::setCook(Cook* cook){
-
+	cook_ = cook;
 }
 
 
 Cook* Order::getCook(){
 
-	return  NULL;
+	return  cook_;
 }
 
 
 void Order::setWaiter(Waiter* waiter){
-
+	waiter_ = waiter;
 }
 
 
 Waiter* Order::getWaiter(){
 
-	return  NULL;
+	return  waiter_;
 }

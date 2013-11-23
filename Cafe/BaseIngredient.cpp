@@ -23,7 +23,17 @@ IngredientKinds BaseIngredient::getIngredient(){
 
 std::string BaseIngredient::getIngridientName()
 {
-	switch(type_)
+	return InternalGetIngredientName(type_);	
+}
+
+std::string BaseIngredient::GetIngredientName( IngredientKinds kind )
+{
+	return InternalGetIngredientName(kind);
+}
+
+std::string BaseIngredient::InternalGetIngredientName( IngredientKinds kind )
+{
+	switch(kind)
 	{
 	case Meat: return std::string("Meat");
 	case Salt: return std::string("Salt");

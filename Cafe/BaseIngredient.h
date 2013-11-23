@@ -20,8 +20,14 @@ public:
 
 	virtual IngredientKinds getIngredient();
 	virtual std::string getIngridientName();
+	
+	static std::string GetIngredientName(IngredientKinds kind);
 
 private:
+	static std::string InternalGetIngredientName(IngredientKinds kind);
+
+private:
+
 	IngredientKinds type_;
 
 };
