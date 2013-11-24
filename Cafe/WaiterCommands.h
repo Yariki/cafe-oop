@@ -11,6 +11,7 @@ enum WaiterCommands
 {
 	ApproveIgredients,
 	PassOrderToChef,
-	GetOrderFromClient
+	GetOrderFromClient,
+	PassDishToClient
 };
 #endif // !defined(EA_B0A3C626_B936_46ba_A37E_05695F8928E6__INCLUDED_)

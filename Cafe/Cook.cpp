@@ -104,6 +104,12 @@ std::vector<Dish*>* Cook::getDishesIngredientsForCheking()
 
 void Cook::setCheckedIngredients( std::vector<Dish*>* checkedList )
 {
+	if(!checkedList)
+	{
+		printf_s("Cook %s says that:'All ingredients are enough'...",getFullName());
+		return;
+	}
+
 	for(size_t i = 0; i < checkedList->size();i++){
 		Dish* dish = checkedList->at(i);
 		if(!dish)
@@ -145,5 +151,10 @@ void Cook::clearDishList()
 		delete *it;
 	}
 	dishList_.clear();
+}
+
+Dish* Cook::getReadyDish()
+{
+	return readyDish_;
 }
 

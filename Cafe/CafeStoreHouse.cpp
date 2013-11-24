@@ -67,3 +67,26 @@ void CafeStoreHouse::takeIngridient( IngredientKinds type, double count ){
 		ingredients_[it->first] -= count;
 	}
 }
+
+IngredientKinds CafeStoreHouse::getAlternativeIngredientFor( IngredientKinds kind )
+{
+	IngredientKinds tempKind = Meat;
+	while(true)
+	{
+		size_t index = rand() % ingredients_.size();
+		Ingredient* tempIngredient = nullptr;
+		int count = 0;
+		for(auto it = ingredients_.begin(); it != ingredients_.end();++it)
+		{
+			tempIngredient = it->first;
+			if(count == index) break;
+			count++;
+		}
+		if(tempIngredient && tempIngredient->getIngredient() != kind)
+		{
+			tempKind = tempIngredient->getIngredient();
+			break;
+		}
+	}
+	return tempKind;
+}

@@ -32,15 +32,18 @@ public:
 	void setApprovedIngredients(std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp);
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* getIngredientsForApprove();
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* getApprovedIngerients();
+	void passDishToClient(Client* client,Dish* dish);
+
 
 	Client* getClient();
 	Order* giveOrderToChef();
-	Dish* passDishToClient();
+	Dish* getDishForClient();
 
 private:
 	std::queue<Order*> orders_;
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* tempAlternativeList;
 	Client* client_;
+	Dish* dish_;
 
 };
 #endif // !defined(EA_283F64EB_2586_471d_B57C_0D322667A2A3__INCLUDED_)

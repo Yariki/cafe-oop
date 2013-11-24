@@ -27,18 +27,18 @@ public:
 	Cook();
 	virtual ~Cook();
 
-	void setOrder(Order* order);
-	Order* getOrder();
-	Dish* getSnack();
+	virtual void setOrder(Order* order);
+	virtual Order* getOrder();
+	virtual Dish* getSnack();
 	virtual void cook();
-	bool intitializeCookOrder();
+	virtual bool intitializeCookOrder();
 
 	// get list for cheking ingredients
-	std::vector<Dish*>* getDishesIngredientsForCheking();
+	virtual std::vector<Dish*>* getDishesIngredientsForCheking();
 	// return from cheking
-	void setCheckedIngredients(std::vector<Dish*>* checkedList);
-	Dish* getReadyDish();
-	BaseEquipment* getEquipment();
+	virtual void setCheckedIngredients(std::vector<Dish*>* checkedList);
+	virtual Dish* getReadyDish();
+	virtual BaseEquipment* getEquipment();
 
 
 	void setStatus(CookStatus status);
@@ -46,13 +46,12 @@ public:
 
 	virtual void applyEquipment( BaseEquipment* equipment);
 	
+protected:
+	virtual void  makeDishList();
+	virtual Dish* makeNextDishFromOrder();
+	virtual void clearDishList();
 
-private:
-	void  makeDishList();
-	Dish* makeNextDishFromOrder();
-	void clearDishList();
-
-private:
+protected:
 	BaseEquipment* equipment_;
 	CookStatus state_;
 	Order* currentOrder_;

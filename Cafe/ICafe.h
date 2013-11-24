@@ -29,13 +29,15 @@ public:
 
 	}
 
-	virtual Chef* getChef() const =0;
-	virtual std::vector<Cook*>* getCooks() const =0;
-	virtual std::vector<Client*>* getClients() const =0;
-	virtual std::vector<Waiter*>* getWaiters() const =0;
-	virtual CafeKitchen* getKitchen() const =0;
-	virtual CafeStoreHouse* getStoreHouse() const =0;
-	virtual Cafe_Menu* getMenu() const = 0;
+	virtual Chef* const getChef()  =0;
+	virtual std::vector<Cook*>* const  getCooks()  =0;
+	virtual std::vector<Client*>* const getClients() =0;
+	virtual std::vector<Waiter*>* const getWaiters() =0;
+	virtual CafeKitchen* const getKitchen() =0;
+	virtual CafeStoreHouse* const getStoreHouse() =0;
+	virtual Cafe_Menu* const getMenu() = 0;
+	virtual Client* const getClient() = 0;
+	virtual Cook* const getCook() = 0;
 
 };
 #endif // !defined(EA_D08F78D6_8325_4fee_AA0E_B3423D022D63__INCLUDED_)

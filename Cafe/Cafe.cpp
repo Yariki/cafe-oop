@@ -31,12 +31,10 @@ Cafe::~Cafe(){
 		chef_ = nullptr;
 	}
 	if(kitchen_ !=  nullptr){
-		kitchen_->Detach(kitchenObserver_);
 		delete kitchen_;
 		kitchen_ = nullptr;
 	}
 	if(storehouse_ != nullptr){
-		storehouse_->Detach(cafeStoreHouseObserver_);
 		delete storehouse_;
 		storehouse_ = nullptr;
 	}
@@ -128,23 +126,21 @@ void Cafe::createWaiters(){
 }
 
 
-CafeKitchen* Cafe::getKitchen() const{
+CafeKitchen* const Cafe::getKitchen() {
 	return  kitchen_;
 }
 
-CafeStoreHouse* Cafe::getStoreHouse() const{
+CafeStoreHouse* const Cafe::getStoreHouse() {
 	return  storehouse_;
 }
 
 void Cafe::createKitchen(){
 	kitchen_ = new CafeKitchen(this);
-	kitchen_->Attach(kitchenObserver_);
 }
 
 
 void Cafe::createStoreHouse(){
 	storehouse_ = new CafeStoreHouse(this);
-	storehouse_->Attach(cafeStoreHouseObserver_);
 }
 
 void Cafe::createCooks(){
@@ -159,34 +155,31 @@ void Cafe::createCooks(){
 
 void Cafe::createObservers()
 {
-	kitchenObserver_ = new CafeKitchenObserver(this);
 	chefObserver_ = new ChefObserver(this);
-	cafeStoreHouseObserver_ = new CafeStoreHouseObserver(this);
 	cookObserver_ = new CookObserver(this);
 	waiterObserver_ = new WaiterObserver(this);
 }
 
-Chef* Cafe::getChef() const
-{
+Chef* const Cafe::getChef() {
 	return chef_;
 }
 
-std::vector<Cook*>* Cafe::getCooks() const
+std::vector<Cook*>* const Cafe::getCooks() 
 {
 	return cooks_;
 }
 
-std::vector<Client*>* Cafe::getClients() const
+std::vector<Client*>* const Cafe::getClients() 
 {
 	return clients_;
 }
 
-std::vector<Waiter*>* Cafe::getWaiters() const
+std::vector<Waiter*>* const Cafe::getWaiters() 
 {
 	return waiters_;
 }
 
-Cafe_Menu* Cafe::getMenu() const
+Cafe_Menu* const Cafe::getMenu() 
 {
 	return menu_;
 }
@@ -246,5 +239,23 @@ void Cafe::createMenu()
 		else
 			menu_->addSneck(dish);
 	}
+}
+
+Client* const Cafe::getClient()
+{
+	Client* client = static_cast<Client*>(*std::find_if(clients_->begin(),clients_->end(),
+		[](Client* temp) -> bool{
+			return temp->getState() == NotServe;
+	}));
+	return client;
+}
+
+Cook* const Cafe::getCook()
+{
+	Cook* cook = static_cast<Cook*>(*std::find_if(cooks_->begin(),cooks_->end(),
+		[](Cook* temp) -> bool{
+			return temp->getStatus() == CookFree;
+	}));
+	return cook;
 }
 

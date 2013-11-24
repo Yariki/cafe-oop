@@ -24,6 +24,7 @@ public:
 	virtual void Attach(T* observer) =0;
 	virtual void Detach(T* observer) =0;
 	virtual void Notify(int command) =0;
+	virtual T* getObserver() {return observer_;}
 
 protected:
 	T* observer_;

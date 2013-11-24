@@ -19,7 +19,10 @@ public:
 	Chef();
 	virtual ~Chef();
 
+	virtual void setOrder( Order* order );
+
 public:
+	
 
 private:
 	std::vector<Order> orders_;

@@ -29,11 +29,11 @@ Order* Waiter::giveOrderToChef(){
 	return order;
 }
 
-Dish* Waiter::passDishToClient(){
+Dish* Waiter::getDishForClient(){
 	return nullptr;
 }
 
-void Waiter::approveAlternativeInredientsInClient( Client* client, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* alterList )
+void Waiter::approveAlternativeInredientsInClient(Client* client, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* alterList )
 {
 	client_ = client;
 	tempAlternativeList = alterList;
@@ -63,4 +63,11 @@ void Waiter::setApprovedIngredients( std::map<Dish*,std::vector<std::tuple<Ingre
 void Waiter::getOrderFromClient()
 {
 	observer_->Update(GetOrderFromClient,this);
+}
+
+void Waiter::passDishToClient( Client* client,Dish* dish )
+{
+	client_ = client;
+	dish_ = dish;
+	observer_->Update(PassDishToClient,this);
 }

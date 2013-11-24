@@ -2,7 +2,6 @@
 //  WaiterObserver.h
 //  Implementation of the Class WaiterObserver
 //  Created on:      16-Nov-2013 9:41:00 PM
-//  Original author: Yariki
 ///////////////////////////////////////////////////////////
 
 #if !defined(EA_16328FE1_4077_4274_92ED_906D818675C2__INCLUDED_)
@@ -21,6 +20,12 @@ public:
 
 	virtual void Update( int command, Waiter* obj );
 
+private:
+	void InternalGetOrderFromClient(Waiter* const waiter);
+	void InternalApproveIngredientsFromClient(Waiter* const waiter);
+	void InternalPassDishToClient(Waiter* const waiter);
+	void InternalPassOrderToChef(Waiter* const waiter);
+	
 private:
 	ICafe* cafe_;
 };

@@ -6,7 +6,8 @@
 ///////////////////////////////////////////////////////////
 
 #include "Chef.h"
-
+#include "ChefCommands.h"
+#include "ICafeNotifier.h"
 
 Chef::~Chef(){
 
@@ -14,4 +15,10 @@ Chef::~Chef(){
 
 Chef::Chef(){
 
+}
+
+void Chef::setOrder( Order* order )
+{
+	currentOrder_ = order;
+	this->ChefNotifier::observer_->Update(SetOrderToCook,this);
 }

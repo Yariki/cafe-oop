@@ -16,7 +16,7 @@
 
 class Cafe;
 
-class CafeStoreHouse : public CafeRoom, public CafeStoreHouseNotifier
+class CafeStoreHouse : public CafeRoom
 {
 public:
 	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){}
@@ -25,6 +25,7 @@ public:
 	std::vector<Ingredient*>* getIngredients() const;
 	bool isEnoughIngredient(IngredientKinds type, double count);
 	void takeIngridient(IngredientKinds type, double count);
+	IngredientKinds getAlternativeIngredientFor(IngredientKinds kind);
 
 private:
 	std::map<Ingredient*,double> ingredients_;

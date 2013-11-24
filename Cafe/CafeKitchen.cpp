@@ -109,14 +109,17 @@ void CafeKitchen::tryToGenerateAccedent()
 	}
 	catch (ElectricityException* e)
 	{
+		state_ = EletricityDown;
 		processException(e,Electricity);
 	}
 	catch (GasException* e)
 	{
+		state_ = GasDown;
 		processException(e,Gas);
 	}
 	catch (FirewoodException* e)
 	{
+		state_ = FireDown;
 		processException(e,Firewood);
 	}
 }
@@ -139,4 +142,25 @@ void CafeKitchen::processException( BaseCafeException* ex,EnergyKinds energy )
 			eq->setStatus(EquipmentFree);
 	}
 
+}
+
+std::string CafeKitchen::getKitchenStateName( KitchenState state )
+{
+	switch(state)
+	{
+	case Normal:
+		return std::string("Normal");
+	case EletricityDown:
+		return std::string("Electricity down");
+	case FireDown:
+		return std::string("Fire wood down");
+	case GasDown:
+		return std::string("Gas down");
+	}
+	return std::string("<N/a> state");
+}
+
+CafeKitchen::KitchenState CafeKitchen::getState()
+{
+	return state_;
 }

@@ -17,14 +17,11 @@
 #include "cafe_menu.h"
 #include "dish.h"
 #include "CafeKitchen.h"
-#include "CafeKitchenObserver.h"
-#include "CafeStoreHouseObserver.h"
+#include "CafeStoreHouse.h"
 #include "ChefObserver.h"
 #include "CookObserver.h"
 #include "ICafe.h"
 #include "WaiterObserver.h"
-
-class CafeStoreHouse;
 
 class Cafe : public ICafeObject, public ICafe
 {
@@ -37,8 +34,22 @@ public:
 	void generateClients();
 	void simulation();
 	std::string generateError();
-	CafeKitchen* getKitchen() const;
-	CafeStoreHouse* getStoreHouse() const;
+	virtual CafeKitchen* const getKitchen() ;
+	virtual CafeStoreHouse* const getStoreHouse() ;
+
+	virtual Chef* const getChef() ;
+
+	virtual std::vector<Cook*>* const getCooks() ;
+
+	virtual std::vector<Client*>* const getClients() ;
+
+	virtual std::vector<Waiter*>* const getWaiters() ;
+
+	virtual Cafe_Menu* const getMenu() ;
+
+	virtual  Client* const getClient() ;
+
+	virtual Cook* const getCook();
 
 private:
 	std::vector<Cook*>* cooks_;
@@ -68,25 +79,11 @@ private:
 	void createObservers();
 	void deleteObservers();
 
-	virtual Chef* getChef() const;
-
-	virtual std::vector<Cook*>* getCooks() const;
-
-	virtual std::vector<Client*>* getClients() const;
-
-	virtual std::vector<Waiter*>* getWaiters() const;
-
-	virtual Cafe_Menu* getMenu() const;
-
-	friend class CafeKitchenObserver;
 	friend class ChefObserver;
-	friend class CafeStoreHouseObserver;
 	friend class WaiterObserver;
 	friend class CookObserver;
 
-	CafeKitchenObserver* kitchenObserver_;
 	ChefObserver* chefObserver_;
-	CafeStoreHouseObserver* cafeStoreHouseObserver_;
 	CookObserver* cookObserver_;
 	WaiterObserver* waiterObserver_;
 

@@ -14,20 +14,25 @@
 
 class BaseCafeException;
 
-class CafeKitchen : public CafeRoom, public CafeKitchenNotifier
+class CafeKitchen : public CafeRoom
 {
 
-	enum KitchenState { Normal = 0, EletricityDown,GasDown,FireDown};
+	
 
 public:
+	enum KitchenState { Normal = 0, EletricityDown,GasDown,FireDown};
+
 	CafeKitchen(Cafe* cafe) : CafeRoom(cafe){}
 	virtual ~CafeKitchen();
-
 	Equipment* getFirstFreeEquipment();
 	void releseEquipment(Equipment* equipmnent);
 	Equipment* getFirstFreeAlternativeEquipment();
 	void tryToGenerateAccedent();
 	KitchenState getState();
+
+
+
+	static std::string getKitchenStateName(KitchenState state);
 
 private:
 	std::vector<Equipment*> equipments_;
