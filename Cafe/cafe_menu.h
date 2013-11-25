@@ -2,11 +2,10 @@
 #ifndef _CAFE_MENU_H_
 #define _CAFE_MENU_H_
 
-#include "ICafeObject.h"
 #include "dish.h"
 #include <vector>
 
-class Cafe_Menu : public ICafeObject
+class Cafe_Menu
 {
 public:
 	Cafe_Menu(void);        

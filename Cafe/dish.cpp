@@ -52,11 +52,11 @@ void Dish::generateIngridients()
 	{
 		auto ingridientType = rand() % 10;
 		auto ingridient = new Ingredient(ingridientType);
-		ingridients_.insert(std::pair<BaseIngredient*,double>(ingridient,rand()  % 30));
+		ingridients_.insert(std::pair<Ingredient*,double>(ingridient,rand()  % 30));
 	}
 }
 
-std::map<BaseIngredient*,double>* Dish::getIngridients()
+std::map<Ingredient*,double>* Dish::getIngridients()
 {
 	return &ingridients_;
 }

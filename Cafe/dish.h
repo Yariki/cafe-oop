@@ -2,13 +2,12 @@
 #ifndef _DISH_H_
 #define _DISH_H_
 
-#include "ICafeObject.h"
 #include <string>
 #include <map>
 #include <string>
-#include "BaseIngredient.h"
+#include "Ingredient.h"
 
-class Dish : public ICafeObject
+class Dish 
 {
 public:
 	Dish(void);
@@ -19,7 +18,7 @@ public:
     std::string getName() const;
     void setCost(double cost);
     double getCost() const;
-	std::map<BaseIngredient*,double>* getIngridients() ;
+	std::map<Ingredient*,double>* getIngridients() ;
 	friend bool operator==(const Dish& left, const Dish& right)
     {
 		if(left.getCost() == right.getCost() && left.getName() == right.getName()) return true; 
@@ -32,7 +31,7 @@ private:
 private:
 	std::string name_;
     double cost_;
-	std::map<BaseIngredient*,double> ingridients_;
+	std::map<Ingredient*,double> ingridients_;
 };
 
 #endif

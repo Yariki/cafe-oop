@@ -86,7 +86,7 @@ void Client::approveIngredients( std::map<Dish*,std::vector<std::tuple<Ingredien
 			std::get<1>(tempTuple) = isApprove;
 
 			printf_s("Client %s %s %s for '%s'",getFullName(),std::get<1>(tempTuple) ? "has approved" : "hasn't approve",
-				BaseIngredient::GetIngredientName(std::get<0>(tempTuple)),tempDish->getName());
+				Ingredient::GetIngredientName(std::get<0>(tempTuple)),tempDish->getName());
 		}	
 	}
 }

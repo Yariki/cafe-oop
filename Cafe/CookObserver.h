@@ -9,6 +9,7 @@
 
 #include "ICafeObserver.h"
 #include "Cook.h"
+#include "Chef.h"
 #include "ICafe.h"
 
 
@@ -48,7 +49,7 @@ private:
 	void InternalCookInjured(Cook* const cook);
 	void InternalApplyEquipment(Cook* const cook);
 	void InternalReleaseEquipment(Cook* const cook);
-
+	void InternalSetOrderToCook(Chef* const chef);
 private:
 	ICafe* cafe_;
 };

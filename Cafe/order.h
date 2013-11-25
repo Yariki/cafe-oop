@@ -1,7 +1,6 @@
 #ifndef _ORDER_H_
 #define _ORDER_H_
 
-#include "ICafeObject.h"
 #include <vector>
 #include "dish.h"
 
@@ -10,7 +9,7 @@ class Cook;
 class Waiter;
 class Client;
 
-class Order : public ICafeObject
+class Order 
 {
 public:
 	Order(void);

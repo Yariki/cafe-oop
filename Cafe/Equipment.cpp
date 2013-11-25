@@ -35,3 +35,22 @@ EnergyKinds Equipment::getEnergyKind(){
 
 	return energy_;
 }
+
+EquipmentKinds Equipment::getKind(){
+
+	return  kind_;
+}
+
+std::string Equipment::getName() const
+{
+	switch(kind_)
+	{
+	case ElectricRange:
+		return std::string("Electric Range");
+	case FirePlace:
+		return std::string("Fire Place");
+	case GasRange:
+		return std::string("Gas Range");
+	}
+	return std::string("None");
+}

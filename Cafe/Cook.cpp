@@ -77,7 +77,7 @@ CookStatus Cook::getStatus(){
 	return  state_;
 }
 
-void Cook::applyEquipment(BaseEquipment* equipment){
+void Cook::applyEquipment(Equipment* equipment){
 	equipment_ = equipment;
 }
 
@@ -125,7 +125,7 @@ void Cook::setCheckedIngredients( std::vector<Dish*>* checkedList )
 		d->getIngridients()->clear();
 		for (auto it = dish->getIngridients()->begin();it != dish->getIngridients()->end();++it)
 		{
-			d->getIngridients()->insert(std::pair<BaseIngredient*,double>(it->first,it->second));
+			d->getIngridients()->insert(std::pair<Ingredient*,double>(it->first,it->second));
 		}
 	}
 }
@@ -138,7 +138,7 @@ void Cook::makeDishList()
 	}
 }
 
-BaseEquipment* Cook::getEquipment()
+Equipment* Cook::getEquipment()
 {
 	return equipment_;
 }

@@ -7,14 +7,28 @@
 #if !defined(EA_45CA5CE2_32A2_4539_A844_1C6BF42A4DB9__INCLUDED_)
 #define EA_45CA5CE2_32A2_4539_A844_1C6BF42A4DB9__INCLUDED_
 
-#include "BaseIngredient.h"
+#include "IngredientKinds.h"
+#include <string>
 
-class Ingredient : public BaseIngredient
+class Ingredient 
 {
 
 public:
 	Ingredient(int type);
 	virtual ~Ingredient();
+
+	virtual IngredientKinds getIngredient();
+	virtual std::string getIngridientName();
+
+	static std::string GetIngredientName(IngredientKinds kind);
+
+private:
+	static std::string InternalGetIngredientName(IngredientKinds kind);
+
+private:
+
+	IngredientKinds type_;
+
 
 };
 #endif // !defined(EA_45CA5CE2_32A2_4539_A844_1C6BF42A4DB9__INCLUDED_)

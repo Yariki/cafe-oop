@@ -10,9 +10,8 @@
 #include "Cook.h"
 #include "order.h"
 #include <vector>
-#include "ChefNotifier.h"
 
-class Chef : public Cook, public ChefNotifier
+class Chef : public Cook
 {
 
 public:

@@ -18,7 +18,7 @@
 #include "Ingredient.h"
 #include "CookNotifier.h"
 #include "IngredientKinds.h"
-#include "BaseEquipment.h"
+#include "Equipment.h"
 
 class Cook : public Person, public CookNotifier
 {
@@ -38,13 +38,13 @@ public:
 	// return from cheking
 	virtual void setCheckedIngredients(std::vector<Dish*>* checkedList);
 	virtual Dish* getReadyDish();
-	virtual BaseEquipment* getEquipment();
+	virtual Equipment* getEquipment();
 
 
 	void setStatus(CookStatus status);
 	CookStatus getStatus();
 
-	virtual void applyEquipment( BaseEquipment* equipment);
+	virtual void applyEquipment( Equipment* equipment);
 	
 protected:
 	virtual void  makeDishList();
@@ -52,7 +52,7 @@ protected:
 	virtual void clearDishList();
 
 protected:
-	BaseEquipment* equipment_;
+	Equipment* equipment_;
 	CookStatus state_;
 	Order* currentOrder_;
 	std::vector<Dish*> dishList_;

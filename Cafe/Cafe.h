@@ -9,7 +9,6 @@
 
 #include <vector>
 
-#include "ICafeObject.h"
 #include "Cook.h"
 #include "Waiter.h"
 #include "Client.h"
@@ -18,12 +17,11 @@
 #include "dish.h"
 #include "CafeKitchen.h"
 #include "CafeStoreHouse.h"
-#include "ChefObserver.h"
 #include "CookObserver.h"
 #include "ICafe.h"
 #include "WaiterObserver.h"
 
-class Cafe : public ICafeObject, public ICafe
+class Cafe : public ICafe
 {
 
 public:
@@ -79,11 +77,9 @@ private:
 	void createObservers();
 	void deleteObservers();
 
-	friend class ChefObserver;
 	friend class WaiterObserver;
 	friend class CookObserver;
 
-	ChefObserver* chefObserver_;
 	CookObserver* cookObserver_;
 	WaiterObserver* waiterObserver_;
 

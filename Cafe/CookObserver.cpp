@@ -7,7 +7,7 @@
 #include <algorithm>
 #include "CookObserver.h"
 #include "CookCommands.h"
-#include "BaseIngredient.h"
+#include "Ingredient.h"
 #include "CafeStoreHouse.h"
 #include "order.h"
 #include "Waiter.h"
@@ -38,6 +38,9 @@ void CookObserver::Update( int command, Cook* obj )
 		break;
 	case ReleaseEquipment:
 		InternalReleaseEquipment(obj);
+		break;
+	case SetOrderToCook:
+		InternalSetOrderToCook((Chef*)obj);
 		break;
 	}
 }
@@ -79,7 +82,7 @@ void CookObserver::InternalCheckIngredients( Cook* const cook )
 					return pair.ingredientTarget == k;
 				})) ;
 
-				BaseIngredient* key = nullptr;
+				Ingredient* key = nullptr;
 				for(auto it = dish->getIngridients()->begin();it != dish->getIngridients()->end();++it)
 				{
 					if(it->first->getIngredient() == p.ingredientSource)
@@ -93,7 +96,7 @@ void CookObserver::InternalCheckIngredients( Cook* const cook )
 				delete key;
 
 				if(approved)
-					dish->getIngridients()->insert(std::pair<BaseIngredient*,double>(new Ingredient(p.ingredientTarget),rand() % 10));
+					dish->getIngridients()->insert(std::pair<Ingredient*,double>(new Ingredient(p.ingredientTarget),rand() % 10));
 			}
 			listDishesWithApproved.push_back(dish);
 		}
@@ -158,7 +161,7 @@ void CookObserver::checkIngredientsInStore( std::vector<Dish*>* dishList, CafeSt
 		// pass all ingredients check if is enough
 		for(auto itIng = tempDish->getIngridients()->begin();itIng != tempDish->getIngridients()->end();++itIng)
 		{
-			BaseIngredient* tempIng = static_cast<BaseIngredient*>(itIng->first);
+			Ingredient* tempIng = static_cast<Ingredient*>(itIng->first);
 			double count = itIng->second;
 			if(store->isEnoughIngredient(tempIng->getIngredient(),count))
 			{
@@ -174,4 +177,12 @@ void CookObserver::checkIngredientsInStore( std::vector<Dish*>* dishList, CafeSt
 		if(shouldAdd)
 			tempList.insert(tempPair);
 	}
+}
+
+void CookObserver::InternalSetOrderToCook( Chef* const chef )
+{
+	Cook* cook = cafe_->getCook();
+	if(!cook)
+		return;
+	cook->setOrder(chef->getOrder());
 }

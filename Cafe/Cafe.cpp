@@ -26,7 +26,7 @@ Cafe::Cafe(){
 
 Cafe::~Cafe(){
 	if(chef_ !=  nullptr){
-		chef_->ChefNotifier::Detach(chefObserver_);
+		chef_->Detach(cookObserver_);
 		delete chef_;
 		chef_ = nullptr;
 	}
@@ -109,7 +109,7 @@ void Cafe::initialize(){
 
 void Cafe::createChef(){
 	chef_ = new Chef();
-	chef_->ChefNotifier::Attach(chefObserver_);
+	chef_->Attach(cookObserver_);
 	chef_->setName(generateName());
 	chef_->setSurname(generateSurname());
 }
@@ -155,7 +155,6 @@ void Cafe::createCooks(){
 
 void Cafe::createObservers()
 {
-	chefObserver_ = new ChefObserver(this);
 	cookObserver_ = new CookObserver(this);
 	waiterObserver_ = new WaiterObserver(this);
 }

@@ -7,12 +7,13 @@
 #if !defined(EA_D8F124E9_CDAD_4add_A1DF_4CCD5C37384D__INCLUDED_)
 #define EA_D8F124E9_CDAD_4add_A1DF_4CCD5C37384D__INCLUDED_
 
-
 #include "EquipmentStatus.h"
 #include "EnergyKinds.h"
-#include "BaseEquipment.h"
+#include "EquipmentKinds.h"
+#include <string>
 
-class Equipment : public BaseEquipment
+
+class Equipment 
 {
 
 public:
@@ -23,9 +24,12 @@ public:
 	void setStatus(EquipmentStatus status);
 	EquipmentStatus getStatus();
 	EnergyKinds getEnergyKind();
+	EquipmentKinds getKind();
+	std::string getName() const;
 private:
 	EquipmentStatus state_;
 	EnergyKinds energy_;
+	EquipmentKinds kind_;
 
 };
 #endif // !defined(EA_D8F124E9_CDAD_4add_A1DF_4CCD5C37384D__INCLUDED_)

@@ -75,16 +75,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseCafeException.cpp" />
-    <ClCompile Include="BaseEquipment.cpp" />
-    <ClCompile Include="BaseIngredient.cpp" />
     <ClCompile Include="Cafe.cpp" />
     <ClCompile Include="CafeKitchen.cpp" />
     <ClCompile Include="CafeRoom.cpp" />
     <ClCompile Include="CafeStoreHouse.cpp" />
     <ClCompile Include="cafe_menu.cpp" />
     <ClCompile Include="Chef.cpp" />
-    <ClCompile Include="ChefNotifier.cpp" />
-    <ClCompile Include="ChefObserver.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Cook.cpp" />
     <ClCompile Include="CookNotifier.cpp" />
@@ -104,17 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseCafeException.h" />
-    <ClInclude Include="BaseEquipment.h" />
-    <ClInclude Include="BaseIngredient.h" />
     <ClInclude Include="Cafe.h" />
     <ClInclude Include="CafeKitchen.h" />
     <ClInclude Include="CafeRoom.h" />
     <ClInclude Include="CafeStoreHouse.h" />
     <ClInclude Include="cafe_menu.h" />
     <ClInclude Include="Chef.h" />
-    <ClInclude Include="ChefCommands.h" />
-    <ClInclude Include="ChefNotifier.h" />
-    <ClInclude Include="ChefObserver.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientState.h" />
     <ClInclude Include="Cook.h" />
