@@ -11,6 +11,7 @@
 #include "Equipment.h"
 #include <vector>
 
+
 class BaseCafeException;
 
 class CafeKitchen : public CafeRoom
