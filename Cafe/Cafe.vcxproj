@@ -79,6 +79,7 @@
     <ClCompile Include="CafeKitchen.cpp" />
     <ClCompile Include="CafeRoom.cpp" />
     <ClCompile Include="CafeStoreHouse.cpp" />
+    <ClCompile Include="CafeTimer.cpp" />
     <ClCompile Include="cafe_menu.cpp" />
     <ClCompile Include="Chef.cpp" />
     <ClCompile Include="Client.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="CafeKitchen.h" />
     <ClInclude Include="CafeRoom.h" />
     <ClInclude Include="CafeStoreHouse.h" />
+    <ClInclude Include="CafeTimer.h" />
     <ClInclude Include="cafe_menu.h" />
     <ClInclude Include="Chef.h" />
     <ClInclude Include="Client.h" />

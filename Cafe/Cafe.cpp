@@ -7,6 +7,8 @@
 
 #include <fstream>
 #include <iostream>
+#include <windows.h>
+#include "CafeTimer.h"
 
 using std::cout;
 using std::cin;
@@ -82,8 +84,30 @@ void Cafe::addClient(){
 }
 
 
-void Cafe::simulation(){
+void Cafe::simulation()
+{
+	if(!clients_->size())
+	{
+		printf_s("Clients is empty");
+		return;
+	}
+	CafeTimer timer;
+	timer.start();
 
+	while(timer.getEllapsed()  < 600 )
+	{
+		int temp = rand() % 10;
+		if(temp > 7)
+		{
+			// sleep
+			// generate one client;
+		}
+		else if(temp > 0 && temp < 7)
+		{
+			// process client if we have NotServe => make order, pass to waiter and cook, ingredients, equipment, init cooking
+			// process cooking if we have beasy cooks => cook and pass dishes, or release equipment etc
+		}
+	}
 }
 
 
@@ -97,6 +121,7 @@ void Cafe::initialize(){
 	cooks_ = new std::vector<Cook*>();
 	clients_ = new std::vector<Client*>();
 	waiters_ = new std::vector<Waiter*>();
+	readFiles();
 	createObservers();
 	createChef();
 	createKitchen();
