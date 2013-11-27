@@ -8,24 +8,33 @@
 #include "WaiterCommands.h"
 
 Waiter::~Waiter(){
-
+	for(size_t i = 0; i< orders_->size();i++)
+	{
+		delete orders_->at(i);
+	}
+	orders_->clear();
+	delete orders_;
 }
 
 Waiter::Waiter(){
-
+	orders_ = new std::vector<Order*>();
+	tempAlternativeList = nullptr;
+	client_ = nullptr;
+	dish_ = nullptr;
 }
 
 
 void Waiter::setOrder(Order* order){
 	if(!order)
 		return;
-	orders_.push(order);
-	observer_->Update(PassOrderToChef,this);
+	orders_->push_back(order);
+	order->setWaiter(this);
+	Notify(PassOrderToChef);
 }
 
 Order* Waiter::giveOrderToChef(){
-	auto order = orders_.front();
-	orders_.pop();
+	auto order = orders_->front();
+	orders_->erase(orders_->begin());
 	return order;
 }
 
@@ -37,7 +46,7 @@ void Waiter::approveAlternativeInredientsInClient(Client* client, std::map<Dish*
 {
 	client_ = client;
 	tempAlternativeList = alterList;
-	observer_->Update(ApproveIgredients,this);
+	Notify(ApproveIgredients);
 }
 
 std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* Waiter::getIngredientsForApprove()
@@ -60,14 +69,21 @@ void Waiter::setApprovedIngredients( std::map<Dish*,std::vector<std::tuple<Ingre
 	tempAlternativeList = temp;
 }
 
-void Waiter::getOrderFromClient()
+void Waiter::getOrderFromClientAndPassToChef()
 {
-	observer_->Update(GetOrderFromClient,this);
+	Notify(GetOrderFromClient);
 }
 
 void Waiter::passDishToClient( Client* client,Dish* dish )
 {
 	client_ = client;
 	dish_ = dish;
-	observer_->Update(PassDishToClient,this);
+	Notify(PassDishToClient);
+}
+
+void Waiter::Notify( int command )
+{
+	if(!observer_)
+		return;
+	observer_->Update(command,this);
 }

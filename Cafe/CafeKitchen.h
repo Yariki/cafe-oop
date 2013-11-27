@@ -22,7 +22,7 @@ class CafeKitchen : public CafeRoom
 public:
 	enum KitchenState { Normal = 0, EletricityDown,GasDown,FireDown};
 
-	CafeKitchen(Cafe* cafe) : CafeRoom(cafe){}
+	CafeKitchen(Cafe* cafe) : CafeRoom(cafe){initEquipments();}
 	virtual ~CafeKitchen();
 	Equipment* getFirstFreeEquipment();
 	void releseEquipment(Equipment* equipmnent);

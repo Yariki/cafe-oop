@@ -16,15 +16,20 @@ Cook::~Cook(){
 }
 
 Cook::Cook(){
-
+	equipment_ = nullptr;
+	state_ = CookFree;
+	currentOrder_ = nullptr;
+	readyDish_ = nullptr;
 }
 
 void Cook::setOrder(Order* order){
 	if(!order)
 		return;
 	currentOrder_ = order;
+	currentOrder_->setCook(this);
 	makeDishList();
-	observer_->Update(CheckIngridients,this);
+	Notify(CheckIngridients);
+	intitializeCookOrder();
 }
 
 
@@ -44,12 +49,12 @@ void Cook::cook(){
 	if(readyDish_)
 	{
 		printf_s("Cook %s pass ready dish '%s' to %s",getFullName(),readyDish_->getName(),currentOrder_->getWaiter()->getFullName());
-		observer_->Update(PassDishToWaiter,this);
+		Notify(PassDishToWaiter);
 	}
 	else
 	{
 		printf_s("Cook %s finished working...",getFullName());
-		observer_->Update(ReleaseEquipment,this);
+		Notify(ReleaseEquipment);
 		applyEquipment(nullptr);
 		state_ = CookFree;
 		currentOrder_ = nullptr;
@@ -61,7 +66,7 @@ bool Cook::intitializeCookOrder(){
 
 	printf_s("Cook %s started his work...",getFullName());
 	state_ = CookBusy;
-	observer_->Update(ApplyEquipment,this);
+	Notify(ApplyEquipment);
 	if(equipment_)
 		printf_s("Cook %s use % for cooking",getFullName(),equipment_->getName());
 	return true;
@@ -156,5 +161,12 @@ void Cook::clearDishList()
 Dish* Cook::getReadyDish()
 {
 	return readyDish_;
+}
+
+void Cook::Notify( int command )
+{
+	if(!observer_)
+		return;
+	observer_->Update(command,this);
 }
 

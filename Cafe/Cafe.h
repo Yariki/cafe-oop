@@ -77,6 +77,24 @@ private:
 	void createObservers();
 	void deleteObservers();
 
+private:
+	void generateClientForProcessing();
+	void processNewClient();
+	bool isNotServedClientPresent();
+
+	void deleteCooks();
+
+	void deleteWaiters();
+
+	void deleteStoreHouse();
+
+	void deleteKitchen();
+
+	void deleteChef();
+
+	void deleteAndClearClients();
+
+
 	friend class WaiterObserver;
 	friend class CookObserver;
 

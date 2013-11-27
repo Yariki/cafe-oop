@@ -4,12 +4,15 @@
 Order::Order(void)
 {
         total_cost_ = 0;
+		init();
+
 }
 
 Order::Order(std::vector<Dish*> dishes)
 {
-        order_.insert(order_.end(), dishes.begin(), dishes.end());
-        calculateCost();
+	init();
+    order_.insert(order_.end(), dishes.begin(), dishes.end());
+    calculateCost();
 }
 
 

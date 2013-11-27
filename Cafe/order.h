@@ -14,6 +14,9 @@ class Order
 public:
 	Order(void);
 	Order(std::vector<Dish*> dishes);
+
+	
+
 	virtual ~Order(void);
 
 	void addDish(Dish* dish);
@@ -36,7 +39,13 @@ private:
 	Waiter* waiter_;
 	Client* client_;
 
-    void calculateCost();
+	void calculateCost();
+	void init() 
+	{
+		cook_ =  nullptr;
+		waiter_ = nullptr;
+		client_ = nullptr;
+	}
 };
 
 #endif

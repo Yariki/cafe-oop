@@ -10,6 +10,7 @@
 
 enum ClientState
 {
+	New,
 	NotServe,
 	Serve
 };

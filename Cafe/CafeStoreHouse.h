@@ -19,7 +19,7 @@ class Cafe;
 class CafeStoreHouse : public CafeRoom
 {
 public:
-	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){}
+	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){initIngredient();}
 	virtual ~CafeStoreHouse();
 	
 	std::vector<Ingredient*>* getIngredients() const;

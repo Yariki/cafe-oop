@@ -16,6 +16,7 @@ using std::cin;
 #include "Cafe.h"
 
 #define PERSONAL_MAX_COUNT 10
+#define SECONDS_SLEEP_IN_MS 2000
 
 #define DISHES_FILENAME "dishes.txt"
 #define NAMES_FILENAME  "names.txt"
@@ -27,43 +28,18 @@ Cafe::Cafe(){
 }
 
 Cafe::~Cafe(){
-	if(chef_ !=  nullptr){
-		chef_->Detach(cookObserver_);
-		delete chef_;
-		chef_ = nullptr;
-	}
-	if(kitchen_ !=  nullptr){
-		delete kitchen_;
-		kitchen_ = nullptr;
-	}
-	if(storehouse_ != nullptr){
-		delete storehouse_;
-		storehouse_ = nullptr;
-	}
-	for(size_t index = 0 ; index < waiters_->size();index++){
-		auto waiter = waiters_->at(index);
-		waiter->Detach(waiterObserver_);
-		delete waiter;
-		waiter = nullptr;
-	}
-	waiters_->clear();
-	delete waiters_;
-	for (size_t index = 0; index < cooks_->size();index++){
-		auto cook = cooks_->at(index);
-		cook->Detach(cookObserver_);
-		delete cook;
-		cook = nullptr;
-	}
-	cooks_->clear();
-	delete cooks_;
-	for(size_t i = 0; i < clients_->size();i++)
-	{
-		auto client = clients_->at(i);
-		delete client;
-		client = nullptr;
-	}
-	clients_->clear();
-	delete clients_;
+	deleteChef();
+
+	deleteKitchen();
+
+	deleteStoreHouse();
+
+	deleteWaiters();
+
+	deleteCooks();
+
+	deleteAndClearClients();
+
 
 	names_.clear();
 	surnames_.clear();
@@ -93,19 +69,32 @@ void Cafe::simulation()
 	}
 	CafeTimer timer;
 	timer.start();
-
-	while(timer.getEllapsed()  < 600 )
+	int ellapsed = 0.0;
+	while( ( ellapsed = (int)timer.getEllapsed())  < 600 )
 	{
 		int temp = rand() % 10;
 		if(temp > 7)
 		{
-			// sleep
-			// generate one client;
+			Sleep(SECONDS_SLEEP_IN_MS);
+			generateClientForProcessing();
+			printf_s("System time is %dh:%dm\n",ellapsed / 60, ellapsed % 60);
 		}
 		else if(temp > 0 && temp < 7)
 		{
-			// process client if we have NotServe => make order, pass to waiter and cook, ingredients, equipment, init cooking
-			// process cooking if we have beasy cooks => cook and pass dishes, or release equipment etc
+			if(isNotServedClientPresent())
+			{
+				processNewClient();
+			}
+			for(size_t i = 0;i < cooks_->size(); i++)
+			{
+				auto cook = cooks_->at(i);
+				if(!cook)
+					continue;
+				if(cook->getStatus() == CookBusy)
+				{
+					cook->cook();
+				}
+			}
 		}
 	}
 }
@@ -233,6 +222,8 @@ void Cafe::readFile(std::string filename, std::vector<std::string>* list)
 
 void Cafe::generateClients()
 {
+	if(clients_->size())
+		deleteAndClearClients();
 	for(int i = 0; i < PERSONAL_MAX_COUNT;i++)
 	{
 		auto client = new Client(rand() % 1000);
@@ -267,10 +258,15 @@ void Cafe::createMenu()
 
 Client* const Cafe::getClient()
 {
-	Client* client = static_cast<Client*>(*std::find_if(clients_->begin(),clients_->end(),
-		[](Client* temp) -> bool{
-			return temp->getState() == NotServe;
-	}));
+	Client* client = nullptr;
+	for(auto it = clients_->begin(); it != clients_->end();++it)
+	{
+		client = *it;
+		if(client->getState() == NotServe)
+			break;
+		client = nullptr;
+	}
+
 	return client;
 }
 
@@ -281,5 +277,92 @@ Cook* const Cafe::getCook()
 			return temp->getStatus() == CookFree;
 	}));
 	return cook;
+}
+
+void Cafe::generateClientForProcessing()
+{
+	for(size_t i = 0; clients_->size();i++)
+	{
+		if(clients_->at(i)->getState() == New)
+		{
+			clients_->at(i)->setState(NotServe);
+			break;
+		}
+	}
+}
+
+void Cafe::processNewClient(  )
+{
+	Waiter* waiter = waiters_->at(rand()% waiters_->size());
+	if(!waiter)
+		return;
+	getKitchen()->tryToGenerateAccedent();
+	waiter->getOrderFromClientAndPassToChef();
+}
+
+bool Cafe::isNotServedClientPresent()
+{
+	return getClient() != nullptr;
+}
+
+void Cafe::deleteAndClearClients()
+{
+	for(size_t i = 0; i < clients_->size();i++)
+	{
+		auto client = clients_->at(i);
+		delete client;
+		client = nullptr;
+	}
+	clients_->clear();
+	delete clients_;
+}
+
+void Cafe::deleteChef()
+{
+	if(chef_ !=  nullptr){
+		chef_->Detach(cookObserver_);
+		delete chef_;
+		chef_ = nullptr;
+	}
+}
+
+void Cafe::deleteKitchen()
+{
+	if(kitchen_ !=  nullptr){
+		delete kitchen_;
+		kitchen_ = nullptr;
+	}
+}
+
+void Cafe::deleteStoreHouse()
+{
+	if(storehouse_ != nullptr){
+		delete storehouse_;
+		storehouse_ = nullptr;
+	}
+}
+
+void Cafe::deleteWaiters()
+{
+	for(size_t index = 0 ; index < waiters_->size();index++){
+		auto waiter = waiters_->at(index);
+		waiter->Detach(waiterObserver_);
+		delete waiter;
+		waiter = nullptr;
+	}
+	waiters_->clear();
+	delete waiters_;
+}
+
+void Cafe::deleteCooks()
+{
+	for (size_t index = 0; index < cooks_->size();index++){
+		auto cook = cooks_->at(index);
+		cook->Detach(cookObserver_);
+		delete cook;
+		cook = nullptr;
+	}
+	cooks_->clear();
+	delete cooks_;
 }
 

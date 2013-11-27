@@ -20,5 +20,5 @@ Chef::Chef(){
 void Chef::setOrder( Order* order )
 {
 	currentOrder_ = order;
-	this->observer_->Update(SetOrderToCook,this);
+	Notify(SetOrderToCook);
 }

@@ -32,16 +32,15 @@ void WaiterObserver::Update( int command, Waiter* obj )
 	}
 }
 
-void WaiterObserver::InternalGetOrderFromClient(Waiter* const waiter)
+void WaiterObserver::InternalGetOrderFromClient(Waiter* waiter)
 {
 	Client* client = cafe_->getClient();
 	Cafe_Menu* menu = cafe_->getMenu();
 	Order* order = client->checkMenuAndMakeOrder(menu);
-	order->setWaiter(waiter);
 	waiter->setOrder(order);
 }
 
-void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* const  waiter)
+void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* waiter)
 {
 	auto listApprove = waiter->getIngredientsForApprove();
 	auto client = waiter->getClient();
@@ -51,12 +50,12 @@ void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* const  waiter)
 	waiter->setApprovedIngredients(listApprove);
 }
 
-void WaiterObserver::InternalPassDishToClient(Waiter* const  waiter)
+void WaiterObserver::InternalPassDishToClient(Waiter*  waiter)
 {
 	waiter->getClient()->eat(waiter->getDishForClient());
 }
 
-void WaiterObserver::InternalPassOrderToChef(Waiter* const  waiter)
+void WaiterObserver::InternalPassOrderToChef(Waiter*  waiter)
 {
 	Order* order = waiter->giveOrderToChef();
 	Chef* chef = cafe_->getChef();

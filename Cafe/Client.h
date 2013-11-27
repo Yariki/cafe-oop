@@ -24,6 +24,7 @@ public:
 	virtual ~Client();
 	
 	Order* checkMenuAndMakeOrder(Cafe_Menu* menu);
+	void setState(ClientState state);
 	ClientState getState() const;
 	void eat(Dish* dish);
 	void approveIngredients(std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp);

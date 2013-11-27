@@ -16,11 +16,12 @@
 #include "order.h"
 #include "dish.h"
 #include "Ingredient.h"
-#include "CookNotifier.h"
 #include "IngredientKinds.h"
 #include "Equipment.h"
+#include "ICafeNotifier.h"
+#include "ICafeObserver.h"
 
-class Cook : public Person, public CookNotifier
+class Cook : public Person, public ICafeNotifier<ICafeObserver<Cook>>
 {
 
 public:
@@ -50,6 +51,8 @@ protected:
 	virtual void  makeDishList();
 	virtual Dish* makeNextDishFromOrder();
 	virtual void clearDishList();
+
+	virtual void Notify( int command );
 
 protected:
 	Equipment* equipment_;

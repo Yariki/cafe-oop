@@ -33,6 +33,7 @@ int main()
 				break;
 			}
 		}while(menu  != 0);
+		delete cafe;
 	}
 	catch (std::exception* ex)
 	{

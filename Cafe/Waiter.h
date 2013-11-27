@@ -13,20 +13,22 @@
 #include <vector>
 #include <tuple>
 #include <queue>
-#include "WaiterNotifier.h"
 #include "IngredientKinds.h"
+#include "ICafeNotifier.h"
+#include "ICafeObserver.h"
+
 
 class Client;
 class Dish;
 
-class Waiter : public Person, public WaiterNotifier
+class Waiter : public Person, public ICafeNotifier<ICafeObserver<Waiter>>
 {
 
 public:
 	Waiter();
 	virtual ~Waiter();
 
-	void getOrderFromClient();
+	void getOrderFromClientAndPassToChef();
 	void setOrder(Order* order);
 	void approveAlternativeInredientsInClient(Client* client, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* alterList);
 	void setApprovedIngredients(std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp);
@@ -39,8 +41,10 @@ public:
 	Order* giveOrderToChef();
 	Dish* getDishForClient();
 
+	virtual void Notify( int command );
+
 private:
-	std::queue<Order*> orders_;
+	std::vector<Order*>* orders_;
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* tempAlternativeList;
 	Client* client_;
 	Dish* dish_;

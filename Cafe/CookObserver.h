@@ -33,7 +33,7 @@ class CookObserver : public ICafeObserver<Cook>
 {
 
 public:
-	CookObserver(ICafe* cafe) {}
+	CookObserver(ICafe* cafe) { cafe_ = cafe;}
 	virtual ~CookObserver();
 
 	virtual void Update( int command, Cook* obj );

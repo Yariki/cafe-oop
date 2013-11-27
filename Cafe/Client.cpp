@@ -21,11 +21,11 @@ Client::~Client(){
 
 Client::Client(double money){
 	money_ = money;
-	state_ = NotServe;
+	state_ = New;
 }
 
 Client::Client(){
-	state_ = NotServe;
+	state_ = New;
 }
 
 Order* Client::checkMenuAndMakeOrder( Cafe_Menu* menu )
@@ -89,4 +89,9 @@ void Client::approveIngredients( std::map<Dish*,std::vector<std::tuple<Ingredien
 				Ingredient::GetIngredientName(std::get<0>(tempTuple)),tempDish->getName());
 		}	
 	}
+}
+
+void Client::setState( ClientState state )
+{
+	state_ = state;
 }

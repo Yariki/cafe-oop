@@ -15,16 +15,16 @@ class WaiterObserver : public ICafeObserver<Waiter>
 {
 
 public:
-	WaiterObserver(ICafe*  cafe) {}
+	WaiterObserver(ICafe*  cafe) {cafe_ = cafe;}
 	virtual ~WaiterObserver();
 
 	virtual void Update( int command, Waiter* obj );
 
 private:
-	void InternalGetOrderFromClient(Waiter* const waiter);
-	void InternalApproveIngredientsFromClient(Waiter* const waiter);
-	void InternalPassDishToClient(Waiter* const waiter);
-	void InternalPassOrderToChef(Waiter* const waiter);
+	void InternalGetOrderFromClient(Waiter* waiter);
+	void InternalApproveIngredientsFromClient(Waiter* waiter);
+	void InternalPassDishToClient(Waiter* waiter);
+	void InternalPassOrderToChef(Waiter* waiter);
 	
 private:
 	ICafe* cafe_;

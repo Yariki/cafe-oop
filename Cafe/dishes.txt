@@ -1,10 +1,10 @@
 Donburi
-Rice Balls (Onigiri)
-Chicken Curry
-Maple-Sugar Pie 
-Crab Cakes
-Crab Meat Sushi
+Rice
+Chicken_Curry
+Maple_Sugar
+Crab_Cakes
+Crab_Meat_Sushi
 Carbonara
-Risotto with saffron
-Butter Chicken 
-Fried Pork with Parsley Gravy
+Risotto
+Butter_Chicken 
+Fried_Pork_with_Parsley_Gravy
