@@ -39,7 +39,7 @@ Order* Waiter::giveOrderToChef(){
 }
 
 Dish* Waiter::getDishForClient(){
-	return nullptr;
+	return dish_;
 }
 
 void Waiter::approveAlternativeInredientsInClient(Client* client, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* alterList )

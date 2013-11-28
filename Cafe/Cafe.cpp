@@ -64,7 +64,7 @@ void Cafe::simulation()
 {
 	if(!clients_->size())
 	{
-		printf_s("Clients is empty");
+		printf_s("Clients is empty\n");
 		return;
 	}
 	CafeTimer timer;
@@ -209,7 +209,7 @@ void Cafe::readFile(std::string filename, std::vector<std::string>* list)
 	std::ifstream nameFile(filename);
 	if(!nameFile)
 	{
-		printf_s("Error while reading file %s",filename);
+		printf_s("Error while reading file %s\n",filename.c_str());
 		throw new std::exception(filename.c_str());
 	}
 	for (;!(nameFile.eof());)

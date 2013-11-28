@@ -68,7 +68,7 @@ void Client::eat( Dish* dish )
 {
 	if(!dish)
 		return;
-	printf_s("Client '%s' eat '%s'",this->getFullName(),dish->getName());
+	printf_s("Client '%s' eat '%s'",this->getFullName().c_str(),dish->getName().c_str());
 	delete dish;
 	dish = nullptr;
 }

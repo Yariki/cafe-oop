@@ -10,7 +10,7 @@ int main()
 	try
 	{
 		Cafe* cafe = new Cafe();
-		printf_s("RGR of student %s group %s","Symon Anastasiya", "");
+		printf_s("RGR of student %s group %s\n\n","Symon Nastya", "");
 		int menu;
 		do{
 			printf_s("\tSelect action:\n");
@@ -37,7 +37,7 @@ int main()
 	}
 	catch (std::exception* ex)
 	{
-		printf_s("Error: %s",ex->what());
+		printf_s("Error: %s\n",ex->what());
 		delete ex;
 	}
 	system("pause");

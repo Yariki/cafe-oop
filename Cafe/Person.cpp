@@ -55,7 +55,6 @@ Specialization Person::getSpecialization(){
 }
 
 std::string Person::getFullName(){
-	char fullname [255];
-	sprintf_s(fullname,"%s %s",getName(),getSurname());
-	return std::string(fullname);
+	std::string fullname = getName() + " " + getSurname();
+	return fullname;
 }

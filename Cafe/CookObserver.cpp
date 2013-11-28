@@ -117,7 +117,7 @@ void CookObserver::InternalCookInjured( Cook* const cook )
 void CookObserver::InternalApplyEquipment( Cook* const cook )
 {
 	Equipment* eq = nullptr;
-	printf_s("Kitchen has %s",CafeKitchen::getKitchenStateName(cafe_->getKitchen()->getState()));
+	printf_s("Kitchen has %s\n",CafeKitchen::getKitchenStateName(cafe_->getKitchen()->getState()).c_str());
 	if(cafe_->getKitchen()->getState() == CafeKitchen::Normal)
 	{
 		eq = cafe_->getKitchen()->getFirstFreeEquipment();

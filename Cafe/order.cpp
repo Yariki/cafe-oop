@@ -48,12 +48,13 @@ void Order::deleteDishes(std::vector<Dish*> dishes)
 
 double Order::getTotalCost()
 {
-        return total_cost_;
+    return total_cost_;
 }
 
 std::vector<Dish*>* Order::getOrder()
 {
-        return (std::vector<Dish*>*)&order_;
+	auto list = (std::vector<Dish*>*)&order_;
+    return list;
 }
 
 void Order::calculateCost()

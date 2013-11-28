@@ -48,12 +48,12 @@ void Cook::cook(){
 	readyDish_ = makeNextDishFromOrder();
 	if(readyDish_)
 	{
-		printf_s("Cook %s pass ready dish '%s' to %s",getFullName(),readyDish_->getName(),currentOrder_->getWaiter()->getFullName());
+		printf_s("Cook %s pass ready dish '%s' to %s\n",getFullName().c_str(),readyDish_->getName().c_str(),currentOrder_->getWaiter()->getFullName().c_str());
 		Notify(PassDishToWaiter);
 	}
 	else
 	{
-		printf_s("Cook %s finished working...",getFullName());
+		printf_s("Cook %s finished working...\n",getFullName().c_str());
 		Notify(ReleaseEquipment);
 		applyEquipment(nullptr);
 		state_ = CookFree;
@@ -64,11 +64,11 @@ void Cook::cook(){
 
 bool Cook::intitializeCookOrder(){
 
-	printf_s("Cook %s started his work...",getFullName());
+	printf_s("Cook %s started his work...\n",getFullName().c_str());
 	state_ = CookBusy;
 	Notify(ApplyEquipment);
 	if(equipment_)
-		printf_s("Cook %s use % for cooking",getFullName(),equipment_->getName());
+		printf_s("Cook %s use %s for cooking\n",getFullName().c_str(),equipment_->getName().c_str());
 	return true;
 }
 
@@ -100,8 +100,8 @@ Dish* Cook::makeNextDishFromOrder(){
 std::vector<Dish*>* Cook::getDishesIngredientsForCheking()
 {
 	std::vector<Dish*>* dishes = new std::vector<Dish*>();
-	for(auto it = currentOrder_->getOrder()->begin(); it != currentOrder_->getOrder()->begin();++it){
-		Dish* d = new Dish(**it);
+	for(size_t i = 0; i <  currentOrder_->getOrder()->size();i++){
+		Dish* d = new Dish(*currentOrder_->getOrder()->at(i));
 		dishes->push_back(d);
 	}
 	return dishes;
@@ -111,7 +111,7 @@ void Cook::setCheckedIngredients( std::vector<Dish*>* checkedList )
 {
 	if(!checkedList)
 	{
-		printf_s("Cook %s says that:'All ingredients are enough'...",getFullName());
+		printf_s("Cook %s says that:'All ingredients are enough'...\n",getFullName().c_str());
 		return;
 	}
 
@@ -137,7 +137,7 @@ void Cook::setCheckedIngredients( std::vector<Dish*>* checkedList )
 
 void Cook::makeDishList()
 {
-	for(int i =0 ; i < currentOrder_->getOrder()->size();i++){
+	for(size_t i =0 ; i < currentOrder_->getOrder()->size();i++){
 		Dish* dish = currentOrder_->getOrder()->at(i);
 		dishList_.push_back(dish);
 	}
