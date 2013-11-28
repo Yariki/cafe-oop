@@ -60,9 +60,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y "$(ProjectDir)dishes.txt" $(OutDir)
-copy /Y "$(ProjectDir)names.txt" $(OutDir)
-copy /Y "$(ProjectDir)surnames.txt" $(OutDir)</Command>
+      <Command>xcopy /Y "$(ProjectDir)*.txt" "$(OutDir)" /s /e /i
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
