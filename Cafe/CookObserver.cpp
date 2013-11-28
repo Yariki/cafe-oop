@@ -190,7 +190,11 @@ void CookObserver::InternalSetOrderToCook( Chef* const chef )
 {
 	Cook* cook = cafe_->getCook();
 	if(!cook)
+	{
+		printf_s("All cooks are busy... Clients should wait...\n");
 		return;
+	}
+		
 	cook->setOrder(chef->getOrder());
 }
 

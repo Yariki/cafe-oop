@@ -15,7 +15,8 @@ using std::cin;
 
 #include "Cafe.h"
 
-#define CLIENT_MAX_COUNT 10
+#define CLIENT_MAX_COUNT 20
+#define COOK_MAX_COUNT 3
 #define PERSONAL_MAX_COUNT 10
 #define SECONDS_SLEEP_IN_MS 2000
 
@@ -78,13 +79,17 @@ void Cafe::simulation()
 		{
 			Sleep(SECONDS_SLEEP_IN_MS);
 			generateClientForProcessing();
-			printf_s("System time is %dh:%dm\n",ellapsed / 60, ellapsed % 60);
+			printf_s("System time is %dh:%dm (%ds)\n",ellapsed / 60, ellapsed % 60,ellapsed);
 		}
 		else if(temp > 0 && temp < 5)
 		{
 			if(isNotServedClientPresent())
 			{
 				processNewClient();
+			}
+			if(getChef() != nullptr && getChef()->getOrdersCount() > 0)
+			{
+				getChef()->passOrderToCook();
 			}
 			for(size_t i = 0;i < cooks_->size(); i++)
 			{
@@ -165,7 +170,7 @@ void Cafe::createStoreHouse(){
 }
 
 void Cafe::createCooks(){
-	for(int i= 0;i < PERSONAL_MAX_COUNT;i++){
+	for(int i= 0;i < COOK_MAX_COUNT;i++){
 		auto cook = new Cook();
 		cook->setName(generateName());
 		cook->setSurname(generateSurname());
@@ -279,10 +284,14 @@ Client* const Cafe::getClient()
 
 Cook* const Cafe::getCook()
 {
-	Cook* cook = static_cast<Cook*>(*std::find_if(cooks_->begin(),cooks_->end(),
-		[](Cook* temp) -> bool{
-			return temp->getStatus() == CookFree;
-	}));
+	Cook* cook = nullptr;
+	for(auto it = cooks_->begin(); it != cooks_->end();++it)
+	{
+		if((*it)->getStatus() != CookFree)
+			continue;
+		cook = static_cast<Cook*>(*it);
+		break;
+	}
 	return cook;
 }
 

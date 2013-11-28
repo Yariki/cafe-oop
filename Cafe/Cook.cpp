@@ -56,6 +56,7 @@ void Cook::cook(){
 	{
 		printf_s("Cook %s finished working...\n",getFullName().c_str());
 		Notify(ReleaseEquipment);
+		printf_s("The equipment '%s' has been released...\n",equipment_->getName().c_str());
 		applyEquipment(nullptr);
 		state_ = CookFree;
 		currentOrder_ = nullptr;

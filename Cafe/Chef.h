@@ -9,7 +9,7 @@
 
 #include "Cook.h"
 #include "order.h"
-#include <vector>
+#include <queue>
 
 class Chef : public Cook
 {
@@ -19,12 +19,15 @@ public:
 	virtual ~Chef();
 
 	virtual void setOrder( Order* order );
+	virtual Order* getOrder();
+	void passOrderToCook();
+	int getOrdersCount() const;
 
 public:
 	
 
 private:
-	std::vector<Order> orders_;
+	std::queue<Order*> orders_;
 
 };
 #endif // !defined(EA_76A3FF41_F6D6_4227_A5E3_766AFD2CB231__INCLUDED_)

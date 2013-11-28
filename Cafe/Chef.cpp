@@ -19,6 +19,23 @@ Chef::Chef(){
 
 void Chef::setOrder( Order* order )
 {
-	currentOrder_ = order;
+	if(order)
+		orders_.push(order);
+}
+
+Order* Chef::getOrder()
+{
+	Order* temp = orders_.front();
+	orders_.pop();
+	return temp;
+}
+
+void Chef::passOrderToCook()
+{
 	Notify(SetOrderToCook);
+}
+
+int Chef::getOrdersCount() const
+{
+	return orders_.size();
 }
