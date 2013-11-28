@@ -14,6 +14,7 @@ enum CookCommands
 	CookInjured,
 	ApplyEquipment,
 	ReleaseEquipment,
-	SetOrderToCook
+	SetOrderToCook,
+	PassSneckToWaiter
 };
 #endif // !defined(EA_335D96FF_9186_42f5_A900_B5F7CDAE46E6__INCLUDED_)

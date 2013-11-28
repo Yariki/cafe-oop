@@ -15,6 +15,7 @@ using std::cin;
 
 #include "Cafe.h"
 
+#define CLIENT_MAX_COUNT 10
 #define PERSONAL_MAX_COUNT 10
 #define SECONDS_SLEEP_IN_MS 2000
 
@@ -73,13 +74,13 @@ void Cafe::simulation()
 	while( ( ellapsed = (int)timer.getEllapsed())  < 600 )
 	{
 		int temp = rand() % 10;
-		if(temp > 7)
+		if(temp > 5)
 		{
 			Sleep(SECONDS_SLEEP_IN_MS);
 			generateClientForProcessing();
 			printf_s("System time is %dh:%dm\n",ellapsed / 60, ellapsed % 60);
 		}
-		else if(temp > 0 && temp < 7)
+		else if(temp > 0 && temp < 5)
 		{
 			if(isNotServedClientPresent())
 			{
@@ -90,9 +91,15 @@ void Cafe::simulation()
 				auto cook = cooks_->at(i);
 				if(!cook)
 					continue;
-				if(cook->getStatus() == CookBusy)
+
+				switch (cook->getStatus())
 				{
+				case CookSneck:
+					cook->passSneck();
+					break;
+				case CookBusy:
 					cook->cook();
+						break;
 				}
 			}
 		}
@@ -224,7 +231,7 @@ void Cafe::generateClients()
 {
 	if(clients_->size())
 		deleteAndClearClients();
-	for(int i = 0; i < PERSONAL_MAX_COUNT;i++)
+	for(int i = 0; i < CLIENT_MAX_COUNT;i++)
 	{
 		auto client = new Client(rand() % 1000);
 		client->setName(generateName());
@@ -281,11 +288,13 @@ Cook* const Cafe::getCook()
 
 void Cafe::generateClientForProcessing()
 {
-	for(size_t i = 0; clients_->size();i++)
+	for(size_t i = 0; i < clients_->size();i++)
 	{
 		if(clients_->at(i)->getState() == New)
 		{
-			clients_->at(i)->setState(NotServe);
+			Client* cl = clients_->at(i);
+			cl->setState(NotServe);
+			printf_s("New client - %s\n",cl->getFullName().c_str());
 			break;
 		}
 	}

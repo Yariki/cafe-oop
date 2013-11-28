@@ -39,3 +39,8 @@ std::vector<Dish*> Cafe_Menu::getMenu()
 	menu.insert(menu.end(), main_dishes_.begin(), main_dishes_.end());
 	return menu;
 }
+
+std::vector<Dish*>* Cafe_Menu::getSneckList() const
+{
+	return (std::vector<Dish*>* const)&snecks_;
+}

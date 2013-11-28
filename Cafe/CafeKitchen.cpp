@@ -80,11 +80,11 @@ void CafeKitchen::tryToGenerateAccedent()
 	try
 	{
 		auto mode = rand() % 100;
-		if(mode > 0 && mode << 10)
+		if(mode > 0 && mode < 10)
 		{
 			throw new ElectricityException("Electricity is down");
 		}
-		else if(mode > 10 && mode << 20)
+		else if(mode > 10 && mode < 20)
 		{
 			throw new GasException("Gas is down");
 		}
@@ -128,7 +128,7 @@ void CafeKitchen::processException( BaseCafeException* ex,EnergyKinds energy )
 {
 	if(!ex)
 		return;
-	cout << ex->getMessage();
+	cout << ex->getMessage() << std::endl;
 	delete ex;
 
 	for(auto it = equipments_.begin(); it != equipments_.end();++it)

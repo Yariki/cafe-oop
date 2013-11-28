@@ -5,6 +5,7 @@
 ///////////////////////////////////////////////////////////
 
 #include <algorithm>
+#include <vector>
 #include "CookObserver.h"
 #include "CookCommands.h"
 #include "Ingredient.h"
@@ -14,6 +15,9 @@
 #include "Equipment.h"
 #include "EquipmentStatus.h"
 #include "CafeKitchen.h"
+#include "dish.h"
+#include "cafe_menu.h"
+#include "Client.h"
 
 
 CookObserver::~CookObserver(){
@@ -41,6 +45,9 @@ void CookObserver::Update( int command, Cook* obj )
 		break;
 	case SetOrderToCook:
 		InternalSetOrderToCook((Chef*)obj);
+		break;
+	case  PassSneckToWaiter:
+		InternalPassSnakToWaiter(obj);
 		break;
 	}
 }
@@ -185,4 +192,13 @@ void CookObserver::InternalSetOrderToCook( Chef* const chef )
 	if(!cook)
 		return;
 	cook->setOrder(chef->getOrder());
+}
+
+void CookObserver::InternalPassSnakToWaiter( Cook* obj )
+{
+	Cafe_Menu* menu = cafe_->getMenu();
+	Dish* sneck = new Dish(*menu->getSneckList()->at(rand() % menu->getSneckList()->size()));
+	Client* cl = obj->getOrder()->getClient();
+	printf_s("Cook %s pass to %s sneck '%s' from restaurant... \n",obj->getFullName().c_str(),cl->getFullName().c_str(),sneck->getName().c_str());
+	obj->getOrder()->getWaiter()->passDishToClient(cl,sneck);
 }

@@ -25,7 +25,6 @@ public:
 
 private:
 	std::vector<Order> orders_;
-	std::vector<Cook> helpers_;
 
 };
 #endif // !defined(EA_76A3FF41_F6D6_4227_A5E3_766AFD2CB231__INCLUDED_)

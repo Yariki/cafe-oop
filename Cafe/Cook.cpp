@@ -38,9 +38,10 @@ Order* Cook::getOrder(){
 }
 
 
-Dish* Cook::getSnack(){
+void Cook::passSneck(){
 
-	return  NULL;
+	Notify(PassSneckToWaiter);
+	state_ = CookBusy;
 }
 
 
@@ -65,7 +66,7 @@ void Cook::cook(){
 bool Cook::intitializeCookOrder(){
 
 	printf_s("Cook %s started his work...\n",getFullName().c_str());
-	state_ = CookBusy;
+	state_ = CookSneck;
 	Notify(ApplyEquipment);
 	if(equipment_)
 		printf_s("Cook %s use %s for cooking\n",getFullName().c_str(),equipment_->getName().c_str());

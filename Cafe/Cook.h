@@ -30,7 +30,7 @@ public:
 
 	virtual void setOrder(Order* order);
 	virtual Order* getOrder();
-	virtual Dish* getSnack();
+	virtual void passSneck();
 	virtual void cook();
 	virtual bool intitializeCookOrder();
 

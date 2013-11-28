@@ -16,6 +16,7 @@ public:
     void addMainDish(Dish* d);
     void deleteMainDish(Dish* d);
     std::vector<Dish*> getMenu();
+	std::vector<Dish*>* getSneckList() const;
 
 private:
     std::vector<Dish*> snecks_;

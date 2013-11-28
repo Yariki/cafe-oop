@@ -12,6 +12,6 @@ enum CookStatus
 	CookBusy,
 	CookFree,
 	CookReady,
-	CookStandBy
+	CookSneck
 };
 #endif // !defined(EA_8EAA39A2_33DE_42f3_BC0F_4C9E1A9DEA89__INCLUDED_)

@@ -14,7 +14,8 @@ Dish::Dish(void)
 Dish::~Dish(void)
 {
 	for(auto it = ingridients_.begin(); it != ingridients_.end();++it){
-		delete it->first;
+		if(it->first)
+			delete it->first;
 	}
 	ingridients_.clear();
 }
@@ -25,6 +26,20 @@ Dish::Dish(std::string name, double cost)
         cost_ = (cost > 0) ? cost : 0;
 		generateIngridients();
 }
+
+Dish::Dish(const Dish& dish)
+{
+	name_ = dish.getName();
+	cost_ = dish.getCost();
+	auto ingList = dish.getIngridients();
+	for(auto it = ingList->begin(); it != ingList->end();++it)
+	{
+		auto temp = it->first;
+		auto ing = new Ingredient(temp->getIngredient());
+		ingridients_.insert(std::pair<Ingredient*,double>(ing,rand() % 30));
+	}
+}
+
 
 void Dish::setName(std::string name)
 {
@@ -56,7 +71,7 @@ void Dish::generateIngridients()
 	}
 }
 
-std::map<Ingredient*,double>* Dish::getIngridients()
+std::map<Ingredient*,double>* Dish::getIngridients() const
 {
-	return &ingridients_;
+	return (std::map<Ingredient*,double>* const)&ingridients_;
 }

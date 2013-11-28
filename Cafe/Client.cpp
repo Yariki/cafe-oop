@@ -68,7 +68,7 @@ void Client::eat( Dish* dish )
 {
 	if(!dish)
 		return;
-	printf_s("Client '%s' eat '%s'",this->getFullName().c_str(),dish->getName().c_str());
+	printf_s("Client '%s' eat '%s'\n",this->getFullName().c_str(),dish->getName().c_str());
 	delete dish;
 	dish = nullptr;
 }
@@ -85,8 +85,8 @@ void Client::approveIngredients( std::map<Dish*,std::vector<std::tuple<Ingredien
 			bool isApprove = (rand() % 2) > 1 ? true : false;
 			std::get<1>(tempTuple) = isApprove;
 
-			printf_s("Client %s %s %s for '%s'",getFullName(),std::get<1>(tempTuple) ? "has approved" : "hasn't approve",
-				Ingredient::GetIngredientName(std::get<0>(tempTuple)),tempDish->getName());
+			printf_s("Client %s %s %s for '%s'\n",getFullName().c_str(),std::get<1>(tempTuple) ? "has approved" : "hasn't approve",
+				Ingredient::GetIngredientName(std::get<0>(tempTuple)).c_str(),tempDish->getName().c_str());
 		}	
 	}
 }
