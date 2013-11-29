@@ -82,7 +82,7 @@ void Client::approveIngredients( std::map<Dish*,std::vector<std::tuple<Ingredien
 		for(size_t i = 0; i < tempList.size();i++)
 		{
 			auto tempTuple = tempList.at(i);
-			bool isApprove = (rand() % 2) > 1 ? true : false;
+			bool isApprove = (rand() % 100) > 50 ? true : false;
 			std::get<1>(tempTuple) = isApprove;
 
 			printf_s("Client %s %s %s for '%s'\n",getFullName().c_str(),std::get<1>(tempTuple) ? "has approved" : "hasn't approve",

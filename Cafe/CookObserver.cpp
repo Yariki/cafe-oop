@@ -173,6 +173,7 @@ void CookObserver::checkIngredientsInStore( std::vector<Dish*>* dishList, CafeSt
 			if(store->isEnoughIngredient(tempIng->getIngredient(),count))
 			{
 				store->takeIngridient(tempIng->getIngredient(),count);
+				printf_s("Get ingredient '%s' - %lf\n",tempIng->getIngridientName().c_str(),count);
 			}
 			else
 			{
