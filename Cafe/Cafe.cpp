@@ -17,7 +17,7 @@ using std::cin;
 
 #define CLIENT_MAX_COUNT 20
 #define COOK_MAX_COUNT 3
-#define PERSONAL_MAX_COUNT 10
+#define WAITERS_MAX_COUNT 5
 #define SECONDS_SLEEP_IN_MS 2000
 
 #define DISHES_FILENAME "dishes.txt"
@@ -107,6 +107,17 @@ void Cafe::simulation()
 						break;
 				}
 			}
+			if(getChef() != nullptr)
+			{
+				switch (getChef()->getStatus())
+				{
+					case CookBusy:
+						getChef()->cook();
+						break;
+					case CookSneck:
+						getChef()->passSneck();
+				}
+			}
 		}
 	}
 }
@@ -141,7 +152,7 @@ void Cafe::createChef(){
 }
 
 void Cafe::createWaiters(){
-	for (int i= 0;i < PERSONAL_MAX_COUNT;i++)
+	for (int i= 0;i < WAITERS_MAX_COUNT;i++)
 	{
 		auto waiter = new Waiter();
 		waiter->setName(generateName());

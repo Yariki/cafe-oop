@@ -51,6 +51,7 @@ protected:
 	virtual void  makeDishList();
 	virtual Dish* makeNextDishFromOrder();
 	virtual void clearDishList();
+	virtual void prepareForCooking();
 
 	virtual void Notify( int command );
 

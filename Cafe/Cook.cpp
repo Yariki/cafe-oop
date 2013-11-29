@@ -27,9 +27,7 @@ void Cook::setOrder(Order* order){
 		return;
 	currentOrder_ = order;
 	currentOrder_->setCook(this);
-	makeDishList();
-	Notify(CheckIngridients);
-	intitializeCookOrder();
+	prepareForCooking();
 }
 
 
@@ -170,5 +168,13 @@ void Cook::Notify( int command )
 	if(!observer_)
 		return;
 	observer_->Update(command,this);
+}
+
+void Cook::prepareForCooking()
+{
+	makeDishList();
+	Notify(CheckIngridients);
+	intitializeCookOrder();
+
 }
 

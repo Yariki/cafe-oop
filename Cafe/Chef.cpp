@@ -23,13 +23,6 @@ void Chef::setOrder( Order* order )
 		orders_.push(order);
 }
 
-Order* Chef::getOrder()
-{
-	Order* temp = orders_.front();
-	orders_.pop();
-	return temp;
-}
-
 void Chef::passOrderToCook()
 {
 	Notify(SetOrderToCook);
@@ -38,4 +31,18 @@ void Chef::passOrderToCook()
 int Chef::getOrdersCount() const
 {
 	return orders_.size();
+}
+
+void Chef::prepareNextOrder()
+{
+	currentOrder_ = getOrderForCook();
+	if(currentOrder_ != nullptr)
+		prepareForCooking();
+}
+
+Order* Chef::getOrderForCook()
+{
+	Order* temp = orders_.front();
+	orders_.pop();
+	return temp;
 }

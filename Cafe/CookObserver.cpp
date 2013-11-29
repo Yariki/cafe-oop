@@ -192,10 +192,16 @@ void CookObserver::InternalSetOrderToCook( Chef* const chef )
 	if(!cook)
 	{
 		printf_s("All cooks are busy... Clients should wait...\n");
+		Chef* chef = cafe_->getChef();
+		if(chef->getStatus() == CookFree && chef->getOrdersCount() > 0)
+		{
+			printf_s("Chef %s is free. So he will cook next order in queue...\n",chef->getFullName().c_str());
+			chef->prepareNextOrder();
+		}
 		return;
 	}
 		
-	cook->setOrder(chef->getOrder());
+	cook->setOrder(chef->getOrderForCook());
 }
 
 void CookObserver::InternalPassSnakToWaiter( Cook* obj )

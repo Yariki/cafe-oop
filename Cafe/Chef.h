@@ -19,9 +19,11 @@ public:
 	virtual ~Chef();
 
 	virtual void setOrder( Order* order );
-	virtual Order* getOrder();
+	Order* getOrderForCook();
 	void passOrderToCook();
 	int getOrdersCount() const;
+
+	void prepareNextOrder();
 
 public:
 	
