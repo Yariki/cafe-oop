@@ -72,7 +72,7 @@ void Cafe::simulation()
 	CafeTimer timer;
 	timer.start();
 	int ellapsed = 0.0;
-	while( ( ellapsed = (int)timer.getEllapsed())  < 600 )
+	while( ( ellapsed = (int)timer.getEllapsed())  < 350 )
 	{
 		int temp = rand() % 10;
 		if(temp > 5)

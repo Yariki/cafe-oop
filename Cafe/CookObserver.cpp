@@ -84,10 +84,11 @@ void CookObserver::InternalCheckIngredients( Cook* const cook )
 				IngredientKinds k = std::get<0>(tup);
 				bool approved = std::get<1>(tup);
 
-				std::vector<IngredientPair> list = tempList[dish];
-				IngredientPair p = (*std::find_if(list.begin(),list.end(),[k](IngredientPair& pair) ->  bool {
+				std::vector<IngredientPair>* list = &tempList[dish];
+				auto iter = std::find_if(list->begin(),list->end(),[&k](IngredientPair& pair) ->  bool {
 					return pair.ingredientTarget == k;
-				})) ;
+				});
+				IngredientPair p = (*iter);
 
 				Ingredient* key = nullptr;
 				for(auto it = dish->getIngridients()->begin();it != dish->getIngridients()->end();++it)
@@ -98,7 +99,7 @@ void CookObserver::InternalCheckIngredients( Cook* const cook )
 						break;
 					}
 				}
-
+				list->erase(iter);
 				dish->getIngridients()->erase(key);
 				delete key;
 
