@@ -6301,6 +6301,41 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   margin-right: 20px;
   margin-bottom: 20px;
 }
+
+.metrouicss .image-container-100 {
+  position: relative;
+  padding: 5px 5px 50px;
+  background-color: #1e1e1e;
+  width: 100%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.metrouicss .image-container-100 img {
+  width: 100%;
+  height: auto;
+}
+.metrouicss .image-container-100 > .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  font-size: 8pt;
+  color: #fff;
+  line-height: 14px;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.metrouicss .image-container-100.light {
+  background-color: #ccc;
+}
+.metrouicss .image-container-100.light > .overlay {
+  color: #1e1e1e;
+}
+
+
 .metrouicss .image-container img {
   width: 100%;
   height: auto;
