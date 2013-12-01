@@ -51,6 +51,7 @@ private:
 	void InternalReleaseEquipment(Cook* const cook);
 	void InternalSetOrderToCook(Chef* const chef);
 	void InternalPassSnakToWaiter( Cook* obj );
+	void InternalFinishedWork(Cook* obj);
 private:
 	ICafe* cafe_;
 };

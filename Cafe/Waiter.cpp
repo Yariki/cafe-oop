@@ -87,3 +87,14 @@ void Waiter::Notify( int command )
 		return;
 	observer_->Update(command,this);
 }
+
+void Waiter::processBillFromClient( Order* order )
+{
+	currentorder_ = order;
+	Notify(ProcessBill);
+}
+
+Order* Waiter::getCurrentOrder()
+{
+	return currentorder_;
+}

@@ -28,6 +28,7 @@ public:
 	ClientState getState() const;
 	void eat(Dish* dish);
 	void approveIngredients(std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp);
+	void payBill(double cost);
 
 private:
 	void setMenu(Cafe_Menu* menu);

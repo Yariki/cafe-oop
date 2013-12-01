@@ -29,6 +29,9 @@ void WaiterObserver::Update( int command, Waiter* obj )
 	case PassOrderToChef:
 		InternalPassOrderToChef(obj);
 		break;
+	case ProcessBill:
+		InternalProcessBill(obj);
+		break;
 	}
 }
 
@@ -38,6 +41,7 @@ void WaiterObserver::InternalGetOrderFromClient(Waiter* waiter)
 	Cafe_Menu* menu = cafe_->getMenu();
 	Order* order = client->checkMenuAndMakeOrder(menu);
 	waiter->setOrder(order);
+	cafe_->addOrder(order);
 }
 
 void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* waiter)
@@ -62,4 +66,12 @@ void WaiterObserver::InternalPassOrderToChef(Waiter*  waiter)
 	if(!chef)
 		return;
 	chef->setOrder(order);
+}
+
+void WaiterObserver::InternalProcessBill( Waiter* waiter )
+{
+	Order* order = waiter->getCurrentOrder();
+	double cost = order->getTotalCost();
+	order->getClient()->payBill(cost);
+	cafe_->deleteOrder(order);
 }

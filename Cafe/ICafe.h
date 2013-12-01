@@ -38,6 +38,8 @@ public:
 	virtual Cafe_Menu* const getMenu() = 0;
 	virtual Client* const getClient() = 0;
 	virtual Cook* const getCook() = 0;
+	virtual void addOrder(Order* order) = 0;
+	virtual void deleteOrder(Order* order) = 0;
 
 };
 #endif // !defined(EA_D08F78D6_8325_4fee_AA0E_B3423D022D63__INCLUDED_)

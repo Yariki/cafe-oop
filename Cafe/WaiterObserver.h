@@ -25,6 +25,7 @@ private:
 	void InternalApproveIngredientsFromClient(Waiter* waiter);
 	void InternalPassDishToClient(Waiter* waiter);
 	void InternalPassOrderToChef(Waiter* waiter);
+	void InternalProcessBill(Waiter* waiter);
 	
 private:
 	ICafe* cafe_;

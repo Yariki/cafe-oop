@@ -49,7 +49,12 @@ public:
 
 	virtual Cook* const getCook();
 
+	virtual void addOrder( Order* order );
+
+	virtual void deleteOrder( Order* order );
+
 private:
+	std::vector<Order*>* orders_;
 	std::vector<Cook*>* cooks_;
 	std::vector<Client*>* clients_;
 	std::vector<Waiter*>* waiters_;
@@ -94,6 +99,7 @@ private:
 
 	void deleteAndClearClients();
 
+	void deleteOrders();
 
 	friend class WaiterObserver;
 	friend class CookObserver;

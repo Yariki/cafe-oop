@@ -95,3 +95,9 @@ void Client::setState( ClientState state )
 {
 	state_ = state;
 }
+
+void Client::payBill( double cost )
+{
+	money_ -= cost;
+	printf_s("Client %s paid - %lf of gold\n",getFullName().c_str(),cost);
+}

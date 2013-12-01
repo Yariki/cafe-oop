@@ -35,11 +35,13 @@ public:
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* getIngredientsForApprove();
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* getApprovedIngerients();
 	void passDishToClient(Client* client,Dish* dish);
+	void processBillFromClient(Order* order);
 
 
 	Client* getClient();
 	Order* giveOrderToChef();
 	Dish* getDishForClient();
+	Order* getCurrentOrder();
 
 	virtual void Notify( int command );
 
@@ -48,6 +50,7 @@ private:
 	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* tempAlternativeList;
 	Client* client_;
 	Dish* dish_;
+	Order* currentorder_;
 
 };
 #endif // !defined(EA_283F64EB_2586_471d_B57C_0D322667A2A3__INCLUDED_)

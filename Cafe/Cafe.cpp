@@ -41,7 +41,7 @@ Cafe::~Cafe(){
 	deleteCooks();
 
 	deleteAndClearClients();
-
+	deleteOrders();
 
 	names_.clear();
 	surnames_.clear();
@@ -72,7 +72,7 @@ void Cafe::simulation()
 	CafeTimer timer;
 	timer.start();
 	int ellapsed = 0.0;
-	while( ( ellapsed = (int)timer.getEllapsed())  < 350 )
+	while( ( ellapsed = (int)timer.getEllapsed())  < 120 )
 	{
 		int temp = rand() % 10;
 		if(temp > 5)
@@ -133,6 +133,7 @@ void Cafe::initialize(){
 	cooks_ = new std::vector<Cook*>();
 	clients_ = new std::vector<Client*>();
 	waiters_ = new std::vector<Waiter*>();
+	orders_ = new std::vector<Order*>();
 	readFiles();
 	createObservers();
 	createChef();
@@ -393,5 +394,38 @@ void Cafe::deleteCooks()
 	}
 	cooks_->clear();
 	delete cooks_;
+}
+
+void Cafe::deleteOrders()
+{
+	if(!orders_->empty())
+	{
+		for(size_t i = 0 ; i < orders_->size();i++)
+		{
+			delete orders_->at(i);
+		}
+	}
+	orders_->clear();
+	delete orders_;
+	orders_ = nullptr;
+}
+
+
+void Cafe::addOrder( Order* order )
+{
+	if(!order)
+		return;
+	orders_->push_back(order);
+}
+
+void Cafe::deleteOrder( Order* order )
+{
+	if(!order)
+		return;
+	auto it = std::find_if(orders_->begin(), orders_->end(),[&order](Order* temp)->bool{
+		return temp == order;
+	});
+	orders_->erase(it);
+	delete order;
 }
 

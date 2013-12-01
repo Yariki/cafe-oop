@@ -49,6 +49,9 @@ void CookObserver::Update( int command, Cook* obj )
 	case  PassSneckToWaiter:
 		InternalPassSnakToWaiter(obj);
 		break;
+	case FinishedWork:
+		InternalFinishedWork(obj);
+		break;
 	}
 }
 
@@ -213,4 +216,11 @@ void CookObserver::InternalPassSnakToWaiter( Cook* obj )
 	Client* cl = obj->getOrder()->getClient();
 	printf_s("Cook %s pass to %s sneck '%s' from restaurant... \n",obj->getFullName().c_str(),cl->getFullName().c_str(),sneck->getName().c_str());
 	obj->getOrder()->getWaiter()->passDishToClient(cl,sneck);
+}
+
+void CookObserver::InternalFinishedWork( Cook* obj )
+{
+	Order* order = obj->getOrder();
+	Waiter* waiter = order->getWaiter();
+	waiter->processBillFromClient(order);
 }
