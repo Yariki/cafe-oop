@@ -14,6 +14,7 @@
 #include "order.h"
 #include "cafe_menu.h"
 #include "ClientState.h"
+#include "Types.h"
 
 class Client : public Person
 {
@@ -27,7 +28,7 @@ public:
 	void setState(ClientState state);
 	ClientState getState() const;
 	void eat(Dish* dish);
-	void approveIngredients(std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp);
+	void approveIngredients(std::map<Dish*,ApprovedItem>* temp,Cafe_Menu* menu);
 	void payBill(double cost);
 
 private:

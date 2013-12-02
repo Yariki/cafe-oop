@@ -8,6 +8,7 @@
 #include "Client.h"
 #include <vector>
 #include <iostream>
+#include <utility>
 
 using std::cout;
 
@@ -73,21 +74,38 @@ void Client::eat( Dish* dish )
 	dish = nullptr;
 }
 
-void Client::approveIngredients( std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp )
+void Client::approveIngredients( std::map<Dish*,ApprovedItem>* temp, Cafe_Menu* menu)
 {
+	auto dishes = menu->getMenu();
+	int index = -1;
+	std::vector<Dish*> indexes;
 	for(auto it = temp->begin(); it != temp->end();++it)
 	{
+		index++;
 		Dish* tempDish = static_cast<Dish*>(it->first);
-		std::vector<std::tuple<IngredientKinds,bool>> tempList = it->second;
-		for(size_t i = 0; i < tempList.size();i++)
+		std::vector<std::tuple<IngredientKinds,bool>> tempList = it->second.ApproveIgredients;
+		bool isApprove = (rand() % 100) > 50 ? true : false;
+		if(isApprove)
 		{
-			auto tempTuple = tempList.at(i);
-			bool isApprove = (rand() % 100) > 50 ? true : false;
-			std::get<1>(tempTuple) = isApprove;
-
-			printf_s("Client %s %s %s for '%s'\n",getFullName().c_str(),std::get<1>(tempTuple) ? "has approved" : "hasn't approve",
-				Ingredient::GetIngredientName(std::get<0>(tempTuple)).c_str(),tempDish->getName().c_str());
-		}	
+			printf_s("Client %s  has approved changes for %s\n",getFullName().c_str(),tempDish->getName().c_str());
+			for(size_t i = 0; i < tempList.size();i++)
+			{
+				auto tempTuple = tempList.at(i);
+				std::get<1>(tempTuple) = true;
+			}
+		}
+		else
+		{
+			size_t index = rand() % dishes.size();
+			if(index > dishes.size())
+				continue;
+			Dish* dish = new Dish(*dishes.at(index));
+			it->second.AlternativeDish = dish;
+			it->second.ApproveIgredients.clear();
+			printf_s("Client %s  hasn't approved changes for %s\n",getFullName().c_str(),tempDish->getName().c_str());
+			printf_s("Client %s  has chosen new dish %s\n",getFullName().c_str(),dish->getName().c_str());
+			
+		}
 	}
 }
 

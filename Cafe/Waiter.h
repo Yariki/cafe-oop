@@ -16,6 +16,7 @@
 #include "IngredientKinds.h"
 #include "ICafeNotifier.h"
 #include "ICafeObserver.h"
+#include "Types.h"
 
 
 class Client;
@@ -30,10 +31,10 @@ public:
 
 	void getOrderFromClientAndPassToChef();
 	void setOrder(Order* order);
-	void approveAlternativeInredientsInClient(Client* client, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* alterList);
-	void setApprovedIngredients(std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp);
-	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* getIngredientsForApprove();
-	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* getApprovedIngerients();
+	void approveAlternativeInredientsInClient(Client* client, std::map<Dish*,ApprovedItem>* alterList);
+	void setApprovedIngredients(std::map<Dish*,ApprovedItem>* temp);
+	std::map<Dish*,ApprovedItem>* getIngredientsForApprove();
+	std::map<Dish*,ApprovedItem>* getApprovedIngerients();
 	void passDishToClient(Client* client,Dish* dish);
 	void processBillFromClient(Order* order);
 
@@ -47,7 +48,7 @@ public:
 
 private:
 	std::vector<Order*>* orders_;
-	std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* tempAlternativeList;
+	std::map<Dish*,ApprovedItem>* tempAlternativeList;
 	Client* client_;
 	Dish* dish_;
 	Order* currentorder_;

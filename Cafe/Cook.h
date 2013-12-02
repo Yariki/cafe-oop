@@ -37,7 +37,7 @@ public:
 	// get list for cheking ingredients
 	virtual std::vector<Dish*>* getDishesIngredientsForCheking();
 	// return from cheking
-	virtual void setCheckedIngredients(std::vector<Dish*>* checkedList);
+	virtual void setCheckedIngredients(std::vector<std::tuple<Dish*,Dish*>>* checkedList);
 	virtual Dish* getReadyDish();
 	virtual Equipment* getEquipment();
 

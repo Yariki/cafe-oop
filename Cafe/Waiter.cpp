@@ -42,19 +42,19 @@ Dish* Waiter::getDishForClient(){
 	return dish_;
 }
 
-void Waiter::approveAlternativeInredientsInClient(Client* client, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* alterList )
+void Waiter::approveAlternativeInredientsInClient(Client* client, std::map<Dish*,ApprovedItem>* alterList )
 {
 	client_ = client;
 	tempAlternativeList = alterList;
 	Notify(ApproveIgredients);
 }
 
-std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* Waiter::getIngredientsForApprove()
+std::map<Dish*,ApprovedItem>* Waiter::getIngredientsForApprove()
 {
 	return tempAlternativeList;
 }
 
-std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* Waiter::getApprovedIngerients()
+std::map<Dish*,ApprovedItem>* Waiter::getApprovedIngerients()
 {
 	return tempAlternativeList;
 }
@@ -64,7 +64,7 @@ Client* Waiter::getClient()
 	return client_;
 }
 
-void Waiter::setApprovedIngredients( std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>* temp )
+void Waiter::setApprovedIngredients( std::map<Dish*,ApprovedItem>* temp )
 {
 	tempAlternativeList = temp;
 }

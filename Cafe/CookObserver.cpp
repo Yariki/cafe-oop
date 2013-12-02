@@ -18,6 +18,7 @@
 #include "dish.h"
 #include "cafe_menu.h"
 #include "Client.h"
+#include "Types.h"
 
 
 CookObserver::~CookObserver(){
@@ -71,19 +72,25 @@ void CookObserver::InternalCheckIngredients( Cook* const cook )
 	else
 	{
 
-		std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>> listForApprove;
+		std::map<Dish*,ApprovedItem> listForApprove;
 		initializeListForApproving(tempList, listForApprove);
 		Order* order = cook->getOrder();
 		Waiter* waiter = order->getWaiter();
 		waiter->approveAlternativeInredientsInClient(order->getClient(),&listForApprove);
 		auto approvedList = waiter->getApprovedIngerients();
-		std::vector<Dish*> listDishesWithApproved;
+		std::vector<std::tuple<Dish*,Dish*>> listDishesWithApproved;
 		for (auto it = approvedList->begin(); it != approvedList->end();++it)
 		{
 			Dish* dish = it->first;
-			for(size_t i = 0; i < it->second.size();i++)
+
+			if(!it->second.ApproveIgredients.size())
 			{
-				auto tup = it->second.at(i);
+				listDishesWithApproved.push_back(std::tuple<Dish*,Dish*>(dish,it->second.AlternativeDish));
+				continue;
+			}
+			for(size_t i = 0; i < it->second.ApproveIgredients.size();i++)
+			{
+				auto tup = it->second.ApproveIgredients.at(i);
 				IngredientKinds k = std::get<0>(tup);
 				bool approved = std::get<1>(tup);
 
@@ -109,7 +116,7 @@ void CookObserver::InternalCheckIngredients( Cook* const cook )
 				if(approved)
 					dish->getIngridients()->insert(std::pair<Ingredient*,double>(new Ingredient(p.ingredientTarget),rand() % 10));
 			}
-			listDishesWithApproved.push_back(dish);
+			listDishesWithApproved.push_back(std::tuple<Dish*,Dish*>(dish,nullptr));
 		}
 		cook->setCheckedIngredients(&listDishesWithApproved);
 	}
@@ -145,18 +152,20 @@ void CookObserver::InternalReleaseEquipment( Cook* const cook )
 
 }
 
-void CookObserver::initializeListForApproving( std::map<Dish*,std::vector<IngredientPair>> &tempList, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>> &listForApprove )
+void CookObserver::initializeListForApproving( std::map<Dish*,std::vector<IngredientPair>> &tempList, std::map<Dish*,ApprovedItem> &listForApprove )
 {
 	for (auto it = tempList.begin();it != tempList.end();++it)
 	{
+		std::pair<Dish*,ApprovedItem> pairApp;
 		Dish* dish = it->first;
-		std::vector<std::tuple<IngredientKinds,bool>> vec;
+		pairApp.first = dish;
+		pairApp.second = ApprovedItem(nullptr);
 		for(auto itIng = it->second.begin(); itIng != it->second.end();++itIng)
 		{
 			IngredientPair p = (IngredientPair)(*itIng);
-			vec.push_back(std::tuple<IngredientKinds,bool>(p.ingredientTarget,p.isApproved));
+			pairApp.second.ApproveIgredients.push_back(std::tuple<IngredientKinds,bool>(p.ingredientTarget,p.isApproved));
 		}
-		listForApprove.insert(std::pair<Dish*,std::vector<std::tuple<IngredientKinds,bool>>>(dish,vec));
+		listForApprove.insert(pairApp);
 	}
 }
 

@@ -136,6 +136,7 @@
     <ClInclude Include="order.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Specialization.h" />
+    <ClInclude Include="Types.h" />
     <ClInclude Include="Waiter.h" />
     <ClInclude Include="WaiterCommands.h" />
     <ClInclude Include="WaiterObserver.h" />

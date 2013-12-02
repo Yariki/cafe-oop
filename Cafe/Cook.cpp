@@ -108,7 +108,7 @@ std::vector<Dish*>* Cook::getDishesIngredientsForCheking()
 	return dishes;
 }
 
-void Cook::setCheckedIngredients( std::vector<Dish*>* checkedList )
+void Cook::setCheckedIngredients( std::vector<std::tuple<Dish*,Dish*>>* checkedList )
 {
 	if(!checkedList)
 	{
@@ -117,14 +117,29 @@ void Cook::setCheckedIngredients( std::vector<Dish*>* checkedList )
 	}
 
 	for(size_t i = 0; i < checkedList->size();i++){
-		Dish* dish = checkedList->at(i);
+		auto tup = checkedList->at(i);
+		Dish* dish = std::get<0>(tup);
+		Dish* altDish = std::get<1>(tup);
 		if(!dish)
 			continue;
-		Dish* d = (Dish*)(*std::find_if<>(dishList_.begin(),dishList_.end(),[dish](Dish* temp) -> bool {
-			return temp->getName() == dish->getName();
-		}));
-		if(!d)
+		Dish* d = nullptr;
+		std::vector<Dish*>::iterator iter;
+		for(auto it = dishList_.begin();it != dishList_.end();++it)
+		{
+			if((*it)->getName() == dish->getName())
+			{
+				iter = it;
+				d = *it;
+				break;
+			}
+		}
+
+		if(altDish)
+		{
+			dishList_.erase(iter);
+			dishList_.push_back(altDish);
 			continue;
+		}
 		for(auto it = d->getIngridients()->begin(); it != d->getIngridients()->end();++it){
 			delete it->first;
 		}

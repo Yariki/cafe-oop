@@ -50,7 +50,7 @@ void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* waiter)
 	auto client = waiter->getClient();
 	if(!client)
 		return;
-	client->approveIngredients(listApprove);
+	client->approveIngredients(listApprove,cafe_->getMenu());
 	waiter->setApprovedIngredients(listApprove);
 }
 

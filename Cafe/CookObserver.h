@@ -11,6 +11,7 @@
 #include "Cook.h"
 #include "Chef.h"
 #include "ICafe.h"
+#include "Types.h"
 
 
 struct IngredientPair 
@@ -43,7 +44,7 @@ private:
 
 	void checkIngredientsInStore( std::vector<Dish*>* dishList, CafeStoreHouse* store, std::map<Dish*,std::vector<IngredientPair>> &tempList );
 
-	void initializeListForApproving( std::map<Dish*,std::vector<IngredientPair>> &tempList, std::map<Dish*,std::vector<std::tuple<IngredientKinds,bool>>> &listForApprove );
+	void initializeListForApproving( std::map<Dish*,std::vector<IngredientPair>> &tempList, std::map<Dish*,ApprovedItem> &listForApprove );
 
 	void InternalPassDishToWaiter(Cook* const cook);
 	void InternalCookInjured(Cook* const cook);
