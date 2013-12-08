@@ -49,3 +49,36 @@ std::string Ingredient::InternalGetIngredientName( IngredientKinds kind )
 	}
 	return std::string("None");
 }
+
+
+void *Ingredient::operator new(size_t size){
+	printf_s("Allocation new 'Ingredient'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if(!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void *Ingredient::operator new[](size_t size){
+	printf_s("Allocation new array of 'Ingredient'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if(!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void Ingredient::operator delete(void* ptr){
+	printf_s("Deallocation 'Ingredient'...\n");
+	free(ptr);
+}
+
+void Ingredient::operator delete[](void* ptr){
+	printf_s("Deallocation array of 'Ingredient'...\n");
+	free(ptr);
+}

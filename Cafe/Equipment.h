@@ -26,6 +26,13 @@ public:
 	EnergyKinds getEnergyKind();
 	EquipmentKinds getKind();
 	std::string getName() const;
+
+	//operators
+	void *operator new(size_t size);
+	void *operator new[](size_t size);
+	void operator delete(void* ptr );
+	void operator delete[](void* prt);
+
 private:
 	EquipmentStatus state_;
 	EnergyKinds energy_;

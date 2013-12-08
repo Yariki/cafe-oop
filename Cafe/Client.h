@@ -34,6 +34,7 @@ public:
 private:
 	void setMenu(Cafe_Menu* menu);
 	void selectDishes(Order* order);
+	void withdrawMoney(double sum);
 
 private:
 	double money_;

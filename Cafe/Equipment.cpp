@@ -54,3 +54,37 @@ std::string Equipment::getName() const
 	}
 	return std::string("None");
 }
+
+void *Equipment::operator new(size_t size){
+	printf_s("Allocation new 'Equipment'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if(!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void *Equipment::operator new[](size_t size){
+	printf_s("Allocation new array of 'Equipment'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if(!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void Equipment::operator delete(void* ptr){
+	printf_s("Deallocation 'Equipment'...\n");
+	free(ptr);
+}
+
+void Equipment::operator delete[](void* ptr){
+	printf_s("Deallocation array of 'Equipment'...\n");
+	free(ptr);
+}
+
+

@@ -22,6 +22,12 @@ public:
 
 	static std::string GetIngredientName(IngredientKinds kind);
 
+	//operators
+	void *operator new(size_t size);
+	void *operator new[](size_t size);
+	void operator delete(void* ptr );
+	void operator delete[](void* prt);
+
 private:
 	static std::string InternalGetIngredientName(IngredientKinds kind);
 

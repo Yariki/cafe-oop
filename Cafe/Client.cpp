@@ -116,6 +116,11 @@ void Client::setState( ClientState state )
 
 void Client::payBill( double cost )
 {
-	money_ -= cost;
+	withdrawMoney(cost);
 	printf_s("Client %s paid - %lf of gold\n",getFullName().c_str(),cost);
+}
+
+inline void Client::withdrawMoney( double sum )
+{
+	money_ -= sum;
 }

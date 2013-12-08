@@ -49,7 +49,7 @@ bool CafeStoreHouse::isEnoughIngredient(IngredientKinds type, double count) {
 	for(auto it = ingredients_.begin();it != ingredients_.end();++it)
 	{
 		Ingredient* ing = it->first;
-		if(ing->getIngredient() == type && count < it->second)
+		if(ing->getIngredient() == type &&  isRequiredCountLessThenExistingCount(count, it->second))
 		{
 			result = true;
 			break;
@@ -88,4 +88,10 @@ IngredientKinds CafeStoreHouse::getAlternativeIngredientFor( IngredientKinds kin
 		}
 	}
 	return tempKind;
+}
+
+
+inline bool CafeStoreHouse::isRequiredCountLessThenExistingCount( double& required, double& existing )
+{
+	return required < existing;
 }

@@ -32,6 +32,7 @@ private:
 	std::vector<Ingredient*>* listIngridients_;
 
 	void initIngredient();
+	bool isRequiredCountLessThenExistingCount(double& required, double& existing);
 
 };
 #endif // !defined(EA_B16CA53E_298A_45cc_89A8_3B2713E15635__INCLUDED_)

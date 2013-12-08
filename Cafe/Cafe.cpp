@@ -72,7 +72,8 @@ void Cafe::simulation()
 	CafeTimer timer;
 	timer.start();
 	int ellapsed = 0.0;
-	while( ( ellapsed = (int)timer.getEllapsed())  < 120 )
+	
+	while( ( ellapsed = (int)timer.getEllapsed())  < 120) 
 	{
 		int temp = rand() % 10;
 		if(temp > 5)
@@ -257,12 +258,12 @@ void Cafe::generateClients()
 	}
 }
 
-std::string Cafe::generateName()
+inline std::string Cafe::generateName()
 {
 	return names_.empty() ? std::string() : names_.at(rand() % names_.size());
 }
 
-std::string Cafe::generateSurname()
+inline std::string Cafe::generateSurname()
 {
 	return surnames_.empty() ? std::string() : surnames_.at(rand() % surnames_.size());
 }
@@ -330,7 +331,7 @@ void Cafe::processNewClient(  )
 	waiter->getOrderFromClientAndPassToChef();
 }
 
-bool Cafe::isNotServedClientPresent()
+inline bool Cafe::isNotServedClientPresent()
 {
 	return getClient() != nullptr;
 }
