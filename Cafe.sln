@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cafe", "Cafe\Cafe.vcxproj", "{0AABCF62-3AC0-490C-BF52-6C27E945D9A3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cafe2", "Cafe2\Cafe2.vcxproj", "{5E52A22A-7516-4F48-A34C-16DC046EC3E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,16 @@ Global
 		{0AABCF62-3AC0-490C-BF52-6C27E945D9A3}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{0AABCF62-3AC0-490C-BF52-6C27E945D9A3}.Release|Win32.ActiveCfg = Release|Win32
 		{0AABCF62-3AC0-490C-BF52-6C27E945D9A3}.Release|Win32.Build.0 = Release|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Debug|Win32.Build.0 = Debug|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Release|Any CPU.ActiveCfg = Release|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Release|Win32.ActiveCfg = Release|Win32
+		{5E52A22A-7516-4F48-A34C-16DC046EC3E3}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
