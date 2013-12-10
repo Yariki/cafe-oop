@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E91FAF28-597D-4662-BC19-2F8885D3563E}</ProjectGuid>
+    <RootNamespace>Cafe3</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseCafeException.h" />
+    <ClInclude Include="Cafe.h" />
+    <ClInclude Include="CafeKitchen.h" />
+    <ClInclude Include="CafeRoom.h" />
+    <ClInclude Include="CafeStoreHouse.h" />
+    <ClInclude Include="CafeTimer.h" />
+    <ClInclude Include="cafe_menu.h" />
+    <ClInclude Include="Chef.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="ClientState.h" />
+    <ClInclude Include="Cook.h" />
+    <ClInclude Include="CookCommands.h" />
+    <ClInclude Include="CookObserver.h" />
+    <ClInclude Include="CookStatus.h" />
+    <ClInclude Include="dish.h" />
+    <ClInclude Include="ElectricityException.h" />
+    <ClInclude Include="EnergyKinds.h" />
+    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="EquipmentKinds.h" />
+    <ClInclude Include="EquipmentStatus.h" />
+    <ClInclude Include="FirewoodException.h" />
+    <ClInclude Include="GasException.h" />
+    <ClInclude Include="ICafe.h" />
+    <ClInclude Include="ICafeNotifier.h" />
+    <ClInclude Include="ICafeObserver.h" />
+    <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="IngredientKinds.h" />
+    <ClInclude Include="order.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="Specialization.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="Waiter.h" />
+    <ClInclude Include="WaiterCommands.h" />
+    <ClInclude Include="WaiterObserver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseCafeException.cpp" />
+    <ClCompile Include="Cafe.cpp" />
+    <ClCompile Include="CafeKitchen.cpp" />
+    <ClCompile Include="CafeRoom.cpp" />
+    <ClCompile Include="CafeStoreHouse.cpp" />
+    <ClCompile Include="CafeTimer.cpp" />
+    <ClCompile Include="cafe_menu.cpp" />
+    <ClCompile Include="Chef.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Cook.cpp" />
+    <ClCompile Include="CookObserver.cpp" />
+    <ClCompile Include="dish.cpp" />
+    <ClCompile Include="ElectricityException.cpp" />
+    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="FirewoodException.cpp" />
+    <ClCompile Include="GasException.cpp" />
+    <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="order.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Waiter.cpp" />
+    <ClCompile Include="WaiterObserver.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
