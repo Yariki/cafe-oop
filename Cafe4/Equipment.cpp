@@ -26,7 +26,7 @@ void Equipment::setStatus(EquipmentStatus status){
 	state_ = status;
 }
 
-EquipmentStatus Equipment::getStatus() const {
+EquipmentStatus Equipment::getStatus()const{
 
 	return state_;
 }

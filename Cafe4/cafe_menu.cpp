@@ -32,7 +32,7 @@ void Cafe_Menu::deleteSneck(Dish* d)
 	snecks_.erase(std::find(snecks_.begin(), snecks_.end(), d));
 }
 
-std::vector<Dish*> Cafe_Menu::getMenu() const
+std::vector<Dish*> Cafe_Menu::getMenu()  const 
 {
 	std::vector<Dish*> menu;
 	menu.insert(menu.end(), snecks_.begin(), snecks_.end());

@@ -18,7 +18,7 @@ Ingredient::~Ingredient(){
 
 }
 
-IngredientKinds Ingredient::getIngredient()const{
+IngredientKinds Ingredient::getIngredient() const {
 	return type_;
 }
 
