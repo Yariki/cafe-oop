@@ -15,7 +15,7 @@ class WaiterObserver : public ICafeObserver<Waiter>
 {
 
 public:
-	WaiterObserver(ICafe*  cafe) {cafe_ = cafe;}
+	WaiterObserver(ICafe*  cafe) {cafe_ = cafe; printf_s("WaiterObserver was created...\n");}
 	virtual ~WaiterObserver();
 
 	virtual void Update( int command, Waiter* obj );

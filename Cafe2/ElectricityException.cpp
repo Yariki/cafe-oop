@@ -6,6 +6,8 @@
 
 #include "ElectricityException.h"
 
-ElectricityException::~ElectricityException(){
 
+
+ElectricityException::~ElectricityException(){
+	printf_s("ElectricityException was deleted...\n");
 }

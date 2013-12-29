@@ -14,7 +14,7 @@ class ElectricityException : public BaseCafeException
 {
 
 public:
-	ElectricityException(std::string message) : BaseCafeException(message) {}
+	ElectricityException(std::string message) : BaseCafeException(message) {printf_s("ElectricityException was created...\n");}
 	virtual ~ElectricityException();
 
 };

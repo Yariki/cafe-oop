@@ -10,7 +10,7 @@
 #include "Chef.h"
 
 WaiterObserver::~WaiterObserver(){
-
+	printf_s("WaiterObserver was deleted...\n");
 }
 
 void WaiterObserver::Update( int command, Waiter* obj )

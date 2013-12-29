@@ -7,9 +7,11 @@
 #include "Waiter.h"
 #include "WaiterCommands.h"
 
-Waiter::~Waiter(){;
+Waiter::~Waiter(){
+	printf_s("Waiter was deleted...\n");
 }
 
 Waiter::Waiter(){
+	printf_s("Waiter was created...\n");
 }
 

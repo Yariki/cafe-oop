@@ -12,9 +12,9 @@
 
 
 Cook::~Cook(){
-
+	printf_s("Cook was deleted...\n");
 }
 
 Cook::Cook(){
-	
+	printf_s("Cook was created...\n");
 }

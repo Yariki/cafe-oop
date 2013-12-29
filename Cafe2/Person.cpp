@@ -9,11 +9,11 @@
 
 
 Person::~Person(){
-
+	printf_s("Person was deleted...\n");
 }
 
 Person::Person(){
-
+	printf_s("Person was created...\n");
 }
 
 
@@ -21,5 +21,6 @@ Person::Person(std::string name, std::string surname, Specialization specializat
 	:name_(name),surname_(surname)
 {
 	specialization_ = specialization;
+	printf_s("Person was created...\n");
 }
 

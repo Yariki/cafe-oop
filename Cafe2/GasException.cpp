@@ -9,5 +9,5 @@
 
 
 GasException::~GasException(){
-
+	printf_s("GasException was deleted...\n");
 }

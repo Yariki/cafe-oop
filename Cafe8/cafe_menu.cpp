@@ -8,6 +8,14 @@ Cafe_Menu::Cafe_Menu(void)
 
 Cafe_Menu::~Cafe_Menu(void)
 {
+	for(auto i = 0; i < snecks_.size();i++)
+	{
+		delete snecks_.at(i);
+	}
+	for(auto i = 0; i < snecks_.size();i++)
+	{
+		delete main_dishes_.at(i);
+	}
     snecks_.clear();
     main_dishes_.clear();
 }

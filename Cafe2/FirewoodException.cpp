@@ -8,5 +8,5 @@
 
 
 FirewoodException::~FirewoodException(){
-
+	printf_s("FirewoodException was deleted...\n");
 }

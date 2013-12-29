@@ -9,9 +9,9 @@
 
 
 Equipment::~Equipment(){
-
+	printf_s("Equipment was deleted...\n");
 }
 
 Equipment::Equipment(){
-	
+	printf_s("Equipment was created...\n");
 }

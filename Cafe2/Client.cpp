@@ -17,13 +17,13 @@ using std::cout;
 
 
 Client::~Client(){
-	
+	printf_s("Client was deleted...\n");
 }
 
 Client::Client(double money){
-	
+	printf_s("Client was created...\n");
 }
 
 Client::Client(){
-	
+	printf_s("Client was created...\n");
 }

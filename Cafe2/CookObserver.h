@@ -34,7 +34,7 @@ class CookObserver
 {
 
 public:
-	CookObserver(ICafe* cafe) { cafe_ = cafe;}
+	CookObserver(ICafe* cafe);
 	virtual ~CookObserver();
 
 private:

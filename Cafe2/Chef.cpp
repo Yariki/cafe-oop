@@ -10,9 +10,9 @@
 #include "ICafeNotifier.h"
 
 Chef::~Chef(){
-
+	printf_s("Chef was created...\n");
 }
 
 Chef::Chef(){
-
+	printf_s("Chef was deleted...\n");
 }

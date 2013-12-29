@@ -14,7 +14,7 @@ class GasException : public BaseCafeException
 {
 
 public:
-	GasException(std::string message) : BaseCafeException(message) {}
+	GasException(std::string message) : BaseCafeException(message) {printf_s("GasException was created...\n");}
 	virtual ~GasException();
 
 };

@@ -9,7 +9,11 @@
 
 #define  MAX_COUNT_INGRIDIENT 1000
 
+CafeStoreHouse::CafeStoreHouse(){
+	printf_s("CafeStoreHouse was created...\n");
+}
+
 CafeStoreHouse::~CafeStoreHouse(){
-	
+	printf_s("CafeStoreHouse was deleted...\n");
 }
 

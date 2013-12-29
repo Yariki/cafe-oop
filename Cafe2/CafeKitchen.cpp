@@ -17,8 +17,10 @@
 using std::cout;
 using std::cin;
 
-CafeKitchen::CafeKitchen(){}
+CafeKitchen::CafeKitchen(){
+	printf_s("CafeKitchen was created...\n");
+}
 
 CafeKitchen::~CafeKitchen(){
-	
+	printf_s("CafeKitchen was deleted...\n");
 }

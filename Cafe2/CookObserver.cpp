@@ -21,6 +21,12 @@
 #include "Types.h"
 
 
-CookObserver::~CookObserver(){
+CookObserver::CookObserver(ICafe* cafe){
+	cafe_ = cafe;
+	printf_s("CookObserver was created...\n");
+}
 
+
+CookObserver::~CookObserver(){
+	printf_s("CookObserver was deleted...\n");
 }

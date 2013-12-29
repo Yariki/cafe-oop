@@ -9,11 +9,11 @@
 
 Ingredient::Ingredient(int type)
 {
-	
+	printf_s("Ingredient was created...\n");
 }
 
 
 
 Ingredient::~Ingredient(){
-
+	printf_s("Ingredient was deleted...\n");
 }

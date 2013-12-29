@@ -14,7 +14,7 @@ class FirewoodException : public BaseCafeException
 {
 
 public:
-	FirewoodException(std::string message) : BaseCafeException(message){}
+	FirewoodException(std::string message) : BaseCafeException(message){printf_s("FirewoodException was created...\n");}
 	virtual ~FirewoodException();
 
 };

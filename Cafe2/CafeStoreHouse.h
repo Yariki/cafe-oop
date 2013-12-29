@@ -19,7 +19,7 @@ class Cafe;
 class CafeStoreHouse
 {
 public:
-	CafeStoreHouse(){}
+	CafeStoreHouse();
 	virtual ~CafeStoreHouse();
 	
 

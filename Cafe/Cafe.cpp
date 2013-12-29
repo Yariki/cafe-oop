@@ -43,6 +43,10 @@ Cafe::~Cafe(){
 	deleteAndClearClients();
 	deleteOrders();
 
+	delete menu_;
+	delete cookObserver_;
+	delete waiterObserver_;
+
 	names_.clear();
 	surnames_.clear();
 	dishes_.clear();
