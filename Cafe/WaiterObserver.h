@@ -21,13 +21,6 @@ public:
 	virtual void Update( int command, Waiter* obj );
 
 private:
-	void InternalGetOrderFromClient(Waiter* waiter);
-	void InternalApproveIngredientsFromClient(Waiter* waiter);
-	void InternalPassDishToClient(Waiter* waiter);
-	void InternalPassOrderToChef(Waiter* waiter);
-	void InternalProcessBill(Waiter* waiter);
-	
-private:
 	ICafe* cafe_;
 };
 #endif // !defined(EA_16328FE1_4077_4274_92ED_906D818675C2__INCLUDED_)

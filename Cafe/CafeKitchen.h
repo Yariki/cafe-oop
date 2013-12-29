@@ -14,7 +14,7 @@
 
 class BaseCafeException;
 
-class CafeKitchen : public CafeRoom
+class CafeKitchen
 {
 
 	
@@ -22,25 +22,7 @@ class CafeKitchen : public CafeRoom
 public:
 	enum KitchenState { Normal = 0, EletricityDown,GasDown,FireDown};
 
-	CafeKitchen(Cafe* cafe) : CafeRoom(cafe){initEquipments();}
+	CafeKitchen() ;
 	virtual ~CafeKitchen();
-	Equipment* getFirstFreeEquipment();
-	void releseEquipment(Equipment* equipmnent);
-	Equipment* getFirstFreeAlternativeEquipment();
-	void tryToGenerateAccedent();
-	KitchenState getState();
-
-
-
-	static std::string getKitchenStateName(KitchenState state);
-
-private:
-	std::vector<Equipment*> equipments_;
-	KitchenState state_;
-
-private:
-	void initEquipments();
-	void processException(BaseCafeException* ex,EnergyKinds energy);
-
 };
 #endif // !defined(EA_7A9FB63C_938C_4cd2_A53B_52E927EF750B__INCLUDED_)

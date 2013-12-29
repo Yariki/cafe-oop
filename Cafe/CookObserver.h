@@ -30,29 +30,13 @@ public:
 };
 
 
-class CookObserver : public ICafeObserver<Cook>
+class CookObserver 
 {
 
 public:
-	CookObserver(ICafe* cafe) { cafe_ = cafe;}
+	CookObserver(ICafe* cafe);
 	virtual ~CookObserver();
 
-	virtual void Update( int command, Cook* obj );
-
-private:
-	void InternalCheckIngredients(Cook* const cook);
-
-	void checkIngredientsInStore( std::vector<Dish*>* dishList, CafeStoreHouse* store, std::map<Dish*,std::vector<IngredientPair>> &tempList );
-
-	void initializeListForApproving( std::map<Dish*,std::vector<IngredientPair>> &tempList, std::map<Dish*,ApprovedItem> &listForApprove );
-
-	void InternalPassDishToWaiter(Cook* const cook);
-	void InternalCookInjured(Cook* const cook);
-	void InternalApplyEquipment(Cook* const cook);
-	void InternalReleaseEquipment(Cook* const cook);
-	void InternalSetOrderToCook(Chef* const chef);
-	void InternalPassSnakToWaiter( Cook* obj );
-	void InternalFinishedWork(Cook* obj);
 private:
 	ICafe* cafe_;
 };

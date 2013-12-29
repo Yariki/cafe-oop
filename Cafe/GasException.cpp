@@ -9,5 +9,5 @@
 
 
 GasException::~GasException(){
-
+	
 }

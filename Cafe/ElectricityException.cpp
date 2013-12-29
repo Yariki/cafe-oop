@@ -6,6 +6,8 @@
 
 #include "ElectricityException.h"
 
-ElectricityException::~ElectricityException(){
 
+
+ElectricityException::~ElectricityException(){
+	
 }

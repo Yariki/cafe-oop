@@ -17,26 +17,9 @@ class Equipment
 {
 
 public:
-	Equipment(EnergyKinds energy, EquipmentKinds kind);
+	
 	Equipment();
 	virtual ~Equipment();
-
-	void setStatus(EquipmentStatus status);
-	EquipmentStatus getStatus() const ;
-	EnergyKinds getEnergyKind() const ;
-	EquipmentKinds getKind() const ;
-	std::string getName() const;
-
-	//operators
-	void *operator new(size_t size);
-	void *operator new[](size_t size);
-	void operator delete(void* ptr );
-	void operator delete[](void* prt);
-
-private:
-	EquipmentStatus state_;
-	EnergyKinds energy_;
-	EquipmentKinds kind_;
 
 };
 #endif // !defined(EA_D8F124E9_CDAD_4add_A1DF_4CCD5C37384D__INCLUDED_)

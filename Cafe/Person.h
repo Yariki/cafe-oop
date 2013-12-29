@@ -20,14 +20,6 @@ public:
 	Person(std::string name, std::string surname, Specialization specialization);
 	virtual ~Person();
 
-	void setName(std::string name);
-	const std::string getName();
-	void setSurname(std::string surname);
-	std::string getSurname();
-	void setSpecialization(Specialization sp);
-	Specialization getSpecialization();
-	std::string getFullName();
-
 private:
 	std::string name_;
 	Specialization specialization_;

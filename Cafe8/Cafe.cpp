@@ -6,7 +6,6 @@
 ///////////////////////////////////////////////////////////
 
 #include <fstream>
-#include <string>
 #include <iostream>
 #include <windows.h>
 #include "CafeTimer.h"
@@ -44,6 +43,10 @@ Cafe::~Cafe(){
 	deleteAndClearClients();
 	deleteOrders();
 
+	delete menu_;
+	delete cookObserver_;
+	delete waiterObserver_;
+
 	names_.clear();
 	surnames_.clear();
 	dishes_.clear();
@@ -65,7 +68,63 @@ void Cafe::addClient(){
 
 void Cafe::simulation()
 {
-	printf_s("simulation...\n");
+	if(!clients_->size())
+	{
+		printf_s("Clients is empty\n");
+		return;
+	}
+	CafeTimer timer;
+	timer.start();
+	int ellapsed = 0.0;
+	
+	while( ( ellapsed = (int)timer.getEllapsed())  < 120) 
+	{
+		int temp = rand() % 10;
+		if(temp > 5)
+		{
+			Sleep(SECONDS_SLEEP_IN_MS);
+			generateClientForProcessing();
+			printf_s("System time is %dh:%dm (%ds)\n",ellapsed / 60, ellapsed % 60,ellapsed);
+		}
+		else if(temp > 0 && temp < 5)
+		{
+			if(isNotServedClientPresent())
+			{
+				processNewClient();
+			}
+			if(getChef() != nullptr && getChef()->getOrdersCount() > 0)
+			{
+				getChef()->passOrderToCook();
+			}
+			for(size_t i = 0;i < cooks_->size(); i++)
+			{
+				auto cook = cooks_->at(i);
+				if(!cook)
+					continue;
+
+				switch (cook->getStatus())
+				{
+				case CookSneck:
+					cook->passSneck();
+					break;
+				case CookBusy:
+					cook->cook();
+						break;
+				}
+			}
+			if(getChef() != nullptr)
+			{
+				switch (getChef()->getStatus())
+				{
+					case CookBusy:
+						getChef()->cook();
+						break;
+					case CookSneck:
+						getChef()->passSneck();
+				}
+			}
+		}
+	}
 }
 
 
@@ -80,6 +139,7 @@ void Cafe::initialize(){
 	clients_ = new std::vector<Client*>();
 	waiters_ = new std::vector<Waiter*>();
 	orders_ = new std::vector<Order*>();
+	readFiles();
 	createObservers();
 	createChef();
 	createKitchen();
@@ -105,29 +165,6 @@ void Cafe::createWaiters(){
 		waiter->setSurname(generateSurname());
 		waiter->Attach(waiterObserver_);
 		waiters_->push_back(waiter);
-	}
-}
-
-void Cafe::readFiles()
-{
-	readFile(NAMES_FILENAME,&names_);
-	readFile(SURNAME_FILENAME,&surnames_);
-	readFile(DISHES_FILENAME,&dishes_);
-}
-
-void Cafe::readFile(std::string filename, std::vector<std::string>* list)
-{
-	std::ifstream nameFile(filename);
-	if(!nameFile)
-	{
-		printf_s("Error while reading file %s\n",filename.c_str());
-		throw new std::exception(filename.c_str());
-	}
-	for (;!(nameFile.eof());)
-	{
-		std::string val;
-		nameFile >> val;
-		list->push_back(val);
 	}
 }
 
@@ -187,6 +224,29 @@ std::vector<Waiter*>* const Cafe::getWaiters()
 Cafe_Menu* const Cafe::getMenu() 
 {
 	return menu_;
+}
+
+void Cafe::readFiles()
+{
+	readFile(NAMES_FILENAME,&names_);
+	readFile(SURNAME_FILENAME,&surnames_);
+	readFile(DISHES_FILENAME,&dishes_);
+}
+
+void Cafe::readFile(std::string filename, std::vector<std::string>* list)
+{
+	std::ifstream nameFile(filename);
+	if(!nameFile)
+	{
+		printf_s("Error while reading file %s\n",filename.c_str());
+		throw new std::exception(filename.c_str());
+	}
+	for (;!(nameFile.eof());)
+	{
+		std::string val;
+		nameFile >> val;
+		list->push_back(val);
+	}
 }
 
 void Cafe::generateClients()

@@ -8,5 +8,4 @@
 
 
 FirewoodException::~FirewoodException(){
-
 }

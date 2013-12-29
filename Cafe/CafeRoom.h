@@ -7,18 +7,13 @@
 #if !defined(EA_183058A5_9B85_4cc0_AA6F_92DC86B010E4__INCLUDED_)
 #define EA_183058A5_9B85_4cc0_AA6F_92DC86B010E4__INCLUDED_
 
-
-class Cafe;
-
 class CafeRoom
 {
 
 public:
-	CafeRoom(Cafe* cafe);
+	CafeRoom();
 	virtual ~CafeRoom();
 
-private:
-	Cafe* cafe_;
 
 };
 #endif // !defined(EA_183058A5_9B85_4cc0_AA6F_92DC86B010E4__INCLUDED_)

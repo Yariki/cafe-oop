@@ -25,7 +25,7 @@ void Chef::setOrder( Order* order )
 
 void Chef::passOrderToCook()
 {
-	//Notify(SetOrderToCook);
+	Notify(SetOrderToCook);
 }
 
 int Chef::getOrdersCount() const

@@ -37,11 +37,11 @@ void WaiterObserver::Update( int command, Waiter* obj )
 
 void WaiterObserver::InternalGetOrderFromClient(Waiter* waiter)
 {
-	//Client* client = cafe_->getClient();
-	//Cafe_Menu* menu = cafe_->getMenu();
-	/*Order* order = client->checkMenuAndMakeOrder(menu);
-	waiter->setOrder(order);*/
-	//cafe_->addOrder(order);
+	Client* client = cafe_->getClient();
+	Cafe_Menu* menu = cafe_->getMenu();
+	Order* order = client->checkMenuAndMakeOrder(menu);
+	waiter->setOrder(order);
+	cafe_->addOrder(order);
 }
 
 void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* waiter)
@@ -50,8 +50,8 @@ void WaiterObserver::InternalApproveIngredientsFromClient(Waiter* waiter)
 	auto client = waiter->getClient();
 	if(!client)
 		return;
-	/*client->approveIngredients(listApprove,cafe_->getMenu());
-	waiter->setApprovedIngredients(listApprove);*/
+	client->approveIngredients(listApprove,cafe_->getMenu());
+	waiter->setApprovedIngredients(listApprove);
 }
 
 void WaiterObserver::InternalPassDishToClient(Waiter*  waiter)
@@ -61,17 +61,17 @@ void WaiterObserver::InternalPassDishToClient(Waiter*  waiter)
 
 void WaiterObserver::InternalPassOrderToChef(Waiter*  waiter)
 {
-	/*Order* order = waiter->giveOrderToChef();
+	Order* order = waiter->giveOrderToChef();
 	Chef* chef = cafe_->getChef();
 	if(!chef)
 		return;
-	chef->setOrder(order);*/
+	chef->setOrder(order);
 }
 
 void WaiterObserver::InternalProcessBill( Waiter* waiter )
-{/*
- Order* order = waiter->getCurrentOrder();
- double cost = order->getTotalCost();
- order->getClient()->payBill(cost);
- cafe_->deleteOrder(order);*/
+{
+	Order* order = waiter->getCurrentOrder();
+	double cost = order->getTotalCost();
+	order->getClient()->payBill(cost);
+	cafe_->deleteOrder(order);
 }

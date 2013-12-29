@@ -16,23 +16,12 @@
 
 class Cafe;
 
-class CafeStoreHouse : public CafeRoom
+class CafeStoreHouse
 {
 public:
-	CafeStoreHouse(Cafe* cafe) : CafeRoom(cafe){initIngredient();}
+	CafeStoreHouse();
 	virtual ~CafeStoreHouse();
 	
-	std::vector<Ingredient*>* getIngredients() const;
-	bool isEnoughIngredient(IngredientKinds type, double count);
-	void takeIngridient(IngredientKinds type, double count);
-	IngredientKinds getAlternativeIngredientFor(IngredientKinds kind);
-
-private:
-	std::map<Ingredient*,double> ingredients_;
-	std::vector<Ingredient*>* listIngridients_;
-
-	void initIngredient();
-	bool isRequiredCountLessThenExistingCount(double& required, double& existing);
 
 };
 #endif // !defined(EA_B16CA53E_298A_45cc_89A8_3B2713E15635__INCLUDED_)

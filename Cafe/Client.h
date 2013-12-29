@@ -24,22 +24,5 @@ public:
 	Client(double money);
 	virtual ~Client();
 	
-	Order* checkMenuAndMakeOrder(Cafe_Menu* menu);
-	void setState(ClientState state);
-	ClientState getState() const;
-	void eat(Dish* dish);
-	void approveIngredients(std::map<Dish*,ApprovedItem>* temp,Cafe_Menu* menu);
-	void payBill(double cost);
-
-private:
-	void setMenu(Cafe_Menu* menu);
-	void selectDishes(Order* order);
-	void withdrawMoney(double sum);
-
-private:
-	double money_;
-	ClientState state_;
-	Cafe_Menu* menu_;
-
 };
 #endif // !defined(EA_6AAAD847_88C7_4058_9A28_3112673EA0B3__INCLUDED_)

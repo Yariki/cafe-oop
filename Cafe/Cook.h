@@ -21,46 +21,13 @@
 #include "ICafeNotifier.h"
 #include "ICafeObserver.h"
 
-class Cook : public Person, public ICafeNotifier<ICafeObserver<Cook>>
+class Cook 
 {
 
 public:
 	Cook();
 	virtual ~Cook();
 
-	virtual void setOrder(Order* order);
-	virtual Order* getOrder();
-	virtual void passSneck();
-	virtual void cook();
-	virtual bool intitializeCookOrder();
-
-	// get list for cheking ingredients
-	virtual std::vector<Dish*>* getDishesIngredientsForCheking();
-	// return from cheking
-	virtual void setCheckedIngredients(std::vector<std::tuple<Dish*,Dish*>>* checkedList);
-	virtual Dish* getReadyDish();
-	virtual Equipment* getEquipment();
-
-
-	void setStatus(CookStatus status);
-	CookStatus getStatus();
-
-	virtual void applyEquipment( Equipment* equipment);
-	
-protected:
-	virtual void  makeDishList();
-	virtual Dish* makeNextDishFromOrder();
-	virtual void clearDishList();
-	virtual void prepareForCooking();
-
-	virtual void Notify( int command );
-
-protected:
-	Equipment* equipment_;
-	CookStatus state_;
-	Order* currentOrder_;
-	std::vector<Dish*> dishList_;
-	Dish* readyDish_;
 
 };
 #endif // !defined(EA_34D39089_90A1_4167_8AC2_0F99A7019000__INCLUDED_)

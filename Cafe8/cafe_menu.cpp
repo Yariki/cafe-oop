@@ -8,14 +8,6 @@ Cafe_Menu::Cafe_Menu(void)
 
 Cafe_Menu::~Cafe_Menu(void)
 {
-	for(auto i = 0; i < snecks_.size();i++)
-	{
-		delete snecks_.at(i);
-	}
-	for(auto i = 0; i < snecks_.size();i++)
-	{
-		delete main_dishes_.at(i);
-	}
     snecks_.clear();
     main_dishes_.clear();
 }
@@ -40,7 +32,7 @@ void Cafe_Menu::deleteSneck(Dish* d)
 	snecks_.erase(std::find(snecks_.begin(), snecks_.end(), d));
 }
 
-std::vector<Dish*> Cafe_Menu::getMenu()  const 
+std::vector<Dish*> Cafe_Menu::getMenu() const
 {
 	std::vector<Dish*> menu;
 	menu.insert(menu.end(), snecks_.begin(), snecks_.end());

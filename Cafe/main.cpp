@@ -23,13 +23,13 @@ int main()
 			switch(menu)
 			{
 			case 1:
-				cafe->addClient();
+				printf_s("Add client\n");
 				break;
 			case 2:
-				cafe->generateClients();
+				printf_s("Generate clients\n");
 				break;
 			case 3: 
-				cafe->simulation();
+				printf_s("simulation\n");
 				break;
 			}
 		}while(menu  != 0);

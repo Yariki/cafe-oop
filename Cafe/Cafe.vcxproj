@@ -144,11 +144,6 @@
     <ClInclude Include="WaiterCommands.h" />
     <ClInclude Include="WaiterObserver.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="dishes.txt" />
-    <None Include="names.txt" />
-    <None Include="surnames.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
