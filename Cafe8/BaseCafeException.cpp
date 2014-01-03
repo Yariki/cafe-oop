@@ -11,6 +11,9 @@ BaseCafeException::BaseCafeException(){
 
 }
 
+BaseCafeException::BaseCafeException(const BaseCafeException& inst){
+	message_ = inst.message_;
+}
 
 
 BaseCafeException::~BaseCafeException(){

@@ -15,6 +15,7 @@ class Ingredient
 
 public:
 	Ingredient(int type);
+	Ingredient(const Ingredient&);
 	virtual ~Ingredient();
 
 };

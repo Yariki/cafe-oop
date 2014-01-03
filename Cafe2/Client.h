@@ -22,6 +22,7 @@ class Client : public Person
 public:
 	Client();
 	Client(double money);
+	Client(const Client&);
 	virtual ~Client();
 	
 };

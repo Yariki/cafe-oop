@@ -27,3 +27,7 @@ Client::Client(double money){
 Client::Client(){
 	printf_s("Client was created...\n");
 }
+
+Client::Client(const Client& inst){
+	printf_s("Client was created (copy ctor)...\n");
+}

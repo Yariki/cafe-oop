@@ -12,6 +12,10 @@ Ingredient::Ingredient(int type)
 	printf_s("Ingredient was created...\n");
 }
 
+Ingredient::Ingredient(const Ingredient& inst){
+	printf_s("Ingredient was created (copy ctor)...\n");
+}
+
 
 
 Ingredient::~Ingredient(){

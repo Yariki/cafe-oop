@@ -19,6 +19,7 @@ class Equipment
 public:
 	
 	Equipment();
+	Equipment(const Equipment&);
 	virtual ~Equipment();
 
 };

@@ -11,6 +11,9 @@ BaseCafeException::BaseCafeException(){
 	printf_s("BaseCafeException was created...\n");
 }
 
+BaseCafeException::BaseCafeException(const BaseCafeException& inst){
+	message_ = inst.message_;
+}
 
 
 BaseCafeException::~BaseCafeException(){

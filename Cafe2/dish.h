@@ -11,6 +11,7 @@ class Dish
 {
 public:
 	Dish(void);
+	Dish(const Dish&);
     virtual ~Dish(void);
 
 };

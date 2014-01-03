@@ -13,6 +13,7 @@ class Order
 {
 public:
 	Order(void);
+	Order(const Order& inst);
 	virtual ~Order(void);
 };
 

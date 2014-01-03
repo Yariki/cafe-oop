@@ -8,6 +8,9 @@ Dish::Dish(void)
 	printf_s("Dish was created...\n");
 }
 
+Dish::Dish(const Dish& inst){
+	printf_s("Dish was created (copy ctor)...\n");
+}
 
 Dish::~Dish(void)
 {

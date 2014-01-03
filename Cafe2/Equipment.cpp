@@ -15,3 +15,8 @@ Equipment::~Equipment(){
 Equipment::Equipment(){
 	printf_s("Equipment was created...\n");
 }
+
+Equipment::Equipment( const Equipment& inst)
+{
+	printf_s("Equipment was created (copy ctor)...\n");
+}
