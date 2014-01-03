@@ -39,6 +39,7 @@ public:
 	void setSpecialization(Specialization sp);
 	Specialization getSpecialization();
 	std::string getFullName();
+	double getMoney() const {return money_;}
 
 private:
 	void setMenu(Cafe_Menu* menu);

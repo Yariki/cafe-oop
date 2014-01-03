@@ -49,7 +49,7 @@ Cafe::~Cafe(){
 }
 
 void Cafe::addClient(){
-	std::string name;
+	/*std::string name;
 	std::string surname;
 	printf_s("Please, enter client name: ");
 	std::cin >> name;
@@ -58,14 +58,32 @@ void Cafe::addClient(){
 	auto client = new Client(rand() % 1000);
 	client->setName(name);
 	client->setSurname(surname);
-	clients_->push_back(client);
+	clients_->push_back(client);*/
 }
 
 
 void Cafe::simulation()
 {
 	printf_s("simulation\n");
-}
+	printf_s("Show waiters => (will use custom iterator for ArrayContainer and will use getters for showing name of waiter)\n");
+	for(ArrayContainer<Waiter*>::array_iterator i = waiters_.begin(); i != waiters_.end();i++)
+	{
+		auto waiter = (Waiter*)(*i);
+		printf_s("Waiter - %s\nFirst name: %s\nLast name:  %s\n",waiter->getFullName().c_str(), waiter->getName().c_str(),waiter->getSurname().c_str());
+	}
+	printf_s("Show cooks => (will use custom iterator for ArrayContainer and will use getters for showing name of cook)\n");
+	for(ArrayContainer<Cook*>::array_iterator i = cooks_.begin(); i != cooks_.end();i++)
+	{
+		auto cook = (Cook*)(*i);
+		printf_s("Cook - %s\nFirst name: %s\nLast name:  %s\n",cook->getFullName().c_str(), cook->getName().c_str(),cook->getSurname().c_str());
+	}
+	printf_s("Show clients => (will use custom iterator for ArrayContainer and will use getters for showing name (money) of client)\n");
+	for(ArrayContainer<Client*>::array_iterator i = clients_.begin(); i != clients_.end();i++)
+	{
+		auto client = (Client*)(*i);
+		printf_s("Client - %s ($%f)\nFirst name: %s\nLast name:  %s\n",client->getFullName().c_str(), client->getMoney(), client->getName().c_str(),client->getSurname().c_str());
+	}
+};
 
 
 std::string Cafe::generateError(){
@@ -75,11 +93,11 @@ std::string Cafe::generateError(){
 
 
 void Cafe::initialize(){
-	cooks_ = new std::vector<Cook*>();
-	clients_ = new std::vector<Client*>();
-	waiters_ = new std::vector<Waiter*>();
+	cooks_ =  ArrayContainer<Cook*>(COOK_MAX_COUNT);
+	clients_ = ArrayContainer<Client*>(CLIENT_MAX_COUNT);
+	waiters_ = ArrayContainer<Waiter*>(WAITERS_MAX_COUNT);
 	orders_ = new std::vector<Order*>();
-	//readFiles();
+	readFiles();
 	createObservers();
 	createChef();
 	createKitchen();
@@ -87,8 +105,31 @@ void Cafe::initialize(){
 	createWaiters();
 	createCooks();
 	createMenu();
+	generateClients();
 }
 
+void Cafe::readFiles()
+{
+	readFile(NAMES_FILENAME,&names_);
+	readFile(SURNAME_FILENAME,&surnames_);
+	readFile(DISHES_FILENAME,&dishes_);
+}
+
+void Cafe::readFile(std::string filename, std::vector<std::string>* list)
+{
+	std::ifstream nameFile(filename);
+	if(!nameFile)
+	{
+		printf_s("Error while reading file %s\n",filename.c_str());
+		throw new std::exception(filename.c_str());
+	}
+	for (;!(nameFile.eof());)
+	{
+		std::string val;
+		nameFile >> val;
+		list->push_back(val);
+	}
+}
 
 void Cafe::createChef(){
 	chef_ = new Chef();
@@ -104,7 +145,7 @@ void Cafe::createWaiters(){
 		waiter->setName(generateName());
 		waiter->setSurname(generateSurname());
 		//waiter->Attach(waiterObserver_);
-		waiters_->push_back(waiter);
+		waiters_[i] = waiter;
 	}
 }
 
@@ -123,7 +164,7 @@ void Cafe::createCooks(){
 		cook->setName(generateName());
 		cook->setSurname(generateSurname());
 		//cook->Attach(cookObserver_);
-		cooks_->push_back(cook);
+		cooks_[i] = cook;
 	}
 }
 
@@ -135,14 +176,12 @@ void Cafe::createObservers()
 
 void Cafe::generateClients()
 {
-	if(clients_->size())
-		deleteAndClearClients();
 	for(int i = 0; i < CLIENT_MAX_COUNT;i++)
 	{
 		auto client = new Client(rand() % 1000);
 		client->setName(generateName());
 		client->setSurname(generateSurname());
-		clients_->push_back(client);
+		clients_[i] = client;
 	}
 }
 
@@ -171,25 +210,11 @@ void Cafe::createMenu()
 
 void Cafe::generateClientForProcessing()
 {
-	for(size_t i = 0; i < clients_->size();i++)
-	{
-		if(clients_->at(i)->getState() == New)
-		{
-			Client* cl = clients_->at(i);
-			cl->setState(NotServe);
-			printf_s("New client - %s\n",cl->getFullName().c_str());
-			break;
-		}
-	}
+	
 }
 
 void Cafe::processNewClient(  )
 {
-	Waiter* waiter = waiters_->at(rand()% waiters_->size());
-	if(!waiter)
-		return;
-	//getKitchen()->tryToGenerateAccedent();
-	waiter->getOrderFromClientAndPassToChef();
 }
 
 inline bool Cafe::isNotServedClientPresent()
@@ -199,14 +224,11 @@ inline bool Cafe::isNotServedClientPresent()
 
 void Cafe::deleteAndClearClients()
 {
-	for(size_t i = 0; i < clients_->size();i++)
+	for(int i = 0; i < clients_.size();i++)
 	{
-		auto client = clients_->at(i);
+		Client* client = clients_[i];
 		delete client;
-		client = nullptr;
 	}
-	clients_->clear();
-	delete clients_;
 }
 
 void Cafe::deleteChef()
@@ -236,26 +258,20 @@ void Cafe::deleteStoreHouse()
 
 void Cafe::deleteWaiters()
 {
-	for(size_t index = 0 ; index < waiters_->size();index++){
-		auto waiter = waiters_->at(index);
-		//waiter->Detach(waiterObserver_);
+	for(int index = 0 ; index < waiters_.size();index++){
+		auto waiter = waiters_[index];
 		delete waiter;
 		waiter = nullptr;
 	}
-	waiters_->clear();
-	delete waiters_;
 }
 
 void Cafe::deleteCooks()
 {
-	for (size_t index = 0; index < cooks_->size();index++){
-		auto cook = cooks_->at(index);
-		//cook->Detach(cookObserver_);
+	for (int index = 0; index < cooks_.size();index++){
+		auto cook = cooks_[index];
 		delete cook;
 		cook = nullptr;
 	}
-	cooks_->clear();
-	delete cooks_;
 }
 
 void Cafe::deleteOrders()

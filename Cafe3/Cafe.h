@@ -20,6 +20,7 @@
 #include "CookObserver.h"
 #include "ICafe.h"
 #include "WaiterObserver.h"
+#include "ArrayContainer.h"
 
 class Cafe 
 {
@@ -36,9 +37,9 @@ public:
 
 private:
 	std::vector<Order*>* orders_;
-	std::vector<Cook*>* cooks_;
-	std::vector<Client*>* clients_;
-	std::vector<Waiter*>* waiters_;
+	ArrayContainer<Cook*> cooks_;
+	ArrayContainer<Client*> clients_;
+	ArrayContainer<Waiter*> waiters_;
 	Chef* chef_;
 	Cafe_Menu* menu_;
 	CafeKitchen* kitchen_;
@@ -55,6 +56,8 @@ private:
 	void createStoreHouse();
 	void createCooks();
 	void createMenu();
+	void readFiles();
+	void readFile(std::string filename, std::vector<std::string>* list);
 	std::string generateName();
 	std::string generateSurname();
 	

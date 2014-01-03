@@ -117,6 +117,9 @@
     <ClInclude Include="WaiterObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ArrayContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseCafeException.cpp">
@@ -183,6 +186,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WaiterObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

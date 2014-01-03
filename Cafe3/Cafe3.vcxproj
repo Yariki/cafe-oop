@@ -60,6 +60,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayContainer.h" />
     <ClInclude Include="BaseCafeException.h" />
     <ClInclude Include="Cafe.h" />
     <ClInclude Include="CafeKitchen.h" />
@@ -96,6 +97,7 @@
     <ClInclude Include="WaiterObserver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayContainer.cpp" />
     <ClCompile Include="BaseCafeException.cpp" />
     <ClCompile Include="Cafe.cpp" />
     <ClCompile Include="CafeKitchen.cpp" />
