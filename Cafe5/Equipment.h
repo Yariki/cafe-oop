@@ -22,9 +22,9 @@ public:
 	virtual ~Equipment();
 
 	void setStatus(EquipmentStatus status);
-	EquipmentStatus getStatus() const;
-	EnergyKinds getEnergyKind() const;
-	EquipmentKinds getKind() const;
+	EquipmentStatus getStatus() const ;
+	EnergyKinds getEnergyKind() const ;
+	EquipmentKinds getKind() const ;
 	std::string getName() const;
 
 	//operators

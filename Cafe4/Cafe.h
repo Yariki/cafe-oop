@@ -21,7 +21,7 @@
 #include "ICafe.h"
 #include "WaiterObserver.h"
 
-class Cafe 
+class Cafe : public ICafe
 {
 
 public:
@@ -32,7 +32,26 @@ public:
 	void generateClients();
 	void simulation();
 	std::string generateError();
-	
+	virtual CafeKitchen* const getKitchen() ;
+	virtual CafeStoreHouse* const getStoreHouse() ;
+
+	virtual Chef* const getChef() ;
+
+	virtual std::vector<Cook*>* const getCooks() ;
+
+	virtual std::vector<Client*>* const getClients() ;
+
+	virtual std::vector<Waiter*>* const getWaiters() ;
+
+	virtual Cafe_Menu* const getMenu() ;
+
+	virtual  Client* const getClient() ;
+
+	virtual Cook* const getCook();
+
+	virtual void addOrder( Order* order );
+
+	virtual void deleteOrder( Order* order );
 
 private:
 	std::vector<Order*>* orders_;
@@ -55,6 +74,8 @@ private:
 	void createStoreHouse();
 	void createCooks();
 	void createMenu();
+	void readFiles();
+	void readFile(std::string filename, std::vector<std::string>* list);
 	std::string generateName();
 	std::string generateSurname();
 	

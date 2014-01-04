@@ -125,39 +125,57 @@ inline void Client::withdrawMoney( double sum )
 	money_ -= sum;
 }
 
-
-void Client::setName(std::string name){
-	name_ = name;
+Client& Client::operator++()
+{
+	this->money_++;
+	return *this;
 }
 
-
-const std::string Client::getName(){
-
-	return name_;
+Client Client::operator++(int)
+{
+	Client c = *this;
+	this->money_++;
+	return c;
 }
 
-
-void Client::setSurname(std::string surname){
-	surname_ = surname;
+Client& Client::operator--()
+{
+	this->money_--;
+	return *this;
 }
 
-
-std::string Client::getSurname(){
-
-	return surname_;
+Client Client::operator--(int)
+{
+	Client c = *this;
+	--this->money_;
+	return c;
 }
 
-
-void Client::setSpecialization(Specialization sp){
-	specialization_ = sp;
+Client Client::operator+(const Client& rhs)
+{
+	Client temp;
+	temp.money_ = money_ + rhs.money_;
+	return temp;
 }
 
-
-Specialization Client::getSpecialization(){
-	return  specialization_;
+Client Client::operator-(const Client& rhs)
+{
+	Client temp;
+	temp.money_ = money_ - rhs.money_;
+	return temp;
 }
 
-std::string Client::getFullName(){
-	std::string fullname = getName() + " " + getSurname();
-	return fullname;
+Client operator+(const Client& lhs, const Client& rhs)
+{
+	Client temp;
+	temp.money_ = lhs.money_ + rhs.money_;
+	return temp;
 }
+
+Client operator- (const Client& lhs, const Client& rhs)
+{
+	Client temp;
+	temp.money_ = lhs.money_ - rhs.money_;
+	return temp;
+}
+

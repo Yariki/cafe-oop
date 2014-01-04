@@ -8,7 +8,6 @@
 #define EA_34D39089_90A1_4167_8AC2_0F99A7019000__INCLUDED_
 
 #include <tuple>
-#include <string>
 #include <queue>
 #include "order.h"
 #include <vector>
@@ -22,7 +21,7 @@
 #include "ICafeNotifier.h"
 #include "ICafeObserver.h"
 
-class Cook 
+class Cook : public Person, public ICafeNotifier<ICafeObserver<Cook>>
 {
 
 public:
@@ -42,14 +41,6 @@ public:
 	virtual Dish* getReadyDish();
 	virtual Equipment* getEquipment();
 
-	void setName(std::string name);
-	const std::string getName();
-	void setSurname(std::string surname);
-	std::string getSurname();
-	void setSpecialization(Specialization sp);
-	Specialization getSpecialization();
-	std::string getFullName();
-
 
 	void setStatus(CookStatus status);
 	CookStatus getStatus();
@@ -62,7 +53,7 @@ protected:
 	virtual void clearDishList();
 	virtual void prepareForCooking();
 
-	//virtual void Notify( int command );
+	virtual void Notify( int command );
 
 protected:
 	Equipment* equipment_;
@@ -70,9 +61,6 @@ protected:
 	Order* currentOrder_;
 	std::vector<Dish*> dishList_;
 	Dish* readyDish_;
-	std::string name_;
-	Specialization specialization_;
-	std::string surname_;
 
 };
 #endif // !defined(EA_34D39089_90A1_4167_8AC2_0F99A7019000__INCLUDED_)

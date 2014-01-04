@@ -8,7 +8,6 @@
 #define EA_34D39089_90A1_4167_8AC2_0F99A7019000__INCLUDED_
 
 #include <tuple>
-#include <string>
 #include <queue>
 #include "order.h"
 #include <vector>
@@ -22,7 +21,7 @@
 #include "ICafeNotifier.h"
 #include "ICafeObserver.h"
 
-class Cook : public Person
+class Cook : public Person, public ICafeNotifier<ICafeObserver<Cook>>
 {
 
 public:
@@ -42,6 +41,7 @@ public:
 	virtual Dish* getReadyDish();
 	virtual Equipment* getEquipment();
 
+
 	void setStatus(CookStatus status);
 	CookStatus getStatus();
 
@@ -53,7 +53,7 @@ protected:
 	virtual void clearDishList();
 	virtual void prepareForCooking();
 
-	//virtual void Notify( int command );
+	virtual void Notify( int command );
 
 protected:
 	Equipment* equipment_;

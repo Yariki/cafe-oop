@@ -29,7 +29,7 @@ void Waiter::setOrder(Order* order){
 		return;
 	orders_->push_back(order);
 	order->setWaiter(this);
-	//Notify(PassOrderToChef);
+	Notify(PassOrderToChef);
 }
 
 Order* Waiter::giveOrderToChef(){
@@ -46,7 +46,7 @@ void Waiter::approveAlternativeInredientsInClient(Client* client, std::map<Dish*
 {
 	client_ = client;
 	tempAlternativeList = alterList;
-	//Notify(ApproveIgredients);
+	Notify(ApproveIgredients);
 }
 
 std::map<Dish*,ApprovedItem>* Waiter::getIngredientsForApprove()
@@ -71,27 +71,27 @@ void Waiter::setApprovedIngredients( std::map<Dish*,ApprovedItem>* temp )
 
 void Waiter::getOrderFromClientAndPassToChef()
 {
-	//Notify(GetOrderFromClient);
+	Notify(GetOrderFromClient);
 }
 
 void Waiter::passDishToClient( Client* client,Dish* dish )
 {
 	client_ = client;
 	dish_ = dish;
-	//Notify(PassDishToClient);
+	Notify(PassDishToClient);
 }
-//
-//void Waiter::Notify( int command )
-//{
-//	if(!observer_)
-//		return;
-//	observer_->Update(command,this);
-//}
+
+void Waiter::Notify( int command )
+{
+	if(!observer_)
+		return;
+	observer_->Update(command,this);
+}
 
 void Waiter::processBillFromClient( Order* order )
 {
 	currentorder_ = order;
-	//Notify(ProcessBill);
+	Notify(ProcessBill);
 }
 
 Order* Waiter::getCurrentOrder()

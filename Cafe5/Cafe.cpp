@@ -43,6 +43,10 @@ Cafe::~Cafe(){
 	deleteAndClearClients();
 	deleteOrders();
 
+	delete menu_;
+	delete cookObserver_;
+	delete waiterObserver_;
+
 	names_.clear();
 	surnames_.clear();
 	dishes_.clear();
@@ -71,7 +75,7 @@ void Cafe::simulation()
 	}
 	CafeTimer timer;
 	timer.start();
-	int ellapsed = 0.0;
+	int ellapsed = 0;
 	
 	while( ( ellapsed = (int)timer.getEllapsed())  < 120) 
 	{
@@ -135,6 +139,7 @@ void Cafe::initialize(){
 	clients_ = new std::vector<Client*>();
 	waiters_ = new std::vector<Waiter*>();
 	orders_ = new std::vector<Order*>();
+	readFiles();
 	createObservers();
 	createChef();
 	createKitchen();
@@ -147,7 +152,7 @@ void Cafe::initialize(){
 
 void Cafe::createChef(){
 	chef_ = new Chef();
-	//chef_->Attach(cookObserver_);
+	chef_->Attach(cookObserver_);
 	chef_->setName(generateName());
 	chef_->setSurname(generateSurname());
 }
@@ -158,7 +163,7 @@ void Cafe::createWaiters(){
 		auto waiter = new Waiter();
 		waiter->setName(generateName());
 		waiter->setSurname(generateSurname());
-		//waiter->Attach(waiterObserver_);
+		waiter->Attach(waiterObserver_);
 		waiters_->push_back(waiter);
 	}
 }
@@ -186,7 +191,7 @@ void Cafe::createCooks(){
 		auto cook = new Cook();
 		cook->setName(generateName());
 		cook->setSurname(generateSurname());
-		//cook->Attach(cookObserver_);
+		cook->Attach(cookObserver_);
 		cooks_->push_back(cook);
 	}
 }
@@ -219,6 +224,29 @@ std::vector<Waiter*>* const Cafe::getWaiters()
 Cafe_Menu* const Cafe::getMenu() 
 {
 	return menu_;
+}
+
+void Cafe::readFiles()
+{
+	readFile(NAMES_FILENAME,&names_);
+	readFile(SURNAME_FILENAME,&surnames_);
+	readFile(DISHES_FILENAME,&dishes_);
+}
+
+void Cafe::readFile(std::string filename, std::vector<std::string>* list)
+{
+	std::ifstream nameFile(filename);
+	if(!nameFile)
+	{
+		printf_s("Error while reading file %s\n",filename.c_str());
+		throw new std::exception(filename.c_str());
+	}
+	for (;!(nameFile.eof());)
+	{
+		std::string val;
+		nameFile >> val;
+		list->push_back(val);
+	}
 }
 
 void Cafe::generateClients()
@@ -327,7 +355,7 @@ void Cafe::deleteAndClearClients()
 void Cafe::deleteChef()
 {
 	if(chef_ !=  nullptr){
-		//chef_->Detach(cookObserver_);
+		chef_->Detach(cookObserver_);
 		delete chef_;
 		chef_ = nullptr;
 	}
@@ -353,7 +381,7 @@ void Cafe::deleteWaiters()
 {
 	for(size_t index = 0 ; index < waiters_->size();index++){
 		auto waiter = waiters_->at(index);
-		//waiter->Detach(waiterObserver_);
+		waiter->Detach(waiterObserver_);
 		delete waiter;
 		waiter = nullptr;
 	}
@@ -365,7 +393,7 @@ void Cafe::deleteCooks()
 {
 	for (size_t index = 0; index < cooks_->size();index++){
 		auto cook = cooks_->at(index);
-		//cook->Detach(cookObserver_);
+		cook->Detach(cookObserver_);
 		delete cook;
 		cook = nullptr;
 	}

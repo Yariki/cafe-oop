@@ -17,13 +17,12 @@
 #include "ICafeNotifier.h"
 #include "ICafeObserver.h"
 #include "Types.h"
-#include <string>
 
 
 class Client;
 class Dish;
 
-class Waiter 
+class Waiter : public Person, public ICafeNotifier<ICafeObserver<Waiter>>
 {
 
 public:
@@ -40,20 +39,12 @@ public:
 	void processBillFromClient(Order* order);
 
 
-	void setName(std::string name);
-	const std::string getName();
-	void setSurname(std::string surname);
-	std::string getSurname();
-	void setSpecialization(Specialization sp);
-	Specialization getSpecialization();
-	std::string getFullName();
-
 	Client* getClient();
 	Order* giveOrderToChef();
 	Dish* getDishForClient();
 	Order* getCurrentOrder();
 
-	//virtual void Notify( int command );
+	virtual void Notify( int command );
 
 private:
 	std::vector<Order*>* orders_;
@@ -61,9 +52,6 @@ private:
 	Client* client_;
 	Dish* dish_;
 	Order* currentorder_;
-	std::string name_;
-	Specialization specialization_;
-	std::string surname_;
 
 };
 #endif // !defined(EA_283F64EB_2586_471d_B57C_0D322667A2A3__INCLUDED_)

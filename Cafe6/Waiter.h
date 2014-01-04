@@ -17,13 +17,12 @@
 #include "ICafeNotifier.h"
 #include "ICafeObserver.h"
 #include "Types.h"
-#include <string>
 
 
 class Client;
 class Dish;
 
-class Waiter : public Person
+class Waiter : public Person, public ICafeNotifier<ICafeObserver<Waiter>>
 {
 
 public:
@@ -45,7 +44,7 @@ public:
 	Dish* getDishForClient();
 	Order* getCurrentOrder();
 
-	//virtual void Notify( int command );
+	virtual void Notify( int command );
 
 private:
 	std::vector<Order*>* orders_;
@@ -53,7 +52,6 @@ private:
 	Client* client_;
 	Dish* dish_;
 	Order* currentorder_;
-
 
 };
 #endif // !defined(EA_283F64EB_2586_471d_B57C_0D322667A2A3__INCLUDED_)

@@ -38,7 +38,7 @@ Order* Cook::getOrder(){
 
 void Cook::passSneck(){
 
-	//Notify(PassSneckToWaiter);
+	Notify(PassSneckToWaiter);
 	state_ = CookBusy;
 }
 
@@ -48,15 +48,15 @@ void Cook::cook(){
 	if(readyDish_)
 	{
 		printf_s("Cook %s pass ready dish '%s' to %s\n",getFullName().c_str(),readyDish_->getName().c_str(),currentOrder_->getWaiter()->getFullName().c_str());
-		//Notify(PassDishToWaiter);
+		Notify(PassDishToWaiter);
 	}
 	else
 	{
 		printf_s("Cook %s finished working...\n",getFullName().c_str());
-		//Notify(ReleaseEquipment);
+		Notify(ReleaseEquipment);
 		printf_s("The equipment '%s' has been released...\n",equipment_->getName().c_str());
 		applyEquipment(nullptr);
-		//Notify(FinishedWork);
+		Notify(FinishedWork);
 		state_ = CookFree;
 		currentOrder_ = nullptr;
 		clearDishList();
@@ -67,9 +67,9 @@ bool Cook::intitializeCookOrder(){
 
 	printf_s("Cook %s started his work...\n",getFullName().c_str());
 	state_ = CookSneck;
-	//Notify(ApplyEquipment);
-	if(equipment_)
-		printf_s("Cook %s use %s for cooking\n",getFullName().c_str(),equipment_->getName().c_str());
+	Notify(ApplyEquipment);
+	//if(equipment_)
+	//	printf_s("Cook %s use %s for cooking\n",getFullName().c_str(),equipment_->getName().c_str());
 	return true;
 }
 
@@ -179,53 +179,17 @@ Dish* Cook::getReadyDish()
 	return readyDish_;
 }
 
-//void Cook::Notify( int command )
-//{
-//	if(!observer_)
-//		return;
-//	observer_->Update(command,this);
-//}
+void Cook::Notify( int command )
+{
+	if(!observer_)
+		return;
+	observer_->Update(command,this);
+}
 
 void Cook::prepareForCooking()
 {
 	makeDishList();
 	//Notify(CheckIngridients);
 	intitializeCookOrder();
-
 }
 
-void Cook::setName(std::string name){
-	name_ = name;
-}
-
-
-const std::string Cook::getName(){
-
-	return name_;
-}
-
-
-void Cook::setSurname(std::string surname){
-	surname_ = surname;
-}
-
-
-std::string Cook::getSurname(){
-
-	return surname_;
-}
-
-
-void Cook::setSpecialization(Specialization sp){
-	specialization_ = sp;
-}
-
-
-Specialization Cook::getSpecialization(){
-	return  specialization_;
-}
-
-std::string Cook::getFullName(){
-	std::string fullname = getName() + " " + getSurname();
-	return fullname;
-}

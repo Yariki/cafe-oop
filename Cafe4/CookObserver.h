@@ -10,7 +10,7 @@
 #include "ICafeObserver.h"
 #include "Cook.h"
 #include "Chef.h"
-#include "Cafe.h"
+#include "ICafe.h"
 #include "Types.h"
 
 
@@ -34,7 +34,7 @@ class CookObserver : public ICafeObserver<Cook>
 {
 
 public:
-	CookObserver(Cafe* cafe) { cafe_ = cafe;}
+	CookObserver(ICafe* cafe) { cafe_ = cafe;}
 	virtual ~CookObserver();
 
 	virtual void Update( int command, Cook* obj );
@@ -54,6 +54,6 @@ private:
 	void InternalPassSnakToWaiter( Cook* obj );
 	void InternalFinishedWork(Cook* obj);
 private:
-	Cafe* cafe_;
+	ICafe* cafe_;
 };
 #endif // !defined(EA_F324BC50_166E_4045_BEBD_0F57DAB19ECD__INCLUDED_)

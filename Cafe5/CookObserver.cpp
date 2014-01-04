@@ -58,68 +58,68 @@ void CookObserver::Update( int command, Cook* obj )
 
 void CookObserver::InternalCheckIngredients( Cook* const cook )
 {
-	/*std::vector<Dish*>* dishList = cook->getDishesIngredientsForCheking();
+	std::vector<Dish*>* dishList = cook->getDishesIngredientsForCheking();
 	CafeStoreHouse* store = cafe_->getStoreHouse();
 	if(!store)
-	return;
+		return;
 	std::map<Dish*,std::vector<IngredientPair>> tempList;
 	checkIngredientsInStore(dishList, store, tempList);
 
 	if(tempList.empty())
 	{
-	cook->setCheckedIngredients(nullptr);
+		cook->setCheckedIngredients(nullptr);
 	}
 	else
 	{
 
-	std::map<Dish*,ApprovedItem> listForApprove;
-	initializeListForApproving(tempList, listForApprove);
-	Order* order = cook->getOrder();
-	Waiter* waiter = order->getWaiter();
-	waiter->approveAlternativeInredientsInClient(order->getClient(),&listForApprove);
-	auto approvedList = waiter->getApprovedIngerients();
-	std::vector<std::tuple<Dish*,Dish*>> listDishesWithApproved;
-	for (auto it = approvedList->begin(); it != approvedList->end();++it)
-	{
-	Dish* dish = it->first;
+		std::map<Dish*,ApprovedItem> listForApprove;
+		initializeListForApproving(tempList, listForApprove);
+		Order* order = cook->getOrder();
+		Waiter* waiter = order->getWaiter();
+		waiter->approveAlternativeInredientsInClient(order->getClient(),&listForApprove);
+		auto approvedList = waiter->getApprovedIngerients();
+		std::vector<std::tuple<Dish*,Dish*>> listDishesWithApproved;
+		for (auto it = approvedList->begin(); it != approvedList->end();++it)
+		{
+			Dish* dish = it->first;
 
-	if(!it->second.ApproveIgredients.size())
-	{
-	listDishesWithApproved.push_back(std::tuple<Dish*,Dish*>(dish,it->second.AlternativeDish));
-	continue;
-	}
-	for(size_t i = 0; i < it->second.ApproveIgredients.size();i++)
-	{
-	auto tup = it->second.ApproveIgredients.at(i);
-	IngredientKinds k = std::get<0>(tup);
-	bool approved = std::get<1>(tup);
+			if(!it->second.ApproveIgredients.size())
+			{
+				listDishesWithApproved.push_back(std::tuple<Dish*,Dish*>(dish,it->second.AlternativeDish));
+				continue;
+			}
+			for(size_t i = 0; i < it->second.ApproveIgredients.size();i++)
+			{
+				auto tup = it->second.ApproveIgredients.at(i);
+				IngredientKinds k = std::get<0>(tup);
+				bool approved = std::get<1>(tup);
 
-	std::vector<IngredientPair>* list = &tempList[dish];
-	auto iter = std::find_if(list->begin(),list->end(),[&k](IngredientPair& pair) ->  bool {
-	return pair.ingredientTarget == k;
-	});
-	IngredientPair p = (*iter);
+				std::vector<IngredientPair>* list = &tempList[dish];
+				auto iter = std::find_if(list->begin(),list->end(),[&k](IngredientPair& pair) ->  bool {
+					return pair.ingredientTarget == k;
+				});
+				IngredientPair p = (*iter);
 
-	Ingredient* key = nullptr;
-	for(auto it = dish->getIngridients()->begin();it != dish->getIngridients()->end();++it)
-	{
-	if(it->first->getIngredient() == p.ingredientSource)
-	{
-	key = it->first;
-	break;
-	}
-	}
-	list->erase(iter);
-	dish->getIngridients()->erase(key);
-	delete key;
+				Ingredient* key = nullptr;
+				for(auto it = dish->getIngridients()->begin();it != dish->getIngridients()->end();++it)
+				{
+					if(it->first->getIngredient() == p.ingredientSource)
+					{
+						key = it->first;
+						break;
+					}
+				}
+				list->erase(iter);
+				dish->getIngridients()->erase(key);
+				delete key;
 
-	if(approved)
-	dish->getIngridients()->insert(std::pair<Ingredient*,double>(new Ingredient(p.ingredientTarget),rand() % 10));
+				if(approved)
+					dish->getIngridients()->insert(std::pair<Ingredient*,double>(new Ingredient(p.ingredientTarget),rand() % 10));
+			}
+			listDishesWithApproved.push_back(std::tuple<Dish*,Dish*>(dish,nullptr));
+		}
+		cook->setCheckedIngredients(&listDishesWithApproved);
 	}
-	listDishesWithApproved.push_back(std::tuple<Dish*,Dish*>(dish,nullptr));
-	}
-	cook->setCheckedIngredients(&listDishesWithApproved);
-	}*/
 }
 
 void CookObserver::InternalPassDishToWaiter( Cook* const cook )
@@ -134,7 +134,7 @@ void CookObserver::InternalCookInjured( Cook* const cook )
 
 void CookObserver::InternalApplyEquipment( Cook* const cook )
 {
-	/*Equipment* eq = nullptr;
+	Equipment* eq = nullptr;
 	printf_s("Kitchen has %s\n",CafeKitchen::getKitchenStateName(cafe_->getKitchen()->getState()).c_str());
 	if(cafe_->getKitchen()->getState() == CafeKitchen::Normal)
 	{
@@ -142,13 +142,13 @@ void CookObserver::InternalApplyEquipment( Cook* const cook )
 	}
 	else
 		eq = cafe_->getKitchen()->getFirstFreeAlternativeEquipment();
-	cook->applyEquipment(eq);*/
+	cook->applyEquipment(eq);
 }
 
 void CookObserver::InternalReleaseEquipment( Cook* const cook )
 {
-	/*auto eq = cook->getEquipment();
-	cafe_->getKitchen()->releseEquipment((Equipment*)eq);*/
+	auto eq = cook->getEquipment();
+	cafe_->getKitchen()->releseEquipment((Equipment*)eq);
 
 }
 
@@ -202,7 +202,7 @@ void CookObserver::checkIngredientsInStore( std::vector<Dish*>* dishList, CafeSt
 
 void CookObserver::InternalSetOrderToCook( Chef* const chef )
 {
-	/*Cook* cook = cafe_->getCook();
+	Cook* cook = cafe_->getCook();
 	if(!cook)
 	{
 		printf_s("All cooks are busy... Clients should wait...\n");
@@ -215,16 +215,16 @@ void CookObserver::InternalSetOrderToCook( Chef* const chef )
 		return;
 	}
 		
-	cook->setOrder(chef->getOrderForCook());*/
+	cook->setOrder(chef->getOrderForCook());
 }
 
 void CookObserver::InternalPassSnakToWaiter( Cook* obj )
 {
-	/*Cafe_Menu* menu = cafe_->getMenu();
+	Cafe_Menu* menu = cafe_->getMenu();
 	Dish* sneck = new Dish(*menu->getSneckList()->at(rand() % menu->getSneckList()->size()));
 	Client* cl = obj->getOrder()->getClient();
 	printf_s("Cook %s pass to %s sneck '%s' from restaurant... \n",obj->getFullName().c_str(),cl->getFullName().c_str(),sneck->getName().c_str());
-	obj->getOrder()->getWaiter()->passDishToClient(cl,sneck);*/
+	obj->getOrder()->getWaiter()->passDishToClient(cl,sneck);
 }
 
 void CookObserver::InternalFinishedWork( Cook* obj )

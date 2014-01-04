@@ -75,3 +75,90 @@ std::map<Ingredient*,double>* Dish::getIngridients() const
 {
 	return (std::map<Ingredient*,double>* const)&ingridients_;
 }
+
+
+void *Dish::operator new(size_t size){
+	printf_s("Allocation new 'Dish'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if (!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void *Dish::operator new[](size_t size){
+	printf_s("Allocation new array of 'Dish'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if (!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void Dish::operator delete(void* ptr){
+	printf_s("Deallocation 'Dish'...\n");
+	free(ptr);
+}
+
+void Dish::operator delete[](void* ptr){
+	printf_s("Deallocation array of 'Dish'...\n");
+	free(ptr);
+}
+
+Dish& Dish::operator++()
+{
+	this->cost_++;
+	return *this;
+}
+
+Dish Dish::operator++(int)
+{
+	Dish d = *this;
+	++this->cost_;
+	return d;
+}
+
+Dish& Dish::operator--()
+{
+	this->cost_--;
+	return *this;
+}
+
+Dish Dish::operator--(int)
+{
+	Dish d = *this;
+	--this->cost_;
+	return d;
+}
+
+Dish Dish::operator+(const Dish& rhs)
+{
+	Dish temp;
+	temp.cost_ = cost_ + rhs.cost_;
+	return temp;
+}
+
+Dish Dish::operator-(const Dish& rhs)
+{
+	Dish temp;
+	temp.cost_ = cost_ - rhs.cost_;
+	return temp;
+}
+
+Dish operator+(const Dish& lhs, const Dish& rhs)
+{
+	Dish temp;
+	temp.cost_ = lhs.cost_ + rhs.cost_;
+	return temp;
+}
+
+Dish operator- (const Dish& lhs, const Dish& rhs)
+{
+	Dish temp;
+	temp.cost_ = lhs.cost_ - rhs.cost_;
+	return temp;
+}

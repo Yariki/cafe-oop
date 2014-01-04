@@ -17,13 +17,21 @@ class Person
 
 public:
 	Person();
-	
+	Person(std::string name, std::string surname, Specialization specialization);
 	virtual ~Person();
 
-	
+	void setName(std::string name);
+	const std::string getName();
+	void setSurname(std::string surname);
+	std::string getSurname();
+	void setSpecialization(Specialization sp);
+	Specialization getSpecialization();
+	std::string getFullName();
 
 private:
-	
+	std::string name_;
+	Specialization specialization_;
+	std::string surname_;
 
 };
 #endif // !defined(EA_78019771_352A_43a6_8498_311F639F29FE__INCLUDED_)

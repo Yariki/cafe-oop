@@ -96,3 +96,31 @@ Waiter* Order::getWaiter(){
 
 	return  waiter_;
 }
+
+Order Order::operator+(const Order& rhs)
+{
+	Order temp;
+	temp.total_cost_ = total_cost_ + rhs.total_cost_;
+	return temp;
+}
+
+Order Order::operator-(const Order& rhs)
+{
+	Order temp;
+	temp.total_cost_ = total_cost_ - rhs.total_cost_;
+	return temp;
+}
+
+Order operator+(const Order& lhs, const Order& rhs)
+{
+	Order temp;
+	temp.total_cost_ = lhs.total_cost_ + rhs.total_cost_;
+	return temp;
+}
+
+Order operator- (const Order& lhs, const Order& rhs)
+{
+	Order temp;
+	temp.total_cost_ = lhs.total_cost_ - rhs.total_cost_;
+	return temp;
+}

@@ -32,6 +32,11 @@ public:
 	void setWaiter(Waiter* waiter);
 	Waiter* getWaiter();
 
+	Order operator+(const Order&);
+	Order operator-(const Order&);
+	friend Order operator+ (const Order& lhs, const Order& rhs);
+	friend Order operator- (const Order& lhs, const Order& rhs);
+
 private:
     double total_cost_;
     std::vector<Dish*> order_;

@@ -75,3 +75,40 @@ std::map<Ingredient*,double>* Dish::getIngridients() const
 {
 	return (std::map<Ingredient*,double>* const)&ingridients_;
 }
+
+
+void *Dish::operator new(size_t size){
+	printf_s("Allocation new 'Dish'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if (!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void *Dish::operator new[](size_t size){
+	printf_s("Allocation new array of 'Dish'...\n");
+	void* ptr = nullptr;
+	ptr = malloc(size);
+	if (!ptr){
+		std::bad_alloc ex;
+		throw ex;
+	}
+	return ptr;
+}
+
+void Dish::operator delete(void* ptr){
+	printf_s("Deallocation 'Dish'...\n");
+	free(ptr);
+}
+
+void Dish::operator delete[](void* ptr){
+	printf_s("Deallocation array of 'Dish'...\n");
+	free(ptr);
+}
+
+
+
+
