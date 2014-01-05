@@ -74,8 +74,8 @@ private:
 	void createStoreHouse();
 	void createCooks();
 	void createMenu();
-	/*void readFiles();
-	void readFile(std::string filename, std::vector<std::string>* list);*/
+	void readFiles();
+	void readFile(std::string filename, std::vector<std::string>* list);
 	std::string generateName();
 	std::string generateSurname();
 	

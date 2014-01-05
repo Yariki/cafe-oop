@@ -20,11 +20,27 @@ public:
     void setCost(double cost);
     double getCost() const;
 	std::map<Ingredient*,double>* getIngridients() const;
+	
+
+	//operators
 	friend bool operator==(const Dish& left, const Dish& right)
     {
 		if(left.getCost() == right.getCost() && left.getName() == right.getName()) return true; 
 		else return false;
     }
+	void *operator new(size_t size);
+	void *operator new[](size_t size);
+	void operator delete(void* ptr);
+	void operator delete[](void* prt);
+	Dish& operator++();
+	Dish operator++(int);
+	Dish& operator--();
+	Dish operator--(int);
+
+	Dish operator+(const Dish&);
+	Dish operator-(const Dish&);
+	friend Dish operator+ (const Dish& lhs, const Dish& rhs);
+	friend Dish operator- (const Dish& lhs, const Dish& rhs);
 
 private:
 	void generateIngridients();

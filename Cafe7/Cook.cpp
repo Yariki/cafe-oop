@@ -68,8 +68,8 @@ bool Cook::intitializeCookOrder(){
 	printf_s("Cook %s started his work...\n",getFullName().c_str());
 	state_ = CookSneck;
 	Notify(ApplyEquipment);
-	if(equipment_)
-		printf_s("Cook %s use %s for cooking\n",getFullName().c_str(),equipment_->getName().c_str());
+	//if(equipment_)
+	//	printf_s("Cook %s use %s for cooking\n",getFullName().c_str(),equipment_->getName().c_str());
 	return true;
 }
 
@@ -189,8 +189,7 @@ void Cook::Notify( int command )
 void Cook::prepareForCooking()
 {
 	makeDishList();
-	Notify(CheckIngridients);
+	//Notify(CheckIngridients);
 	intitializeCookOrder();
-
 }
 

@@ -124,3 +124,58 @@ inline void Client::withdrawMoney( double sum )
 {
 	money_ -= sum;
 }
+
+Client& Client::operator++()
+{
+	this->money_++;
+	return *this;
+}
+
+Client Client::operator++(int)
+{
+	Client c = *this;
+	this->money_++;
+	return c;
+}
+
+Client& Client::operator--()
+{
+	this->money_--;
+	return *this;
+}
+
+Client Client::operator--(int)
+{
+	Client c = *this;
+	--this->money_;
+	return c;
+}
+
+Client Client::operator+(const Client& rhs)
+{
+	Client temp;
+	temp.money_ = money_ + rhs.money_;
+	return temp;
+}
+
+Client Client::operator-(const Client& rhs)
+{
+	Client temp;
+	temp.money_ = money_ - rhs.money_;
+	return temp;
+}
+
+Client operator+(const Client& lhs, const Client& rhs)
+{
+	Client temp;
+	temp.money_ = lhs.money_ + rhs.money_;
+	return temp;
+}
+
+Client operator- (const Client& lhs, const Client& rhs)
+{
+	Client temp;
+	temp.money_ = lhs.money_ - rhs.money_;
+	return temp;
+}
+

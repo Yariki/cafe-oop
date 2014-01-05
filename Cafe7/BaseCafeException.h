@@ -14,6 +14,7 @@ class BaseCafeException
 
 public:
 	BaseCafeException();
+	BaseCafeException(const BaseCafeException&);
 	virtual ~BaseCafeException();
 
 	virtual std::string getMessage();
