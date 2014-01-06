@@ -1,18 +1,6 @@
-Debug
-/Cafe/*.filters
-/Cafe/*.user
 /*.opensdf
 /*.sdf
 /*.suo
-/Cafe/Release
-/Release
-/Cafe2/Release
-/Cafe3/Release
-/Cafe5/Release
-/Cafe4/Release
-/Cafe6/Release
-/Cafe7/Release
-/Cafe8/Release
 
 /ipch/cafe-b5ad0c7a/*.ipch
 /ipch/cafe2-e7be50fe/*.ipch
