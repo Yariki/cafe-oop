@@ -120,7 +120,7 @@ void Client::payBill( double cost )
 	printf_s("Client %s paid - %lf of gold\n",getFullName().c_str(),cost);
 }
 
-inline void Client::withdrawMoney( double sum )
+void Client::withdrawMoney( double sum )
 {
 	money_ -= sum;
 }

@@ -91,7 +91,7 @@ IngredientKinds CafeStoreHouse::getAlternativeIngredientFor( IngredientKinds kin
 }
 
 
-inline bool CafeStoreHouse::isRequiredCountLessThenExistingCount( double& required, double& existing )
+bool CafeStoreHouse::isRequiredCountLessThenExistingCount( double& required, double& existing )
 {
 	return required < existing;
 }

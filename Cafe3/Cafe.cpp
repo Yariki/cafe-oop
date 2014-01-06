@@ -185,12 +185,12 @@ void Cafe::generateClients()
 	}
 }
 
-inline std::string Cafe::generateName()
+std::string Cafe::generateName()
 {
 	return names_.empty() ? std::string() : names_.at(rand() % names_.size());
 }
 
-inline std::string Cafe::generateSurname()
+std::string Cafe::generateSurname()
 {
 	return surnames_.empty() ? std::string() : surnames_.at(rand() % surnames_.size());
 }
@@ -217,7 +217,7 @@ void Cafe::processNewClient(  )
 {
 }
 
-inline bool Cafe::isNotServedClientPresent()
+bool Cafe::isNotServedClientPresent()
 {
 	return false; //getClient() != nullptr;
 }
